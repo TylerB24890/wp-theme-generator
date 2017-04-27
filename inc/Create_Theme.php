@@ -13,11 +13,20 @@ class Create_Theme {
 	private $dest;
 	private $permissions;
 
+	private $theme_ids;
+
 	public function __construct() {
 
 		$this->source = __DIR__ . '/base-theme';
 		$this->dest = __DIR__ . '/zip';
 		$this->permissions = 0755;
+
+		$this->theme_ids = array(
+			'theme_name' => "{%THEME_NAME%}",
+			'theme_slug' => "{%THEME_SLUG%}",
+			'theme_prefix' => "{%THEME_PREFIX%}",
+			'theme_author' => "{%THEME_AUTHOR%}"
+		);
 	}
 
 	/**
@@ -89,7 +98,10 @@ class Create_Theme {
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
 		if($this->create_zip_dir($this->source, $base_dest, $this->permissions))
-		$this->create_theme_zip($base_dest, $data['theme_slug']);
+		$swap = $this->swap_theme_data($data, $base_dest);
+
+		if($swap)
+		$this->create_theme_zip($base_dest, $data);
 	}
 
 	/**
@@ -136,33 +148,25 @@ class Create_Theme {
 	}
 
 	/**
-	 * Loop through the theme files and swap the {THEME_NAME} strings
+	 * Loop through the theme files and swap the replacement strings throughout
 	 *
-	 * @param string $name name of the theme
+	 * @param string $data submitted theme data
 	 * @param string $dir directory of copied theme
+	 * @return bool
 	 */
-	private function swap_theme_name($name, $dir) {
+	private function swap_theme_data($data, $dir) {
 
-	}
+		foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)) as $filename) {
+			foreach($data as $k => $v) {
+				if(is_file($filename)) {
+					$file_contents = file_get_contents($filename);
+					$file_contents = str_replace($this->theme_ids[$k], $v, $file_contents);
+					file_put_contents($filename, $file_contents);
+				}
+			}
+		}
 
-	/**
-	 * Loop through the files and swap the {THEME_SLUG} strings
-	 *
-	 * @param string $slug the theme slug
-	 * @param string $dir directory of copied theme
-	 */
-	private function swap_theme_slug($slug, $dir) {
-
-	}
-
-	/**
-	 * Loop through the files and swap the {THEME_PREFIX} strings
-	 *
-	 * @param string $slug the theme prefix
-	 * @param string $dir directory of copied theme
-	 */
-	private function swap_theme_prefix($prefix, $dir) {
-
+		return true;
 	}
 
 	/**
@@ -174,17 +178,17 @@ class Create_Theme {
 	 * @param string $slug the theme slug to name the zipped theme folder
 	 * @return string
 	 */
-	private function create_theme_zip($dest, $slug) {
+	private function create_theme_zip($dest, $data) {
 		include_once('Zip_Extend.php');
 		$zip = new Zip_Extend();
 
-		$res = $zip->open($dest . DIRECTORY_SEPARATOR . $slug . '.zip', ZipArchive::CREATE);
+		$res = $zip->open($dest . DIRECTORY_SEPARATOR . $data['theme_slug'] . '.zip', ZipArchive::CREATE);
 
 		if($res === TRUE) {
-			$zip->add_dir($dest, $slug);
+			$zip->add_dir($dest, $data['theme_slug']);
 			$zip->close();
 
-			$this->set_download_headers($dest, $slug);
+			$this->set_download_headers($dest, $data['theme_slug']);
 		} else {
 			return "Failed to create zip file.";
 		}

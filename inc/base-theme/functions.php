@@ -11,9 +11,9 @@
  );
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
-    define('ELX_DEV', true);
+    define('{%THEME_PREFIX%}_DEV', true);
 } else {
-	define('ELX_DEV', false);
+	define('{%THEME_PREFIX%}_DEV', false);
 }
 
 
@@ -103,7 +103,7 @@ add_action( 'after_setup_theme', '{%THEME_PREFIX%}_setup' );
 /**
  * Script/Stylesheet Enqueue
  */
-require get_template_directory() . '/inc/{%THEME_PREFIX%}-enqueue-scripts.php';
+require get_template_directory() . '/inc/enqueue-scripts.php';
 
 /**
  * Custom Post Types
