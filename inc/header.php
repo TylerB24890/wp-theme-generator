@@ -1,3 +1,14 @@
+<?php
+
+if(isset($_POST['submit_theme'])) {
+    include_once('Create_Theme.php');
+
+    $ctobj = new Create_Theme();
+    $resp = $ctobj->process_form_submission($_POST);
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
