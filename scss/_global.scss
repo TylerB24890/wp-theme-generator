@@ -5,6 +5,7 @@
 html,
 body {
 	@include font-smoothing(on);
+	min-height: 750px; 
 }
 
 h1 {

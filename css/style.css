@@ -1960,7 +1960,8 @@ input[type="button"].btn-block {
 html,
 body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 750px; }
 
 h1 {
   margin: 30px 0 60px; }
@@ -1969,10 +1970,7 @@ h1 {
  * Global Footer Styles
  */
 footer {
-  position: fixed;
-  bottom: 30px;
-  left: 0;
-  right: 0;
+  margin-top: 75px;
   font-size: 22px; }
   footer i {
     color: red; }
