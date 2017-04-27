@@ -11,9 +11,9 @@
  );
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
-    define('{%THEME_PREFIX%}_DEV', true);
+    define('{%THEME_CONST%}_DEV', true);
 } else {
-	define('{%THEME_PREFIX%}_DEV', false);
+	define('{%THEME_CONST%}_DEV', false);
 }
 
 

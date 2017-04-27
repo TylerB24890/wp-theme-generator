@@ -43,13 +43,13 @@ function {%THEME_PREFIX%}_scripts() {
 	// Scripts
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array('jquery'), '3.3.5', true );
 
-	$theme_script = ({%THEME_PREFIX%}_DEV ? '{%THEME_SLUG%}.js' : '{%THEME_SLUG%}.min.js');
+	$theme_script = ({%THEME_CONST%}_DEV ? '{%THEME_SLUG%}.js' : '{%THEME_SLUG%}.min.js');
 	wp_enqueue_script( '{%THEME_SLUG%}-js', get_template_directory_uri() . '/js/' . $theme_script, array('jquery'), '1.0.0', true );
 
 	// IE conditional scripts array
 	$conditional_scripts = array(
-		'html5shiv' => '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js',
-		'respond' => '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js'
+		'html5shiv' => '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js',
+		'respond' => '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js'
 	);
 
 	// Enqueue conditional scripts

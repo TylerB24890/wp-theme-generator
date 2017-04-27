@@ -3945,6 +3945,8 @@ footer {
   left: 0;
   right: 0;
   font-size: 22px; }
+  footer i {
+    color: red; }
   footer a {
     color: #333333;
     text-decoration: none;

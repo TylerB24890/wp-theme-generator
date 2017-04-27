@@ -42,7 +42,8 @@ class Create_Theme {
 			'theme_name' => "{%THEME_NAME%}",
 			'theme_slug' => "{%THEME_SLUG%}",
 			'theme_prefix' => "{%THEME_PREFIX%}",
-			'theme_author' => "{%THEME_AUTHOR%}"
+			'theme_author' => "{%THEME_AUTHOR%}",
+			'theme_const' => "{%THEME_CONST%}"
 		);
 	}
 
@@ -121,6 +122,10 @@ class Create_Theme {
 
 			// Unset the submit button value
 			unset($data['submit_theme']);
+
+			// Set the theme constant for development purposes
+			$data['theme_const'] = strtoupper($data['theme_prefix']);
+
 		} else {
 			return false;
 		}
@@ -222,7 +227,29 @@ class Create_Theme {
 			}
 		}
 
+		// Change JS file names
+		$this->change_file_names($data, $dir);
+
 		return true;
+	}
+
+	/**
+	 * Change the theme file names
+	 *
+	 * @param string $dest the destination of the folder to zip
+	 * @param string $slug the theme slug to name the zipped theme folder
+	 * @return null
+	 */
+	private function change_file_names($data, $dir) {
+		$js_dir = $dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR;
+
+		if(file_exists($js_dir . 'theme-slug.js')) {
+			rename($js_dir . 'theme-slug.js', $js_dir . $data['theme_slug'] . '.js');
+		}
+
+		if(file_exists($js_dir . 'theme-slug.min.js')) {
+			rename($js_dir . 'theme-slug.min.js', $js_dir . $data['theme_slug'] . '.min.js');
+		}
 	}
 
 	/**

@@ -9,13 +9,17 @@ footer {
     right: 0;
     font-size: 22px;
 
+    i {
+        color: red;
+    }
+    
     a {
         color: $text-color;
         text-decoration: none;
         border-bottom: 1px dotted $text-color;
         padding-bottom: 3px;
         @include animate(all);
-        
+
         &:hover {
             color: red;
             text-decoration: none;
