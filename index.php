@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordPress Theme Maker - By Tyler Bailey</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <header>
-
-    </header>
+<?php include_once('inc/header.php'); ?>
 
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
@@ -41,13 +29,4 @@
         </div>
     </div>
 
-    <footer>
-
-    </footer>
-
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js" defer></script>
-    <script type="text/javascript">window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
-    <script src="js/vendor/bootstrap.min.js" defer></script>
-    <script type="text/javascript" src="js/theme-maker.js" defer></script>
-</body>
-</html>
+<?php include_once('inc/footer.php'); ?>
