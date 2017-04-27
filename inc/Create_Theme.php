@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Process form submission and create base theme zip file
+ * Builds a custom WordPress Base Theme based on the user input variables
  *
  * @author Tyler Bailey
  * @version 1.0.0
@@ -9,12 +9,29 @@
 
 class Create_Theme {
 
+	/**
+	 * Source of the base theme files
+	 */
 	private $source;
+
+	/**
+	 * Destination of where to save the new theme files
+	 */
 	private $dest;
+
+	/**
+	 * Permissions of theme directory
+	 */
 	private $permissions;
 
+	/**
+	 * Array of strings to replace in the theme files
+	 */
 	private $theme_ids;
 
+	/**
+	 * Class initialization
+	 */
 	public function __construct() {
 
 		$this->source = __DIR__ . '/base-theme';
@@ -37,15 +54,23 @@ class Create_Theme {
 	 */
 	public function process_form_submission($data) {
 
+		// If they haven't filled anything out, return an error.
 		if(!isset($data) || !is_array($data))
 		return "No data submitted.";
 
+		// Validate the form submission data
 		$valid_data = $this->validate_form_submission($data);
 
-		if(!$valid_data)
-		return "You have entered invalid data.";
+		// If there were errors during validation, return them
+		if(isset($valid_data['error']) && $valid_data['error'])
+		return $valid_data['message'];
 
-		$this->build_theme($valid_data);
+		// Begin the theme build
+		$theme_build = $this->build_theme($valid_data);
+
+		// If there was an error during the build, return it
+		if(isset($theme_build['error']) && $theme_build['error'])
+		return $theme_build['message'];
 	}
 
 	/**
@@ -56,30 +81,45 @@ class Create_Theme {
 	 */
 	private function validate_form_submission(&$data) {
 
+		// If the submitted data is not empty
 		if(is_array($data) && !empty($data)) {
+
+			// Loop through the submitted data
 			foreach($data as $k => $v) {
+
+				// If we are not on the theme_author input
 				if($k !== 'theme_author') {
+
+					// If they have not filled it out
 					if(strlen($v) < 1) {
+						// Get the input name
 						$input_name = str_replace('_', ' ', $k);
 
-						return "Invalid " . $input_name;
+						// Return an error
+						$return['error'] = true;
+						$return['message'] = "Invalid " . $input_name;
+						return $return;
 					} else {
+						// Strip all HTML tags
 						$v = strip_tags($v);
 
+						// If we're on the theme_slug or prefix, make lowercase and replace spaces with dashes
 						if($k === 'theme_slug' || $k === 'theme_prefix') {
-							$v = strip_tags($v);
 							$v = str_replace(' ', '-', strtolower($v));
 						}
 
+						// Reassign the validated data to the data array
 						$data[$k] = $v;
 					}
 				} else {
+					// If we ARE on the theme_author input and it is not filled out, put a default value
 					if(strlen($v) < 1) {
 						$data[$k] = 'Elexicon';
 					}
 				}
 			}
 
+			// Unset the submit button value
 			unset($data['submit_theme']);
 		} else {
 			return false;
@@ -95,13 +135,23 @@ class Create_Theme {
 	 * @return null
 	 */
 	private function build_theme($data) {
+		// Create the unique directory name for this theme
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
-		if($this->create_zip_dir($this->source, $base_dest, $this->permissions))
+		// Create the theme directory and copy the base theme files over
+		$zip_dir = $this->create_zip_dir($this->source, $base_dest, $this->permissions);
+
+		// If the file copy was successful, swap out the file data
+		if($zip_dir)
 		$swap = $this->swap_theme_data($data, $base_dest);
 
+		// If the swap was successful, create the zip file & download it
 		if($swap)
-		$this->create_theme_zip($base_dest, $data);
+		$zip_file = $this->create_theme_zip($base_dest, $data);
+
+		// Return error if one is present
+		if(isset($zip_file['error']))
+		return $zip_file;
 	}
 
 	/**
@@ -156,11 +206,17 @@ class Create_Theme {
 	 */
 	private function swap_theme_data($data, $dir) {
 
+		// Use the Recursive*Iterator object to loop through files in theme directory
 		foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)) as $filename) {
+			// For each submitted form input
 			foreach($data as $k => $v) {
+				// If it is a file (not a directory)
 				if(is_file($filename)) {
+					// Get the contents
 					$file_contents = file_get_contents($filename);
+					// Replace the contents
 					$file_contents = str_replace($this->theme_ids[$k], $v, $file_contents);
+					// Put the contents back
 					file_put_contents($filename, $file_contents);
 				}
 			}
@@ -179,18 +235,24 @@ class Create_Theme {
 	 * @return string
 	 */
 	private function create_theme_zip($dest, $data) {
+		// Include/init the Zip_Extend object
 		include_once('Zip_Extend.php');
 		$zip = new Zip_Extend();
 
+		// Open the zip archive folder
 		$res = $zip->open($dest . DIRECTORY_SEPARATOR . $data['theme_slug'] . '.zip', ZipArchive::CREATE);
 
 		if($res === TRUE) {
+			// Create the zip archive file
 			$zip->add_dir($dest, $data['theme_slug']);
 			$zip->close();
 
+			// Download the file
 			$this->set_download_headers($dest, $data['theme_slug']);
 		} else {
-			return "Failed to create zip file.";
+			$return['error'] = true;
+			$return['message'] = "Failed to create zip file.";
+			return $return;
 		}
 	}
 

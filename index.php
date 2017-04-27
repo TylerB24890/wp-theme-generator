@@ -4,7 +4,11 @@
         <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">Elexicon Base Theme</h1>
 
-            <?php echo(isset($resp) ? $resp : ''); ?>
+            <?php if(isset($resp)) : ?>
+                <div style="color: red; margin: 30px 0;">
+                    <h3><?php echo $resp; ?></h3>
+                </div>
+            <?php endif; ?>
 
             <form name="build_theme" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="form-group">
