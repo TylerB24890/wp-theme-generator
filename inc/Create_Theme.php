@@ -27,7 +27,7 @@ class Create_Theme {
 	/**
 	 * Array of strings to replace in the theme files
 	 */
-	private $theme_ids;
+	private $theme_strings;
 
 	/**
 	 * Class initialization
@@ -38,7 +38,7 @@ class Create_Theme {
 		$this->dest = __DIR__ . '/zip';
 		$this->permissions = 0755;
 
-		$this->theme_ids = array(
+		$this->theme_strings = array(
 			'theme_name' => "{%THEME_NAME%}",
 			'theme_slug' => "{%THEME_SLUG%}",
 			'theme_prefix' => "{%THEME_PREFIX%}",
@@ -65,15 +65,15 @@ class Create_Theme {
 		$valid_data = $this->validate_form_submission($data);
 
 		// If there were errors during validation, return them
-		if(isset($valid_data['error']) && $valid_data['error'])
-		return $valid_data['message'];
+		if(isset($valid_data['error']))
+		return $valid_data['msg'];
 
 		// Begin the theme build
 		$theme_build = $this->build_theme($valid_data);
 
 		// If there was an error during the build, return it
-		if(isset($theme_build['error']) && $theme_build['error'])
-		return $theme_build['message'];
+		if(isset($theme_build['error']))
+		return $theme_build['msg'];
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Create_Theme {
 			foreach($data as $k => $v) {
 
 				// If we are not on the theme_author input
-				if($k !== 'theme_author') {
+				if($k !== 'theme_author' && $k !== 'email') {
 
 					// If they have not filled it out
 					if(strlen($v) < 1) {
@@ -99,14 +99,16 @@ class Create_Theme {
 						$input_name = str_replace('_', ' ', $k);
 
 						// Return an error
-						$msg = "Invalid " . $input_name;
-						$this->_return_error($msg);
+						$return['error'] = true;
+						$return['msg'] = "Invalid " . $input_name;
+						return $return;
 					} else {
 
 						// Spam Check!
 						if($k === 'email' && strlen($v) > 0) {
-							$msg = "We don't like spam...";
-							$this->_return_error($msg);
+							$return['error'] = true;
+							$return['msg'] = "We don't like spam...";
+							return $return;
 						}
 
 						// Strip all HTML tags
@@ -228,7 +230,7 @@ class Create_Theme {
 					// Get the contents
 					$file_contents = file_get_contents($filename);
 					// Replace the contents
-					$file_contents = str_replace($this->theme_ids[$k], $v, $file_contents);
+					$file_contents = str_replace($this->theme_strings[$k], $v, $file_contents);
 					// Put the contents back
 					file_put_contents($filename, $file_contents);
 				}
@@ -292,8 +294,9 @@ class Create_Theme {
 			// Download the file
 			$this->set_download_headers($dest, $theme_name);
 		} else {
-			$msg = 'Failed to create zip file. Please try again.';
-			$this->_return_error($msg);
+			$return['error'] = true;
+			$return['msg'] = 'Failed to create zip file. Please try again.';
+			return $return;
 		}
 	}
 
@@ -361,15 +364,4 @@ class Create_Theme {
 		// Remove the parent directory
 		rmdir($dir_path);
 	}
-
-	/**
-	 * Returns the error response
-	 *
-	 * @param string $msg the error response to be returned
-	 * @return string
-	 */
-	public function _return_error($msg) {
-		return $msg;
-	}
-
 }
