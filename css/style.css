@@ -3930,6 +3930,12 @@ header {
     position: relative;
     transition: all 300ms ease-in-out; }
 
+h1 {
+  margin: 30px 0 60px; }
+
+.form-group {
+  margin: 20px 0; }
+
 /**
  * Global Footer Styles
  */
