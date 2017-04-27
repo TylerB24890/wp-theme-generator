@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Process form submission and create base theme zip file
+ *
+ * @author Tyler Bailey
+ * @version 1.0.0
+ */
+
 class Create_Theme {
 
 	private $source;
@@ -15,6 +22,7 @@ class Create_Theme {
 
 	/**
 	 * Begin the form processing
+	 *
 	 * @param  array $data $_POST data from form submission
 	 * @return null
 	 */
@@ -33,6 +41,7 @@ class Create_Theme {
 
 	/**
 	 * Validate the submitted form data
+	 *
 	 * @param  array $data $_POST data from form submission
 	 * @return array $data validated & sanitized $_POST data
 	 */
@@ -72,6 +81,7 @@ class Create_Theme {
 
 	/**
 	 * Execute the functions required to build the theme
+	 *
 	 * @param  array $data $_POST data from form submission
 	 * @return null
 	 */
@@ -83,7 +93,14 @@ class Create_Theme {
 	}
 
 	/**
-	 * Create the temporary theme directory
+	 * Create the theme directory and add files from base-theme directory
+	 *
+	 * Copies all files from the base-theme directory into a new directory for zipping
+	 *
+	 * @param string $source the base-theme directory
+	 * @param string $base_dest the destination to copy the theme to
+	 * @param $permissions constant directory permissions to set
+	 * @return bool
 	 */
 	private function create_zip_dir($source, $base_dest, $permissions) {
 		// Check for symlinks
@@ -120,27 +137,42 @@ class Create_Theme {
 
 	/**
 	 * Loop through the theme files and swap the {THEME_NAME} strings
+	 *
+	 * @param string $name name of the theme
+	 * @param string $dir directory of copied theme
 	 */
-	private function swap_theme_name() {
+	private function swap_theme_name($name, $dir) {
 
 	}
 
 	/**
 	 * Loop through the files and swap the {THEME_SLUG} strings
+	 *
+	 * @param string $slug the theme slug
+	 * @param string $dir directory of copied theme
 	 */
-	private function swap_theme_slug() {
+	private function swap_theme_slug($slug, $dir) {
 
 	}
 
 	/**
 	 * Loop through the files and swap the {THEME_PREFIX} strings
+	 *
+	 * @param string $slug the theme prefix
+	 * @param string $dir directory of copied theme
 	 */
-	private function swap_theme_prefix() {
+	private function swap_theme_prefix($prefix, $dir) {
 
 	}
 
 	/**
-	 * Zip the newly created theme folder up and serve to the user for downloading
+	 * Zip the newly created theme folder up
+	 *
+	 * Calls the Zip_Extend object
+	 *
+	 * @param string $dest the destination of the folder to zip
+	 * @param string $slug the theme slug to name the zipped theme folder
+	 * @return string
 	 */
 	private function create_theme_zip($dest, $slug) {
 		include_once('Zip_Extend.php');
@@ -152,7 +184,7 @@ class Create_Theme {
 			$zip->add_dir($dest, $slug);
 			$zip->close();
 
-			$this->set_download_headers($slug);
+			$this->set_download_headers($dest, $slug);
 		} else {
 			return "Failed to create zip file.";
 		}
@@ -160,10 +192,16 @@ class Create_Theme {
 
 	/**
 	 * Set download headers
+	 *
+	 * Prompts the user to download the newly created file
+	 *
+	 * @param string $dest where the zip file is located
+	 * @param string $slug the slug of the theme
+	 * @return null
 	 */
-	private function set_download_headers($slug) {
+	private function set_download_headers($dest, $slug) {
 		header('Content-disposition: attachment; filename=' . $slug . '.zip');
         header('Content-type: application/zip');
-        readfile(__DIR__ . DIRECTORY_SEPARATOR . $slug . '.zip');
+        readfile($dest . DIRECTORY_SEPARATOR . $slug . '.zip');
 	}
 }

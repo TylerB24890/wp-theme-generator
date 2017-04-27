@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * Extends the native PHP ZipArchive class and creates a zip file for user downloading
+ *
+ * @author Tyler Bailey
+ * @version 1.0.0
+ */
+
 class Zip_Extend extends ZipArchive {
 
     /**
      * Begin the zip file creation
+     *
+     * @param string $location the location of the directory to zip
+     * @param string $name the name of the folder to put the zipped files into
+     * @return null
      */
     public function add_dir($location, $name) {
 
@@ -13,6 +24,10 @@ class Zip_Extend extends ZipArchive {
 
     /**
      * Add files to tmp directory and create zip file
+     *
+     * @param string $location the location of the directory to zip
+     * @param string $name the name of the folder to put the zipped files into
+     * @return null
      */
     private function add_dir_do($location, $name) {
 
