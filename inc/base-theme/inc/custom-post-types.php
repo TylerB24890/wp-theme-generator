@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Holds all custom post types for the elexicon theme
+ * Holds all custom post types for the {%THEME_PREFIX%} theme
  *
- * @package elexicon
- * @subpackage elexicon/inc
+ * @package {%THEME_SLUG%}
+ * @subpackage {%THEME_SLUG%}/inc
  */
 
  /**
@@ -12,7 +12,7 @@
   *
   * Duplicate this function per post type
   */
- function elexicon_custom_posttype() {
+ function {%THEME_PREFIX%}_custom_posttype() {
 	 $labels = array(
       	'name'               => _x( 'Products', 'post type general name' ),
       	'singular_name'      => _x( 'Product', 'post type singular name' ),
@@ -45,4 +45,4 @@
 
     flush_rewrite_rules();
 }
-//add_action( 'init', 'elexicon_custom_posttype' );
+//add_action( 'init', '{%THEME_PREFIX%}_custom_posttype' );

@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package elexicon
+ * @package {%THEME_SLUG%}
  */
 
 ?><!DOCTYPE html>
@@ -37,7 +37,7 @@
 				</div>
 
 				<?php
-					// Elexicon Theme Navigation
+					// {%THEME_PREFIX%} Theme Navigation
 					wp_nav_menu(array(
 						'menu' => 'primary',
 						'theme_location' => 'primary',

@@ -4,8 +4,8 @@
  */
 
 // Customize ACF Path
-add_filter('acf/settings/path', 'elexicon_acf_settings_path');
-function elexicon_acf_settings_path( $path ) {
+add_filter('acf/settings/path', '{%THEME_PREFIX%}_acf_settings_path');
+function {%THEME_PREFIX%}_acf_settings_path( $path ) {
 
     // update path
     $path = get_stylesheet_directory() . '/inc/acf/';
@@ -17,8 +17,8 @@ function elexicon_acf_settings_path( $path ) {
 
 
 // Customize ACF Directory
-add_filter('acf/settings/dir', 'elexicon_acf_settings_dir');
-function elexicon_acf_settings_dir( $dir ) {
+add_filter('acf/settings/dir', '{%THEME_PREFIX%}_acf_settings_dir');
+function {%THEME_PREFIX%}_acf_settings_dir( $dir ) {
 
     // update path
     $dir = get_stylesheet_directory_uri() . '/inc/acf/';

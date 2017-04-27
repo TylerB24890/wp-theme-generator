@@ -3,11 +3,11 @@
 /**
  * This file holds the custom taxonomies used throughout the website
  *
- * @package elexicon
- * @subpackage elexicon/inc
+ * @package {%THEME_SLUG%}
+ * @subpackage {%THEME_SLUG%}/inc
  */
 
- function elexicon_custom_taxonomies() {
+ function {%THEME_PREFIX%}_custom_taxonomies() {
     	// Add new "Types" taxonomy to Posts
     	register_taxonomy('custom-taxonomy-name', 'post', array(
 	      	// Hierarchical taxonomy (like categories)
@@ -37,4 +37,4 @@
 	flush_rewrite_rules();
 }
 
-//add_action( 'init', 'elexicon_custom_taxonomies', 0 );
+//add_action( 'init', '{%THEME_PREFIX%}_custom_taxonomies', 0 );

@@ -1,7 +1,7 @@
 <?php
 /**
  * Post index page template
- * @package elexicon
+ * @package {%THEME_SLUG%}
  */
 
 get_header(); ?>
@@ -15,7 +15,7 @@ get_header(); ?>
 			<?php endwhile; ?>
 		<?php else : ?>
 
-			<h4><?php _e('No posts found!', 'elexicon'); ?></h4>
+			<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
 
 		<?php endif; ?>
 

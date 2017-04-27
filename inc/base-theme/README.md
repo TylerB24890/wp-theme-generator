@@ -1,6 +1,6 @@
 
-Elexicon
+{%THEME_PREFIX%}
 ===
 
-A base WordPress theme built for future Elexicon projects.
+A base WordPress theme built for future {%THEME_PREFIX%} projects.
 

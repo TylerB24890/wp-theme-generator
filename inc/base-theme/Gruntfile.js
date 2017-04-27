@@ -127,7 +127,7 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    '<%= config.jsDir %>elexicon.min.js': ['<%= config.jsDir %>elexicon.js']
+                    '<%= config.jsDir %>{%THEME_PREFIX%}.min.js': ['<%= config.jsDir %>{%THEME_PREFIX%}.js']
                 }
             }
         }

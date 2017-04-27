@@ -3,5 +3,5 @@
 /**
  * Template Name: Home
  *
- * @package	elexicon
+ * @package	{%THEME_PREFIX%}
  */

@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-    siteUrl:       'elexicon.local',
+    siteUrl:       '{%THEME_PREFIX%}.local',
     sassDir:          './scss/',
     sassMainFileName: 'style',
     cssDir:           './styles/',

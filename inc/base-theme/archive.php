@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package elexicon
+ * @package {%THEME_SLUG%}
  */
 
 get_header(); ?>

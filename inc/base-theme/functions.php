@@ -1,8 +1,8 @@
 <?php
 /**
- * elexicon functions and definitions.
+ * {%THEME_PREFIX%} functions and definitions.
  *
- * @package elexicon
+ * @package {%THEME_SLUG%}
  */
 
  $whitelist = array(
@@ -17,7 +17,7 @@ if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
 }
 
 
-if ( ! function_exists( 'elexicon_setup' ) ) :
+if ( ! function_exists( '{%THEME_PREFIX%}_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -25,14 +25,14 @@ if ( ! function_exists( 'elexicon_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function elexicon_setup() {
+function {%THEME_PREFIX%}_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on elexicon, use a find and replace
-	 * to change 'elexicon' to the name of your theme in all the template files.
+	 * If you're building a theme based on {%THEME_PREFIX%}, use a find and replace
+	 * to change '{%THEME_PREFIX%}' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'elexicon', get_template_directory() . '/languages' );
+	load_theme_textdomain( '{%THEME_PREFIX%}', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -81,7 +81,7 @@ function elexicon_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'elexicon_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( '{%THEME_PREFIX%}_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
@@ -98,12 +98,12 @@ function elexicon_setup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
 endif;
-add_action( 'after_setup_theme', 'elexicon_setup' );
+add_action( 'after_setup_theme', '{%THEME_PREFIX%}_setup' );
 
 /**
  * Script/Stylesheet Enqueue
  */
-require get_template_directory() . '/inc/elexicon-enqueue-scripts.php';
+require get_template_directory() . '/inc/{%THEME_PREFIX%}-enqueue-scripts.php';
 
 /**
  * Custom Post Types

@@ -1,5 +1,5 @@
 {
-  "name": "elexicon",
+  "name": "{%THEME_PREFIX%}",
   "version": "1.0.0",
   "devDependencies": {
       "autoprefixer-core": "^5.2.1",

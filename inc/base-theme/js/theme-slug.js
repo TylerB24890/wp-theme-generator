@@ -1,7 +1,7 @@
 /**
-* elexicon theme main JS file
+* {%THEME_PREFIX%} theme main JS file
 *
-* @author elexicon
+* @author {%THEME_PREFIX%}
 */
 
 (function($) {
