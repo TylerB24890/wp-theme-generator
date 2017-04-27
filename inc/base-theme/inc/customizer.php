@@ -1,6 +1,6 @@
 <?php
 /**
- * {%THEME_PREFIX%} Theme Customizer.
+ * {%THEME_SLUG%} Theme Customizer.
  *
  * @package {%THEME_SLUG%}
  */

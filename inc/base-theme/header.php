@@ -37,7 +37,7 @@
 				</div>
 
 				<?php
-					// {%THEME_PREFIX%} Theme Navigation
+					// {%THEME_NAME%} Theme Navigation
 					wp_nav_menu(array(
 						'menu' => 'primary',
 						'theme_location' => 'primary',

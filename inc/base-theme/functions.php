@@ -1,6 +1,6 @@
 <?php
 /**
- * {%THEME_PREFIX%} functions and definitions.
+ * {%THEME_SLUG%} functions and definitions.
  *
  * @package {%THEME_SLUG%}
  */

@@ -1,7 +1,6 @@
 /**
-* {%THEME_PREFIX%} theme main JS file
+* {%THEME_SLUG%} theme main JS file
 *
-* @author {%THEME_PREFIX%}
 */
 
 (function($) {
