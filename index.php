@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center">Elexicon Base Theme</h1>
+            <h1 class="text-center">Base WP Theme Generator</h1>
 
             <?php if(isset($resp)) : ?>
                 <div style="color: red; margin: 30px 0;">
