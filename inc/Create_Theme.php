@@ -76,29 +76,29 @@ class Create_Theme {
 	 * @return null
 	 */
 	private function build_theme($data) {
-		$new_dest = $this->dest . '/' . md5($data['theme_slug']);
+		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
-		if($this->create_zip_dir($this->source, $new_dest, $this->permissions))
-		$this->create_theme_zip($new_dest, $data['theme_slug']);
+		if($this->create_zip_dir($this->source, $base_dest, $this->permissions))
+		$this->create_theme_zip($base_dest, $data['theme_slug']);
 	}
 
 	/**
 	 * Create the temporary theme directory
 	 */
-	private function create_zip_dir($source, $dest, $permissions) {
+	private function create_zip_dir($source, $base_dest, $permissions) {
 		// Check for symlinks
 	    if (is_link($source)) {
-	        return symlink(readlink($source), $dest);
+	        return symlink(readlink($source), $base_dest);
 	    }
 
 	    // Simple copy for a file
 	    if (is_file($source)) {
-	        return copy($source, $dest);
+	        return copy($source, $base_dest);
 	    }
 
 	    // Make destination directory
-	    if (!is_dir($dest)) {
-	        mkdir($dest, $permissions);
+	    if (!is_dir($base_dest)) {
+	        mkdir($base_dest, $permissions);
 	    }
 
 	    // Loop through the folder
@@ -110,7 +110,7 @@ class Create_Theme {
 	        }
 
 	        // Deep copy directories
-	        $this->create_zip_dir("$source/$entry", "$dest/$entry", $permissions);
+	        $this->create_zip_dir("$source/$entry", "$base_dest/$entry", $permissions);
 	    }
 
 	    // Clean up
