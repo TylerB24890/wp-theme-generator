@@ -24,6 +24,10 @@
                     <input type="text" name="theme_name" class="form-control" placeholder="i.e. Elexicon" />
                 </div>
 
+                <div style="position: absolute; left: -9999px;">
+                    <input type="text" name="email" />
+                </div>
+
                 <div class="form-group">
                     <label>Theme Slug:</label>
                     <input type="text" name="theme_slug" class="form-control" placeholder="i.e. elexicon" />

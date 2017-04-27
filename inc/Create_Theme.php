@@ -45,6 +45,8 @@ class Create_Theme {
 			'theme_author' => "{%THEME_AUTHOR%}",
 			'theme_const' => "{%THEME_CONST%}"
 		);
+
+		$this->clean_theme_dir();
 	}
 
 	/**
@@ -97,10 +99,16 @@ class Create_Theme {
 						$input_name = str_replace('_', ' ', $k);
 
 						// Return an error
-						$return['error'] = true;
-						$return['message'] = "Invalid " . $input_name;
-						return $return;
+						$msg = "Invalid " . $input_name;
+						$this->_return_error($msg);
 					} else {
+
+						// Spam Check!
+						if($k === 'email' && strlen($v) > 0) {
+							$msg = "We don't like spam...";
+							$this->_return_error($msg);
+						}
+
 						// Strip all HTML tags
 						$v = strip_tags($v);
 
@@ -144,7 +152,7 @@ class Create_Theme {
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
 		// Create the theme directory and copy the base theme files over
-		$zip_dir = $this->create_zip_dir($this->source, $base_dest, $this->permissions);
+		$zip_dir = $this->create_theme_dir($this->source, $base_dest, $this->permissions);
 
 		// If the file copy was successful, swap out the file data
 		if($zip_dir)
@@ -169,7 +177,7 @@ class Create_Theme {
 	 * @param $permissions constant directory permissions to set
 	 * @return bool
 	 */
-	private function create_zip_dir($source, $base_dest, $permissions) {
+	private function create_theme_dir($source, $base_dest, $permissions) {
 		// Check for symlinks
 	    if (is_link($source)) {
 	        return symlink(readlink($source), $base_dest);
@@ -194,7 +202,7 @@ class Create_Theme {
 	        }
 
 	        // Deep copy directories
-	        $this->create_zip_dir("$source/$entry", "$base_dest/$entry", $permissions);
+	        $this->create_theme_dir("$source/$entry", "$base_dest/$entry", $permissions);
 	    }
 
 	    // Clean up
@@ -243,10 +251,12 @@ class Create_Theme {
 	private function change_file_names($data, $dir) {
 		$js_dir = $dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR;
 
+		// Change development JS file name
 		if(file_exists($js_dir . 'theme-slug.js')) {
 			rename($js_dir . 'theme-slug.js', $js_dir . $data['theme_slug'] . '.js');
 		}
 
+		// Change production (minified) JS file name
 		if(file_exists($js_dir . 'theme-slug.min.js')) {
 			rename($js_dir . 'theme-slug.min.js', $js_dir . $data['theme_slug'] . '.min.js');
 		}
@@ -266,20 +276,24 @@ class Create_Theme {
 		include_once('Zip_Extend.php');
 		$zip = new Zip_Extend();
 
+		// Create a file-friendly theme name
+		$theme_name = strtolower(str_replace(" ", "-", $data['theme_name']));
+		// Remove all characters except a hyphen
+		$theme_name = preg_replace("/[^a-z-]/i", "", $theme_name);
+
 		// Open the zip archive folder
-		$res = $zip->open($dest . DIRECTORY_SEPARATOR . $data['theme_slug'] . '.zip', ZipArchive::CREATE);
+		$res = $zip->open($dest . DIRECTORY_SEPARATOR . $theme_name . '.zip', ZipArchive::CREATE);
 
 		if($res === TRUE) {
 			// Create the zip archive file
-			$zip->add_dir($dest, $data['theme_slug']);
+			$zip->add_dir($dest, $theme_name);
 			$zip->close();
 
 			// Download the file
-			$this->set_download_headers($dest, $data['theme_slug']);
+			$this->set_download_headers($dest, $theme_name);
 		} else {
-			$return['error'] = true;
-			$return['message'] = "Failed to create zip file.";
-			return $return;
+			$msg = 'Failed to create zip file. Please try again.';
+			$this->_return_error($msg);
 		}
 	}
 
@@ -297,4 +311,65 @@ class Create_Theme {
         header('Content-type: application/zip');
         readfile($dest . DIRECTORY_SEPARATOR . $slug . '.zip');
 	}
+
+	/**
+	 * Clean the theme directory
+	 *
+	 * Loops through created theme directory and deletes themes older than 10 minutes
+	 *
+	 * @return null
+	 */
+	private function clean_theme_dir() {
+
+		// Get all the theme directories in the zip folder
+		$themes = array_filter(glob($this->dest . DIRECTORY_SEPARATOR . '*'), 'is_dir');
+
+		// Loop through themes
+		foreach($themes as $theme) {
+			// Get the theme creation time
+			$theme_time = filemtime($theme);
+
+			// If the theme was created more than 1 minute ago, delete it
+			if((time() - $theme_time) > 3600/60) {
+				self::delete_theme($theme);
+			}
+		}
+
+	}
+
+	/**
+	 * Loops through the supplied directory and deletes all files and folders within
+	 *
+	 * Custom folder recursion required
+	 *
+	 * @param string $dir_path Path to the directory to delete
+	 * @return null
+	 */
+	private static function delete_theme($dir_path) {
+
+		// Get all subdirectories and files within supplied directory and get paths
+		$paths = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($dir_path, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST );
+
+		// Loop through paths returned from above
+		foreach ($paths as $path) {
+			// Determine if path is a file or directory and set the correct action to take
+		    $action = ($path->isDir() ? 'rmdir' : 'unlink');
+			// Execute action
+		    $action($path->getRealPath());
+		}
+
+		// Remove the parent directory
+		rmdir($dir_path);
+	}
+
+	/**
+	 * Returns the error response
+	 *
+	 * @param string $msg the error response to be returned
+	 * @return string
+	 */
+	public function _return_error($msg) {
+		return $msg;
+	}
+
 }
