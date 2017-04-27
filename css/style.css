@@ -3939,5 +3939,20 @@ h1 {
 /**
  * Global Footer Styles
  */
+footer {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  font-size: 22px; }
+  footer a {
+    color: #333333;
+    text-decoration: none;
+    border-bottom: 1px dotted #333333;
+    padding-bottom: 3px;
+    transition: all 0.3s ease-in-out; }
+    footer a:hover {
+      color: red;
+      text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */
