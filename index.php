@@ -4,6 +4,14 @@
         <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">Base WP Theme Generator</h1>
 
+            <p>
+                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
+             </p>
+
+             <p style="margin: 30px 0;">
+                 <b>NOTE:</b> <a href="https://www.advancedcustomfields.com/pro/">Advanced Custom Fields PRO</a> is included with this base theme.
+             </p>
+
             <?php if(isset($resp)) : ?>
                 <div style="color: red; margin: 30px 0;">
                     <h3><?php echo $resp; ?></h3>
