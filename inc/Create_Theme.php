@@ -243,7 +243,9 @@ class Create_Theme {
 
 		// Use the Recursive*Iterator object to loop through files in theme directory
 		// Filter the looped directories using the function declared above
-		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
+		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(
+					new RecursiveDirectoryIterator($dir,
+					RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
 
 			// If it is a file (not a directory)
 			if(is_file($filename)) {
@@ -373,7 +375,8 @@ class Create_Theme {
 	private static function delete_theme($dir_path) {
 
 		// Get all subdirectories and files within supplied directory and get paths
-		$paths = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($dir_path, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST );
+		$paths = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($dir_path,
+		RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST );
 
 		// Loop through paths returned from above
 		foreach ($paths as $path) {
