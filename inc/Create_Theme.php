@@ -105,13 +105,6 @@ class Create_Theme {
 						return $return;
 					} else {
 
-						// Spam Check!
-						if($k === 'email' && strlen($v) > 0) {
-							$return['error'] = true;
-							$return['msg'] = "We don't like spam...";
-							return $return;
-						}
-
 						// Strip all HTML tags
 						$v = strip_tags($v);
 
@@ -128,8 +121,16 @@ class Create_Theme {
 						$data[$k] = $v;
 					}
 				} else {
+
+					// Spam Check!
+					if($k === 'email' && strlen($v) > 0) {
+						$return['error'] = true;
+						$return['msg'] = "We don't like spam...";
+						return $return;
+					}
+
 					// If we ARE on the theme_author input and it is not filled out, put a default value
-					if(strlen($v) < 1) {
+					if($k === 'theme_author' && strlen($v) < 1) {
 						$data[$k] = 'Elexicon';
 					}
 				}
