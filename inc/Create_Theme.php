@@ -95,7 +95,7 @@ class Create_Theme {
 				if($k !== 'theme_author' && $k !== 'email') {
 
 					// If they have not filled it out
-					if(strlen($v) < 1) {
+					if(strlen($v) < 1 && $k !== 'theme_description') {
 						// Get the input name
 						$input_name = str_replace('_', ' ', $k);
 
@@ -226,12 +226,27 @@ class Create_Theme {
 	 */
 	private function swap_theme_data($data, $dir) {
 
+		// Directories to exclude from the iteration/content swap
+		$exclude = array(
+			$dir . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'acf',
+			$dir . DIRECTORY_SEPARATOR . 'scss',
+			$dir . DIRECTORY_SEPARATOR . 'languages',
+			$dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'vendor'
+		);
+
+		// Filter the looped directories
+		$filter = function($file) use ($exclude) {
+			return (in_array($file, $exclude) === false);
+		};
+
 		// Use the Recursive*Iterator object to loop through files in theme directory
-		foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)) as $filename) {
-			// For each submitted form input
-			foreach($data as $k => $v) {
-				// If it is a file (not a directory)
-				if(is_file($filename)) {
+		// Filter the looped directories using the function declared above
+		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
+
+			// If it is a file (not a directory)
+			if(is_file($filename)) {
+				// For each submitted form input
+				foreach($data as $k => $v) {
 					// Get the contents
 					$file_contents = file_get_contents($filename);
 					// Replace the contents
