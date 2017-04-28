@@ -3,3 +3,7 @@ node_modules/
 node_modules/*
 .sass-cache
 .sass-cache/*
+inc/base-theme/inc/acf
+inc/base-theme/inc/acf/*
+inc/base-theme/inc/acf-include.php
+inc/base-theme/functions.php
