@@ -34,8 +34,8 @@ class Create_Theme {
 	 */
 	public function __construct() {
 
-		$this->source = __DIR__ . '/base-theme';
-		$this->dest = __DIR__ . '/zip';
+		$this->source = __DIR__ . DIRECTORY_SEPARATOR . 'base-theme';
+		$this->dest = __DIR__ . DIRECTORY_SEPARATOR . 'zip';
 		$this->permissions = 0755;
 
 		$this->theme_strings = array(
@@ -111,6 +111,7 @@ class Create_Theme {
 						// If we're on the theme_slug or prefix, make lowercase and replace spaces with dashes
 						if($k === 'theme_slug' || $k === 'theme_prefix') {
 							$v = str_replace(' ', '-', strtolower($v));
+							$v = preg_replace("/[^a-z-]/i", "", $v);
 						}
 
 						if($k === 'theme_description' && strlen($k) < 1) {
@@ -238,11 +239,13 @@ class Create_Theme {
 		// Filter the looped directories
 		$filter = function($file) use ($exclude) {
 			return (in_array($file, $exclude) === false);
-		}; 
+		};
 
 		// Use the Recursive*Iterator object to loop through files in theme directory
 		// Filter the looped directories using the function declared above
-		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
+		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(
+			new RecursiveDirectoryIterator($dir,
+			RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
 
 			// If it is a file (not a directory)
 			if(is_file($filename)) {
@@ -354,7 +357,7 @@ class Create_Theme {
 			$theme_time = filemtime($theme);
 
 			// If the theme was created more than 1 minute ago, delete it
-			if((time() - $theme_time) > 3600/60) {
+			if((time() - $theme_time) > 60) {
 				self::delete_theme($theme);
 			}
 		}
@@ -372,7 +375,8 @@ class Create_Theme {
 	private static function delete_theme($dir_path) {
 
 		// Get all subdirectories and files within supplied directory and get paths
-		$paths = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($dir_path, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST );
+		$paths = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($dir_path,
+		RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST );
 
 		// Loop through paths returned from above
 		foreach ($paths as $path) {
