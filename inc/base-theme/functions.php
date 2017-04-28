@@ -116,11 +116,6 @@ require get_template_directory() . '/inc/custom-post-types.php';
 require get_template_directory() . '/inc/custom-taxonomies.php';
 
 /**
- * ACF Include
- */
-require get_template_directory() . '/inc/acf-include.php';
-
-/**
  * Nav Walker
  */
 require get_template_directory() . '/inc/bootstrap-nav-walker.php';
