@@ -200,11 +200,11 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeueW01-45Ligh", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #fff; }
+  color: #FFF;
+  background-color: #081533; }
 
 input,
 button,
@@ -215,10 +215,10 @@ textarea {
   line-height: inherit; }
 
 a {
-  color: #337ab7;
+  color: #ec9e3f;
   text-decoration: none; }
   a:hover, a:focus {
-    color: #23527c;
+    color: #ca7814;
     text-decoration: underline; }
   a:focus {
     outline: thin dotted;
@@ -242,9 +242,9 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #fff;
+  background-color: #081533;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 0px;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -1184,7 +1184,7 @@ output {
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1527,7 +1527,7 @@ select[multiple].input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373; }
+  color: white; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -1622,7 +1622,7 @@ select[multiple].input-lg {
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.428571429;
-  border-radius: 4px;
+  border-radius: 0px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1874,7 +1874,7 @@ fieldset[disabled] a.btn {
     background-color: #fff; }
 
 .btn-link {
-  color: #337ab7;
+  color: #ec9e3f;
   font-weight: normal;
   border-radius: 0; }
   .btn-link, .btn-link:active, .btn-link.active, .btn-link[disabled],
@@ -1885,7 +1885,7 @@ fieldset[disabled] a.btn {
   .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
     border-color: transparent; }
   .btn-link:hover, .btn-link:focus {
-    color: #23527c;
+    color: #ca7814;
     text-decoration: underline;
     background-color: transparent; }
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
@@ -1963,11 +1963,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 750px; }
 
-h1 {
-  margin: 30px 0 60px; }
+header {
+  margin: 30px 0; }
+  header img {
+    max-width: 300px; }
 
-label span.req {
-  color: red; }
+h1 {
+  margin: 15px 0 30px; }
+
+label {
+  font-size: 14px;
+  text-transform: uppercase; }
+  label span.req {
+    color: red;
+    display: inline-block;
+    margin-left: 3px; }
+
+.help-block {
+  font-size: 13px; }
+
+input.btn {
+  height: 47px;
+  font-family: "HelveticaNeueW01-45Ligh";
+  font-size: 16px;
+  transition: all 0.3s ease-in-out; }
+  input.btn[type="submit"] {
+    background: #091f52;
+    border-color: #1b305f; }
+  input.btn[type="reset"] {
+    background: #2f3544;
+    border-color: #2f3544; }
+  input.btn:hover {
+    color: #fff;
+    background-color: #3276b1;
+    border-color: #285e8e; }
 
 /**
  * Global Footer Styles
@@ -1978,9 +2007,9 @@ footer {
   footer i {
     color: red; }
   footer a {
-    color: #333333;
+    color: #FFF;
     text-decoration: none;
-    border-bottom: 1px dotted #333333;
+    border-bottom: 1px dotted #FFF;
     padding-bottom: 3px;
     transition: all 0.3s ease-in-out; }
     footer a:hover {

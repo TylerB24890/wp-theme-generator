@@ -8,14 +8,56 @@ body {
 	min-height: 750px;
 }
 
+header {
+	margin: 30px 0;
+
+	img {
+		max-width: 300px;
+	}
+}
+
 h1 {
-	margin: 30px 0 60px;
+	margin: 15px 0 30px;
 }
 
 label {
+	font-size: 14px;
+	text-transform: uppercase;
+
 	span {
 		&.req {
 			color: red;
+			display: inline-block;
+			margin-left: 3px;
+		}
+	}
+}
+
+.help-block {
+	font-size: 13px;
+}
+
+input {
+	&.btn {
+		height: 47px;
+		font-family: $helvetica-light;
+	    font-size: 16px;
+		@include animate(all);
+
+		&[type="submit"] {
+			background: #091f52;
+			border-color: #1b305f;
+		}
+
+		&[type="reset"] {
+			background: #2f3544;
+		    border-color: #2f3544;
+		}
+
+		&:hover {
+			color: #fff;
+		    background-color: #3276b1;
+		    border-color: #285e8e;
 		}
 	}
 }

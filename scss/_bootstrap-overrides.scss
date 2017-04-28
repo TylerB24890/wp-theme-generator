@@ -31,12 +31,12 @@
  //## Settings for some of the most global styles.
 
  //** Background color for `<body>`.
- $body-bg:               #fff !default;
+ $body-bg:               $elx-blue !default;
  //** Global text color on `<body>`.
- $text-color:            $gray-dark !default;
+ $text-color:            #FFF !default;
 
  //** Global textual link color.
- $link-color:            $brand-primary !default;
+ $link-color:            $elx-orange !default;
  //** Link hover color set via `darken()` function.
  $link-hover-color:      darken($link-color, 15%) !default;
  //** Link hover decoration.
@@ -47,7 +47,7 @@
  //
  //## Font, line-height, and color for body text, headings, and more.
 
- $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+ $font-family-sans-serif:  $helvetica-light, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
  $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
  //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
  $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -111,7 +111,7 @@
  $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
  $line-height-small:         1.5 !default;
 
- $border-radius-base:        4px !default;
+ $border-radius-base:        0px !default;
  $border-radius-large:       6px !default;
  $border-radius-small:       3px !default;
 
