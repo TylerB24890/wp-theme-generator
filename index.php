@@ -1,11 +1,11 @@
 <?php include_once('inc/header.php'); ?>
 
     <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <h1 class="text-center">WP Base Theme Generator - Beta</h1>
 
             <p style="margin-bottom: 30px;">
-                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
+                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
              </p>
 
             <?php if(isset($resp)) : ?>
