@@ -18,7 +18,7 @@ footer {
         @include animate(all);
 
         &:hover {
-            color: red;
+            color: $elx-orange;
             text-decoration: none;
         }
     }

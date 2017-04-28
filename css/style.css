@@ -215,10 +215,10 @@ textarea {
   line-height: inherit; }
 
 a {
-  color: #ec9e3f;
+  color: #FFF;
   text-decoration: none; }
   a:hover, a:focus {
-    color: #ca7814;
+    color: #ec9e3f;
     text-decoration: underline; }
   a:focus {
     outline: thin dotted;
@@ -1874,7 +1874,7 @@ fieldset[disabled] a.btn {
     background-color: #fff; }
 
 .btn-link {
-  color: #ec9e3f;
+  color: #FFF;
   font-weight: normal;
   border-radius: 0; }
   .btn-link, .btn-link:active, .btn-link.active, .btn-link[disabled],
@@ -1885,7 +1885,7 @@ fieldset[disabled] a.btn {
   .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
     border-color: transparent; }
   .btn-link:hover, .btn-link:focus {
-    color: #ca7814;
+    color: #ec9e3f;
     text-decoration: underline;
     background-color: transparent; }
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
@@ -1963,8 +1963,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 750px; }
 
+a {
+  text-decoration: none;
+  border-bottom: 1px dotted #FFF;
+  transition: all 0.2s ease-in-out; }
+  a:hover {
+    text-decoration: none;
+    border-bottom-color: #ec9e3f; }
+
 header {
   margin: 30px 0; }
+  header a {
+    border-bottom: 0 !important; }
   header img {
     max-width: 300px; }
 
@@ -1986,7 +1996,7 @@ input.btn {
   height: 47px;
   font-family: "HelveticaNeueW01-45Ligh";
   font-size: 16px;
-  transition: all 0.3s ease-in-out; }
+  transition: all 0.2s ease-in-out; }
   input.btn[type="submit"] {
     background: #091f52;
     border-color: #1b305f; }
@@ -2011,9 +2021,9 @@ footer {
     text-decoration: none;
     border-bottom: 1px dotted #FFF;
     padding-bottom: 3px;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.2s ease-in-out; }
     footer a:hover {
-      color: red;
+      color: #ec9e3f;
       text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

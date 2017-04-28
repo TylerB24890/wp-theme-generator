@@ -8,8 +8,23 @@ body {
 	min-height: 750px;
 }
 
+a {
+	text-decoration: none;
+	border-bottom: 1px dotted #FFF;
+	@include animate(all);
+
+	&:hover {
+		text-decoration: none;
+		border-bottom-color: $elx-orange;
+	}
+}
+
 header {
 	margin: 30px 0;
+
+	a {
+		border-bottom: 0 !important;
+	}
 
 	img {
 		max-width: 300px;
