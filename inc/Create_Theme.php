@@ -244,8 +244,8 @@ class Create_Theme {
 		// Use the Recursive*Iterator object to loop through files in theme directory
 		// Filter the looped directories using the function declared above
 		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(
-					new RecursiveDirectoryIterator($dir,
-					RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
+			new RecursiveDirectoryIterator($dir,
+			RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
 
 			// If it is a file (not a directory)
 			if(is_file($filename)) {
