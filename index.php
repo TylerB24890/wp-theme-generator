@@ -5,11 +5,11 @@
             <h1 class="text-center">WP Base Theme Generator - Beta</h1>
 
             <p style="margin-bottom: 30px;">
-                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
+                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
              </p>
 
              <p class="text-center" style="margin-bottom: 30px;">
-                 <a href="http://elexicon.com/our-work/" target="_blank">View some of the projects using this base theme!</a>
+                 <a href="http://elexicon.com/our-work/">View some of the projects using this base theme!</a>
              </p>
 
             <?php if(isset($resp)) : ?>
@@ -62,9 +62,17 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
-                    <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
+                <div class="form-group submit">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
+                            <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
+                        </div>
+                        <div class="col-sm-6">
+                            <span><b>Themes Generated:</b> <span id="theme-count" style="display: inline;"><?php echo Create_Theme::count_themes_generated(); ?></span></span>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>

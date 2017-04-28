@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_POST['submit_theme'])) {
-    include_once('Create_Theme.php');
+include_once('Create_Theme.php');
 
+if(isset($_POST['submit_theme'])) {
     $ctobj = new Create_Theme();
     $resp = $ctobj->process_form_submission($_POST);
 }
@@ -14,7 +14,7 @@ if(isset($_POST['submit_theme'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordPress Theme Generator | By Tyler Bailey</title>
+    <title>WordPress Theme Generator</title>
 
     <meta property="og:url" content="http://theme-generator.elexicon.com/" />
     <meta property="og:type" content="website" />

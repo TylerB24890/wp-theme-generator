@@ -327,13 +327,18 @@ class Create_Theme {
 	/**
 	 * Set download headers
 	 *
-	 * Prompts the user to download the newly created file
+	 * Prompts the user to download the newly created file & increases the download count
 	 *
 	 * @param string $dest where the zip file is located
 	 * @param string $slug the slug of the theme
 	 * @return null
 	 */
 	private function set_download_headers($dest, $slug) {
+
+		// Increase download count
+		self::count_themes_generated(true);
+
+		// Download the file
 		header('Content-disposition: attachment; filename=' . $slug . '.zip');
         header('Content-type: application/zip');
         readfile($dest . DIRECTORY_SEPARATOR . $slug . '.zip');
@@ -389,4 +394,27 @@ class Create_Theme {
 		// Remove the parent directory
 		rmdir($dir_path);
 	}
+
+	/**
+	 * Increases the theme download count just before the zip file is downloaded
+	 *
+	 * Also echos the download count
+	 *
+	 * @param bool $dl whether or not to increase the download count or just echo it
+	 * @return int $count the number of themes that have been generated
+	 */
+	public static function count_themes_generated($dl = false) {
+
+		$file = __DIR__ . DIRECTORY_SEPARATOR . 'count.txt';
+		$count = (int) @file_get_contents($file);
+
+		if($dl) {
+			$count++;
+			@file_put_contents($file, $count);
+		}
+
+		return $count;
+	}
 }
+
+new Create_Theme();

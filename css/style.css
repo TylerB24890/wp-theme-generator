@@ -1992,6 +1992,11 @@ label {
 .help-block {
   font-size: 13px; }
 
+input:not(.btn) {
+  background: #E8E8E8; }
+  input:not(.btn):focus {
+    background: #FFF; }
+
 input.btn {
   height: 47px;
   font-family: "HelveticaNeueW01-45Ligh";
@@ -2007,6 +2012,21 @@ input.btn {
     color: #fff;
     background-color: #3276b1;
     border-color: #285e8e; }
+
+.form-group.submit {
+  border-top: 1px solid #CCC;
+  padding-top: 30px; }
+  .form-group.submit .col-sm-6 {
+    height: 47px; }
+    .form-group.submit .col-sm-6 span {
+      display: block;
+      padding-top: 12px;
+      text-align: right;
+      color: #cccccc; }
+
+@media screen and (max-width: 768px) {
+  .form-group.submit .col-sm-6 span {
+    text-align: left; } }
 
 /**
  * Global Footer Styles
