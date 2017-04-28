@@ -238,7 +238,7 @@ class Create_Theme {
 		// Filter the looped directories
 		$filter = function($file) use ($exclude) {
 			return (in_array($file, $exclude) === false);
-		};
+		}; 
 
 		// Use the Recursive*Iterator object to loop through files in theme directory
 		// Filter the looped directories using the function declared above
