@@ -106,14 +106,19 @@ add_action( 'after_setup_theme', '{%THEME_PREFIX%}_setup' );
 require get_template_directory() . '/inc/enqueue-scripts.php';
 
 /**
+ * Custom Admin Functions
+ */
+require get_template_directory() . '/inc/custom-admin.php';
+
+/**
  * Custom Post Types
  */
-require get_template_directory() . '/inc/custom-post-types.php';
+//require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
  * Custom Taxonomies
  */
-require get_template_directory() . '/inc/custom-taxonomies.php';
+//require get_template_directory() . '/inc/custom-taxonomies.php';
 
 /**
  * Nav Walker
@@ -134,3 +139,8 @@ require get_template_directory() . '/inc/helpers.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Custom Pagination
+ */
+require get_template_directory() . '/inc/pagination.php';

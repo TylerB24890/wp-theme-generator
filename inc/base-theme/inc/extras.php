@@ -20,6 +20,12 @@ function {%THEME_PREFIX%}_body_classes( $classes ) {
 		$classes[] = 'mobile';
 	}
 
+	// Adds the post slug to the body class on single posts
+	if( is_single() ) {
+		global $post;
+		$classes[] = $post->post_name;
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', '{%THEME_PREFIX%}_body_classes' );

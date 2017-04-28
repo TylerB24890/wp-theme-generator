@@ -62,8 +62,7 @@ add_action( 'wp_enqueue_scripts', '{%THEME_PREFIX%}_scripts' );
 
 /**
  * Enqueue additional HTML5 scripts
- * @author Tyler Bailey - 2015
- * @param  array $conditional_scripts
+ * @param array $conditional_scripts
  * @return string HTML markup to load the html5 shiv and respond.js files
  */
 function enqueue_additional_scripts($conditional_scripts) {
