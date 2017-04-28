@@ -67,9 +67,16 @@
                     </div>
                 </div>
                 -->
-                <div class="form-group">
-                    <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
-                    <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
+                <div class="form-group submit">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
+                            <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
+                        </div>
+                        <div class="col-sm-6">
+                            <span><b>Themes Generated:</b> <?php echo Create_Theme::count_themes_generated(); ?></span>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
