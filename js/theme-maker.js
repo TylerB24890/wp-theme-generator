@@ -11,19 +11,12 @@
     var domainArray = host.split(".");
     var baseDomain = "";
     var domainExt = "";
-    if(domainArray.length > 2) {
-      baseDomain = domainArray[1];
-      domainExt = domainArray[2];
-    } else {
-      baseDomain = domainArray[0];
-      domainExt = domainArray[1];
-    }
-    var baseURL = "." + baseDomain + "." + domainExt;
-    var fullURL = protocol + '//' + host;
+    baseDomain = domainArray[0];
+    domainExt = domainArray[1];
 
 	// Add target=_blank to all external links
     $('a').each(function() {
-      $(this).attr('target', (this.href.match( baseDomain )) ? '_self' :'_blank');
+        $(this).attr('target', (this.href.match( baseDomain)) ? '_self' :'_blank');
     });
 
     // Increase counter
