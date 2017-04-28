@@ -51,22 +51,17 @@
                     <textarea name="theme_description" class="form-control" placeholder="i.e. A very basic theme based on the Twitter Bootstrap CSS framework." style="min-height: 100px;" tabindex="5"></textarea>
                 </div>
 
-                <!--
                 <div class="form-group checkboxes">
                     <label>Theme Framework:</label>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="bootstrap3" /> Twitter Bootstrap V 3.3.6</label> - <a href="http://getbootstrap.com/" target="_blank">View</a>
+                    <div class="radio">
+                        <label><input type="radio" name="framework[]" value="bootstrap3" /> Twitter Bootstrap V 3.3.6</label> - <a href="http://getbootstrap.com/" target="_blank">View</a>
                     </div>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="bootstrap4" /> Twitter Bootstrap V 4.0.0-alpha.x</label> - <a href="https://v4-alpha.getbootstrap.com/" target="_blank">View</a>
-                    </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="foundation" /> Zurb Foundation 6</label> - <a href="http://foundation.zurb.com/" target="_blank">View</a>
+                    <div class="radio">
+                        <label><input type="radio" name="framework[]" value="foundation" /> Zurb Foundation 6</label> - <a href="http://foundation.zurb.com/" target="_blank">View</a>
                     </div>
                 </div>
-                -->
+
                 <div class="form-group">
                     <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
                     <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
