@@ -33,7 +33,7 @@
                     <label>Theme Prefix:<span class="req">*</span></label>
                     <input type="text" name="theme_prefix" class="form-control" placeholder="i.e. elx" required />
                     <p class="help-block">
-                        Used to for internationalization and prefixing theme specific functions
+                        Used for internationalization and prefixing theme specific functions
                     </p>
                 </div>
 
