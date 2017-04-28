@@ -13,7 +13,7 @@ function elexicon_acf_settings_path( $path ) {
     // return
     return $path;
 
-}
+} 
 
 
 // Customize ACF Directory
