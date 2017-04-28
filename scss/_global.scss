@@ -5,9 +5,17 @@
 html,
 body {
 	@include font-smoothing(on);
-	min-height: 750px; 
+	min-height: 750px;
 }
 
 h1 {
 	margin: 30px 0 60px;
+}
+
+label {
+	span {
+		&.req {
+			color: red;
+		}
+	}
 }

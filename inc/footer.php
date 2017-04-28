@@ -1,7 +1,7 @@
 	<footer>
 		<div class="container">
 			<div class="col-md-8 col-md-offset-2 text-center">
-				Brought to you with <i class="fa fa-heart"></i> by <a href="http://tylerb.me">Tyler Bailey</a>
+				Brought to you with <i class="fa fa-heart"></i> by <a href="http://elexicon.com" target="_blank">Elexicon</a>
 			</div>
 		</div>
 	</footer>
