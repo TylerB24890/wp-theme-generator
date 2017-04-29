@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="radio">
-                        <label><input type="radio" name="structure" value="oop" /> Object Oriented PHP</label>
+                        <label><input type="radio" name="structure" value="oop" /> Object Oriented PHP - Beta</label>
                     </div>
                 </div>
 

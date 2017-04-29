@@ -96,7 +96,7 @@ class Create_Theme {
 				if($k !== 'theme_author' && $k !== 'email') {
 
 					// If they have not filled it out
-					if(strlen($v) < 1 && $k !== 'theme_description' && $k !== 'structure') {
+					if(strlen($v) < 1 && $k !== 'theme_description') {
 						// Get the input name
 						$input_name = str_replace('_', ' ', $k);
 
@@ -159,7 +159,7 @@ class Create_Theme {
 	 * @return null
 	 */
 	private function build_theme($data) {
-		
+
 		$theme_source = ($data['structure'] === 'procedural' ? $this->source : $this->source . '-oop');
 
 		// Create the unique directory name for this theme
