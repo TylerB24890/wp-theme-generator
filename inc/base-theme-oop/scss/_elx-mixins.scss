@@ -1,0 +1,60 @@
+/**
+* Collections of SCSS Mixins
+*/
+
+/*
+* font-smothing
+* @include font-smoothing(on);
+* @include font-smoothing(off);
+*/
+@mixin font-smoothing($value:on){
+	@if $value == on{
+		-webkit-font-smoothing:antialiased;
+		-moz-osx-font-smoothing:grayscale;
+	}
+	@else{
+		-webkit-font-smoothing:subpixel-antialiased;
+		-moz-osx-font-smoothing:auto;
+	}
+}
+
+/*
+* Animate css properties
+* usage
+* scss - @include animate(color);
+*     or @include animate(color width);
+*     or @include animate(color width, 1s, linear);
+*/
+$animation-speed: .3s !default;
+
+@mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
+	$list:();
+	@each $prop in $properties {
+		$str: #{$prop} #{$duration} #{$easing};
+		$list: join($list, #{$str}, comma);
+	}
+	transition: $list;
+}
+
+/*
+* Mixin for styling form-placeholders
+* @example scss - Usage
+*   @include placeholder {
+*    color: #333;
+*   }
+*
+*   input[type='text'],
+*   input[type='tel'],
+*   input[type='email'] {
+*     @include placeholder {
+*      color: red;
+*     }
+*   }
+*/
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&::-moz-placeholder {opacity: 1; @content}
+	&:-moz-placeholder {@content}
+	&:-ms-input-placeholder {@content}
+	&.placeholder {@content};
+}

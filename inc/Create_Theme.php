@@ -44,7 +44,8 @@ class Create_Theme {
 			'theme_prefix' => "{%THEME_PREFIX%}",
 			'theme_author' => "{%THEME_AUTHOR%}",
 			'theme_const' => "{%THEME_CONST%}",
-			'theme_description' => "{%THEME_DESCRIPTION%}"
+			'theme_description' => "{%THEME_DESCRIPTION%}",
+			'theme_cap_slug' => "{%THEME_CAP_SLUG}"
 		);
 
 		$this->clean_theme_dir();
@@ -142,7 +143,7 @@ class Create_Theme {
 
 			// Set the theme constant for development purposes
 			$data['theme_const'] = strtoupper($data['theme_prefix']);
-
+			$data['theme_cap_slug'] = ucfirst($data['theme_slug']);
 		} else {
 			return false;
 		}

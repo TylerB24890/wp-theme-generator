@@ -51,6 +51,17 @@
                     <textarea name="theme_description" class="form-control" placeholder="i.e. A very basic theme based on the Twitter Bootstrap CSS framework." style="min-height: 100px;" tabindex="5"></textarea>
                 </div>
 
+                <div class="form-group">
+                    <label>Theme Structure:</label>
+                    <div class="radio">
+                        <label><input type="radio" name="structure[]" value="procedural" checked /> Procedural PHP</label>
+                    </div>
+
+                    <div class="radio">
+                        <label><input type="radio" name="structure[]" value="oop" /> Object Oriented PHP</label>
+                    </div>
+                </div>
+
                 <!--
                 <div class="form-group checkboxes">
                     <label>Theme Framework:</label>
