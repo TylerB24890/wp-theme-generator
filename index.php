@@ -54,11 +54,11 @@
                 <div class="form-group checkboxes">
                     <label>Theme Framework:</label>
                     <div class="radio">
-                        <label><input type="radio" name="theme_framework[]" value="bootstrap3" /> Twitter Bootstrap V 3.3.6</label> - <a href="http://getbootstrap.com/" target="_blank">View</a>
+                        <label><input type="radio" name="theme_framework[]" value="bootstrap" /> Twitter Bootstrap V 3.3.6</label> - <a href="http://getbootstrap.com/" target="_blank">View Framework</a>
                     </div>
 
                     <div class="radio">
-                        <label><input type="radio" name="theme_framework[]" value="foundation" /> Zurb Foundation 6</label> - <a href="http://foundation.zurb.com/" target="_blank">View</a>
+                        <label><input type="radio" name="theme_framework[]" value="foundation" /> Zurb Foundation 6</label> - <a href="http://foundation.zurb.com/" target="_blank">View Framework</a>
                     </div>
                 </div>
 
