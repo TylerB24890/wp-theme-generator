@@ -10,7 +10,7 @@
 class Create_Theme {
 
 	/**
-	 * Source of the base theme files
+	 * Source of the base procedural theme files
 	 */
 	private $source;
 
@@ -45,7 +45,7 @@ class Create_Theme {
 			'theme_author' => "{%THEME_AUTHOR%}",
 			'theme_const' => "{%THEME_CONST%}",
 			'theme_description' => "{%THEME_DESCRIPTION%}",
-			'theme_cap_slug' => "{%THEME_CAP_SLUG}"
+			'theme_cap_slug' => "{%THEME_CAP_SLUG%}"
 		);
 
 		$this->clean_theme_dir();
@@ -96,7 +96,7 @@ class Create_Theme {
 				if($k !== 'theme_author' && $k !== 'email') {
 
 					// If they have not filled it out
-					if(strlen($v) < 1 && $k !== 'theme_description') {
+					if(strlen($v) < 1 && $k !== 'theme_description' && $k !== 'structure') {
 						// Get the input name
 						$input_name = str_replace('_', ' ', $k);
 
@@ -143,7 +143,8 @@ class Create_Theme {
 
 			// Set the theme constant for development purposes
 			$data['theme_const'] = strtoupper($data['theme_prefix']);
-			$data['theme_cap_slug'] = ucfirst($data['theme_slug']);
+			$class_name = explode('-', $data['theme_slug']);
+			$data['theme_cap_slug'] = ucfirst($class_name[0]);
 		} else {
 			return false;
 		}
@@ -158,11 +159,14 @@ class Create_Theme {
 	 * @return null
 	 */
 	private function build_theme($data) {
+		
+		$theme_source = ($data['structure'] === 'procedural' ? $this->source : $this->source . '-oop');
+
 		// Create the unique directory name for this theme
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
 		// Create the theme directory and copy the base theme files over
-		$zip_dir = $this->create_theme_dir($this->source, $base_dest, $this->permissions);
+		$zip_dir = $this->create_theme_dir($theme_source, $base_dest, $this->permissions);
 
 		// If the file copy was successful, swap out the file data
 		if($zip_dir)

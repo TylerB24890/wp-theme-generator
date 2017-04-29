@@ -54,11 +54,11 @@
                 <div class="form-group">
                     <label>Theme Structure:</label>
                     <div class="radio">
-                        <label><input type="radio" name="structure[]" value="procedural" checked /> Procedural PHP</label>
+                        <label><input type="radio" name="structure" value="procedural" checked /> Procedural PHP</label>
                     </div>
 
                     <div class="radio">
-                        <label><input type="radio" name="structure[]" value="oop" /> Object Oriented PHP</label>
+                        <label><input type="radio" name="structure" value="oop" /> Object Oriented PHP</label>
                     </div>
                 </div>
 
