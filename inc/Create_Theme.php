@@ -10,9 +10,14 @@
 class Create_Theme {
 
 	/**
-	 * Source of the base theme files
+	 * Source of the bootstrap theme files
 	 */
-	private $source;
+	private $bs_source;
+
+	/**
+	 * Source of the foundation theme files
+	 */
+	private $zf_source;
 
 	/**
 	 * Destination of where to save the new theme files
@@ -34,7 +39,8 @@ class Create_Theme {
 	 */
 	public function __construct() {
 
-		$this->source = __DIR__ . DIRECTORY_SEPARATOR . 'base-theme';
+		$this->bs_source = __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap-theme';
+		$this->zf_source = __DIR__ . DIRECTORY_SEPARATOR . 'foundation-theme';
 		$this->dest = __DIR__ . DIRECTORY_SEPARATOR . 'zip';
 		$this->permissions = 0755;
 
@@ -160,8 +166,10 @@ class Create_Theme {
 		// Create the unique directory name for this theme
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
+		$source = ($data['theme_framework'] === 'bootstrap' ? $this->bs_source : $this->zf_source);
+
 		// Create the theme directory and copy the base theme files over
-		$zip_dir = $this->create_theme_dir($this->source, $base_dest, $this->permissions);
+		$zip_dir = $this->create_theme_dir($source, $base_dest, $this->permissions);
 
 		// If the file copy was successful, swap out the file data
 		if($zip_dir)
