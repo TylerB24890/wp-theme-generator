@@ -41,5 +41,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Customizer') ) :
 		}
 	}
 
-	new {%THEME_NAME%}_Customizer();
+	new {%THEME_CAP_SLUG%}_Customizer();
 endif;

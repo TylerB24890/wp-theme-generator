@@ -157,13 +157,13 @@ if( !class_exists('{%THEME_CAP_SLUG%}') ) :
 		 * @return null
 		 */
 		public function {%THEME_PREFIX%}_theme_functions() {
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-custom-admin.php');
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-customizer.php');
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-post-types.php');
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-taxonomies.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-custom-admin.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-customizer.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-post-types.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-taxonomies.php');
 			include_once(get_template_directory() . '/inc/bootstrap-nav-walker.php');
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-helper.php');
-			include_once(get_template_directory() . '/inc/class-{%THEME_SLUG%}-pagination.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-helper.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-pagination.php');
 		}
 	}
 

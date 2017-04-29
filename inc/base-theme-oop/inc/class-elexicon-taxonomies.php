@@ -56,5 +56,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Taxonomies') ) :
 		}
 	}
 
-	new {%THEME_NAME%}_Taxonomies();
+	new {%THEME_CAP_SLUG%}_Taxonomies();
 endif;

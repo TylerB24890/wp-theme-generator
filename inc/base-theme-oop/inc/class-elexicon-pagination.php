@@ -121,6 +121,6 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Pagination')) :
         }
     }
 
-    new {%THEME_NAME%}_Pagination();
+    new {%THEME_CAP_SLUG%}_Pagination();
 
 endif;

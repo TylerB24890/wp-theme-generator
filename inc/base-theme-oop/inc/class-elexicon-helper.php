@@ -115,5 +115,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		}
 	}
 
-	new {%THEME_NAME%}_Helper();
+	new {%THEME_CAP_SLUG%}_Helper();
 endif;

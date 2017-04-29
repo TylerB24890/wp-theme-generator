@@ -48,6 +48,6 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Custom_Admin') ) :
 		}
 	}
 
-	new {%THEME_NAME%}_Custom_Admin();
+	new {%THEME_CAP_SLUG%}_Custom_Admin();
 
 endif;

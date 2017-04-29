@@ -51,5 +51,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Post_Types') ) :
 		}
 	}
 
-	new {%THEME_NAME%}_Post_Types();
+	new {%THEME_CAP_SLUG%}_Post_Types();
 endif;
