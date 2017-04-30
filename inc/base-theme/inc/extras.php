@@ -14,7 +14,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function {%THEME_PREFIX%}_body_classes( $classes ) {
+function body_classes( $classes ) {
 	// Checks if the user is visiting the site from a mobile device and adds a class accordingly
 	if ( wp_is_mobile() ) {
 		$classes[] = 'mobile';
@@ -28,4 +28,4 @@ function {%THEME_PREFIX%}_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', '{%THEME_PREFIX%}_body_classes' );
+add_filter( 'body_class', 'body_classes' );

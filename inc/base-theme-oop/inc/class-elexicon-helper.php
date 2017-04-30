@@ -7,9 +7,9 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
+if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
 
-	class {%THEME_CAP_SLUG%}_Helper {
+	class {%THEME_CLASS_NAMES%}_Helper {
 
 		/**
 		 * Truncates string to specified length.
@@ -21,7 +21,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		 * @param bool $middle middle of sentence?
 		 * @return string
 		 */
-		public static function {%THEME_PREFIX%}_truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false) {
+		public static function truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false) {
 		    if ($length == 0)
 		        return '';
 
@@ -46,7 +46,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		* @param  string  $parent the parent page ID, Title or Slug
 		* @return boolean  page is or is not a child page
 		*/
-		public static function {%THEME_PREFIX%}_is_child( $parent = '' ) {
+		public static function is_child( $parent = '' ) {
 		     global $post;
 
 		     $parent_obj = get_page( $post->post_parent, ARRAY_A );
@@ -70,7 +70,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		* @param int $id
 		* @return array
 		*/
-		public static function {%THEME_PREFIX%}_get_subpages($id) {
+		public static function get_subpages($id) {
 
 		     $args = array(
 		          'post_type'         => 'page',
@@ -106,7 +106,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		 * @param string $content
 		 * @return string
 		 */
-		public static function {%THEME_PREFIX%}_remove_images($content = null) {
+		public static function remove_images($content = null) {
 		    if (!$content) {
 		        $content = get_the_content();
 		    }
@@ -115,5 +115,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Helper') ) :
 		}
 	}
 
-	new {%THEME_CAP_SLUG%}_Helper();
+	new {%THEME_CLASS_NAMES%}_Helper();
 endif;

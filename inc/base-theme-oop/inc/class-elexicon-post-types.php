@@ -7,15 +7,15 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CAP_SLUG%}_Post_Types') ) :
+if( !class_exists('{%THEME_CLASS_NAMES%}_Post_Types') ) :
 
-	class {%THEME_CAP_SLUG%}_Post_Types {
+	class {%THEME_CLASS_NAMES%}_Post_Types {
 
 		public function __construct() {
-			add_action( 'init', '{%THEME_NAME%}_Post_Types::{%THEME_PREFIX%}_post_type_example' );
+			add_action( 'init', '{%THEME_CLASS_NAMES%}_Post_Types::post_type_example' );
 		}
 
-		public static function {%THEME_PREFIX%}_post_type_example() {
+		public static function post_type_example() {
 			$labels = array(
 	         	'name'               => _x( 'Examples', 'post type general name', '{%THEME_PREFIX%}' ),
 	         	'singular_name'      => _x( 'Example', 'post type singular name', '{%THEME_PREFIX%}' ),
@@ -51,5 +51,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Post_Types') ) :
 		}
 	}
 
-	new {%THEME_CAP_SLUG%}_Post_Types();
+	new {%THEME_CLASS_NAMES%}_Post_Types();
 endif;

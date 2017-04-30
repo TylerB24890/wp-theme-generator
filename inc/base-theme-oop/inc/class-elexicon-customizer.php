@@ -7,16 +7,16 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CAP_SLUG%}_Customizer') ) :
+if( !class_exists('{%THEME_CLASS_NAMES%}_Customizer') ) :
 
-	class {%THEME_CAP_SLUG%}_Customizer {
+	class {%THEME_CLASS_NAMES%}_Customizer {
 
 		/**
 		 * Initializes the theme customizer functions
 		 */
 		public function __construct() {
-			add_action( 'customize_register', '{%THEME_NAME%}_Customizer::{%THEME_PREFIX%}_customize_register' );
-			add_action( 'customize_preview_init', '{%THEME_NAME%}_Customizer::{%THEME_PREFIX%}_customize_preview_js' );
+			add_action( 'customize_register', '{%THEME_CLASS_NAMES%}_Customizer::customize_register' );
+			add_action( 'customize_preview_init', '{%THEME_CLASS_NAMES%}_Customizer::customize_preview_js' );
 		}
 
 		/**
@@ -25,7 +25,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Customizer') ) :
 		 * @param object $wp_customize WP Customizer Object
 		 * @return null
 		 */
-		public static function {%THEME_PREFIX%}_customize_register( $wp_customize ) {
+		public static function customize_register( $wp_customize ) {
 			$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 			$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -36,10 +36,10 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Customizer') ) :
 		 *
 		 * @return null
 		 */
-		public static function {%THEME_PREFIX%}_customize_preview_js() {
-			wp_enqueue_script( '{%THEME_PREFIX%}_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), {%THEME_NAME%}::$theme_version, true );
+		public static function customize_preview_js() {
+			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), {%THEME_CLASS_NAMES%}::$theme_version, true );
 		}
 	}
 
-	new {%THEME_CAP_SLUG%}_Customizer();
+	new {%THEME_CLASS_NAMES%}_Customizer();
 endif;

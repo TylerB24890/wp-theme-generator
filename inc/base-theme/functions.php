@@ -17,7 +17,7 @@ if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
 }
 
 
-if ( ! function_exists( '{%THEME_PREFIX%}_setup' ) ) :
+if ( ! function_exists( 'setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -25,7 +25,7 @@ if ( ! function_exists( '{%THEME_PREFIX%}_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function {%THEME_PREFIX%}_setup() {
+function setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
@@ -52,9 +52,9 @@ function {%THEME_PREFIX%}_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'tymestrap' ),
-		'secondary' => esc_html__( 'Secondary', 'tymestrap' ),
-		'footer' => esc_html__( 'Footer', 'tymestrap' )
+		'primary' => esc_html__( 'Primary', '{%THEME_PREFIX%}' ),
+		'secondary' => esc_html__( 'Secondary', '{%THEME_PREFIX%}' ),
+		'footer' => esc_html__( 'Footer', '{%THEME_PREFIX%}' )
 	) );
 
 	/*
@@ -81,7 +81,7 @@ function {%THEME_PREFIX%}_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( '{%THEME_PREFIX%}_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
@@ -98,7 +98,7 @@ function {%THEME_PREFIX%}_setup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
 endif;
-add_action( 'after_setup_theme', '{%THEME_PREFIX%}_setup' );
+add_action( 'after_setup_theme', 'setup' );
 
 /**
  * Script/Stylesheet Enqueue

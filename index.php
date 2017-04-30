@@ -50,7 +50,7 @@
                     <label>Theme Description:</label>
                     <textarea name="theme_description" class="form-control" placeholder="i.e. A very basic theme based on the Twitter Bootstrap CSS framework." style="min-height: 100px;" tabindex="5"></textarea>
                 </div>
-
+                
                 <div class="form-group">
                     <label>Theme Structure:</label>
                     <div class="radio">

@@ -7,15 +7,15 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CAP_SLUG%}_Taxonomies') ) :
+if( !class_exists('{%THEME_CLASS_NAMES%}_Taxonomies') ) :
 
-	class {%THEME_CAP_SLUG%}_Taxonomies {
+	class {%THEME_CLASS_NAMES%}_Taxonomies {
 
 		/**
 		 * Initializes the custom taxonomies
 		 */
 		public function __construct() {
-			add_action( 'init', '{%THEME_NAME%}_Taxonomies::{%THEME_PREFIX%}_taxonomies', 0 );
+			add_action( 'init', '{%THEME_CLASS_NAMES%}_Taxonomies::taxonomies', 0 );
 		}
 
 		/**
@@ -25,7 +25,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Taxonomies') ) :
 		 *
 		 * @return null
 		 */
-		public static function {%THEME_PREFIX%}_taxonomies() {
+		public static function taxonomies() {
 			// Add new "Types" taxonomy to Posts
 		    register_taxonomy('custom-taxonomy-name', 'post', array(
 		        // Hierarchical taxonomy (like categories)
@@ -56,5 +56,5 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Taxonomies') ) :
 		}
 	}
 
-	new {%THEME_CAP_SLUG%}_Taxonomies();
+	new {%THEME_CLASS_NAMES%}_Taxonomies();
 endif;

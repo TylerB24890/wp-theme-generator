@@ -7,9 +7,9 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CAP_SLUG%}_Custom_Admin') ) :
+if( !class_exists('{%THEME_CLASS_NAMES%}_Custom_Admin') ) :
 
-	class {%THEME_CAP_SLUG%}_Custom_Admin {
+	class {%THEME_CLASS_NAMES%}_Custom_Admin {
 
 		/**
 		 * Runs the custom admin panel functions
@@ -17,7 +17,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Custom_Admin') ) :
 		 * @return null
 		 */
 		public function __construct() {
-			self::{%THEME_PREFIX%}_excerpt_count();
+			self::excerpt_count();
 		}
 
 		/**
@@ -25,7 +25,7 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Custom_Admin') ) :
 		 *
 		 * @return string - HTML/JS to return a live character count
 		 */
-		private static function {%THEME_PREFIX%}_excerpt_count() {
+		private static function excerpt_count() {
 
 			if ('page' != get_post_type()) {
 		?>
@@ -48,6 +48,6 @@ if( !class_exists('{%THEME_CAP_SLUG%}_Custom_Admin') ) :
 		}
 	}
 
-	new {%THEME_CAP_SLUG%}_Custom_Admin();
+	new {%THEME_CLASS_NAMES%}_Custom_Admin();
 
 endif;

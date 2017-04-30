@@ -46,7 +46,7 @@ class Create_Theme {
 			'theme_const' => "{%THEME_CONST%}",
 			'theme_description' => "{%THEME_DESCRIPTION%}",
 			'theme_file_name' => "{%THEME_FILE_NAME%}",
-			'theme_cap_slug' => "{%THEME_CAP_SLUG%}"
+			'theme_class_names' => "{%THEME_CLASS_NAMES%}"
 		);
 
 		$this->clean_theme_dir();
@@ -111,9 +111,12 @@ class Create_Theme {
 						$v = strip_tags($v);
 
 						// If we're on the theme_slug or prefix, make lowercase and replace spaces with dashes
-						if($k === 'theme_slug' || $k === 'theme_prefix') {
+						if($k === 'theme_slug') {
 							$v = str_replace(' ', '-', strtolower($v));
 							$v = preg_replace("/[^a-z-]/i", "", $v);
+						} elseif($k === 'theme_prefix') {
+							$v = str_replace(' ', '_', strtolower($v));
+							$v = preg_replace("/[^a-z_]/i", "", $v);
 						}
 
 						if($k === 'theme_description' && strlen($k) < 1) {
@@ -144,9 +147,8 @@ class Create_Theme {
 
 			// Set the theme constant for development purposes
 			$data['theme_const'] = strtoupper($data['theme_prefix']);
-			$class_name = explode('-', $data['theme_slug']);
-			$data['theme_cap_slug'] = ucfirst($class_name[0]);
-			$data['theme_file_name'] = strtolower($data['theme_cap_slug']);
+			$data['theme_class_names'] = ucfirst(str_replace("-", "_", $data['theme_slug']));
+			$data['theme_file_name'] = strtolower($data['theme_class_names']);
 
 		} else {
 			return false;
@@ -302,7 +304,7 @@ class Create_Theme {
 			if ($handle = opendir($class_dir)) {
 			    while (false !== ($fileName = readdir($handle))) {
 					if(strpos($fileName, 'elexicon') !== false) {
-						$newName = str_replace("elexicon", strtolower($data['theme_cap_slug']), $fileName);
+						$newName = str_replace("elexicon", strtolower($data['theme_file_name']), $fileName);
 				        rename($class_dir . DIRECTORY_SEPARATOR . $fileName, $class_dir . DIRECTORY_SEPARATOR . $newName);
 					}
 			    }
