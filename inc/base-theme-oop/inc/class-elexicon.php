@@ -46,7 +46,7 @@ if( !class_exists('{%THEME_CLASS_NAMES%}') ) :
 			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-customizer.php');
 			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-post-types.php');
 			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-taxonomies.php');
-			include_once(get_template_directory() . '/inc/bootstrap-nav-walker.php');
+			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-nav-walker.php');
 			include_once(get_template_directory() . '/inc/class-{%THEME_FILE_NAME%}-helper.php');
 		}
 	}

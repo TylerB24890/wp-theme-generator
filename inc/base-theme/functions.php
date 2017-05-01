@@ -17,7 +17,7 @@ if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
 }
 
 
-if ( ! function_exists( 'setup' ) ) :
+if ( ! function_exists( '{%THEME_PREFIX%}_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -25,7 +25,7 @@ if ( ! function_exists( 'setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function setup() {
+function {%THEME_PREFIX%}_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
@@ -98,17 +98,12 @@ function setup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
 endif;
-add_action( 'after_setup_theme', 'setup' );
+add_action( 'after_setup_theme', '{%THEME_PREFIX%}_setup' );
 
 /**
  * Script/Stylesheet Enqueue
  */
 require get_template_directory() . '/inc/enqueue-scripts.php';
-
-/**
- * Custom Admin Functions
- */
-require get_template_directory() . '/inc/custom-admin.php';
 
 /**
  * Custom Post Types

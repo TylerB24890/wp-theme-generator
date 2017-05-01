@@ -11,7 +11,7 @@
 /**
  * EXAMPLE CUSTOM TAXONOMY REGISTRATION
  */
-function custom_taxonomies() {
+function {%THEME_PREFIX%}_custom_taxonomies() {
     // Add new "Types" taxonomy to Posts
     register_taxonomy('custom-taxonomy-name', 'post', array(
         // Hierarchical taxonomy (like categories)
@@ -41,4 +41,4 @@ function custom_taxonomies() {
     flush_rewrite_rules();
 }
 
-//add_action( 'init', 'custom_taxonomies', 0 );
+//add_action( 'init', '{%THEME_PREFIX%}_custom_taxonomies', 0 );

@@ -10,7 +10,7 @@
  /**
   * EXAMPLE CUSTOM POST TYPE
   */
- function custom_posttype() {
+ function {%THEME_PREFIX%}_custom_posttype() {
 	 $labels = array(
       	'name'               => _x( 'Products', 'post type general name', '{%THEME_PREFIX%}' ),
       	'singular_name'      => _x( 'Product', 'post type singular name', '{%THEME_PREFIX%}' ),
@@ -43,4 +43,4 @@
 
     flush_rewrite_rules();
 }
-//add_action( 'init', 'custom_posttype' );
+//add_action( 'init', '{%THEME_PREFIX%}_custom_posttype' );

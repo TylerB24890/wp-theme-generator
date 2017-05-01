@@ -6,7 +6,7 @@
  * @subpackage {%THEME_SLUG%}/inc
  */
 
-function pagination( $args = array() ) {
+function {%THEME_PREFIX%}_pagination( $args = array() ) {
 
     $defaults = array(
         'range'           => 4,

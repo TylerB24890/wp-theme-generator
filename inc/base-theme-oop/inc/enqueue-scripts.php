@@ -8,23 +8,23 @@
  */
 
 // Enqueue jQuery
-if (!is_admin()) add_action("wp_enqueue_scripts", "jquery_enqueue", 11);
-function jquery_enqueue() {
+if (!is_admin()) add_action("wp_enqueue_scripts", "{%THEME_PREFIX%}_jquery_enqueue", 11);
+function {%THEME_PREFIX%}_jquery_enqueue() {
    	wp_deregister_script('jquery'); // Deregister WP default jQuery
    	wp_register_script('jquery', '//code.jquery.com/jquery-2.2.4.min.js', false, null);
    	wp_enqueue_script('jquery'); // Register jQuery
 }
 
 // Conditionally load jQuery locally if not able to pull from CDN
-add_action( 'wp_head', 'jquery_load' );
-function jquery_load() {
+add_action( 'wp_head', '{%THEME_PREFIX%}_jquery_load' );
+function {%THEME_PREFIX%}_jquery_load() {
 ?>
 	<script>if (!window.jQuery) { document.write('<script src="<?php echo get_template_directory_uri() . '/js/vendor/jquery-2.2.4.min.js'; ?>" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"><\/script>'); }</script>
 <?php
 }
 
-add_filter('script_loader_tag', 'add_jquery_integrity', 10, 2);
-function add_jquery_integrity($tag, $handle) {
+add_filter('script_loader_tag', '{%THEME_PREFIX%}_add_jquery_integrity', 10, 2);
+function {%THEME_PREFIX%}_add_jquery_integrity($tag, $handle) {
     if ($handle != 'jquery')
     return $tag;
 
@@ -33,7 +33,7 @@ function add_jquery_integrity($tag, $handle) {
 
 
 // The main style/script enqueue
-function scripts() {
+function {%THEME_PREFIX%}_scripts() {
 
 	// Stylesheets
 	wp_enqueue_style( 'wp-styles', get_stylesheet_uri() );
@@ -43,7 +43,7 @@ function scripts() {
 	// Scripts
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array('jquery'), '3.3.7', true );
 
-	$theme_script = ({%THEME_CONST%}_DEV ? '{%THEME_SLUG%}.js' : '{%THEME_SLUG%}.min.js');
+	$theme_script = ({%THEME_CONST%}_DEV ? '{%THEME_FILE_NAME%}.js' : '{%THEME_FILE_NAME%}.min.js');
 	wp_enqueue_script( '{%THEME_SLUG%}-js', get_template_directory_uri() . '/js/' . $theme_script, array('jquery'), '1.0.0', true );
 
 	// IE conditional scripts array
@@ -53,19 +53,19 @@ function scripts() {
 	);
 
 	// Enqueue conditional scripts
-	enqueue_additional_scripts($conditional_scripts);
+	{%THEME_PREFIX%}_enqueue_additional_scripts($conditional_scripts);
 
 	// Localize scripts
-	localize_script();
+	{%THEME_PREFIX%}_localize_script();
 }
-add_action( 'wp_enqueue_scripts', 'scripts' );
+add_action( 'wp_enqueue_scripts', '{%THEME_PREFIX%}_scripts' );
 
 /**
  * Enqueue additional HTML5 scripts
  * @param array $conditional_scripts
  * @return string HTML markup to load the html5 shiv and respond.js files
  */
-function enqueue_additional_scripts($conditional_scripts) {
+function {%THEME_PREFIX%}_enqueue_additional_scripts($conditional_scripts) {
 	// Enqueue conditional scripts
 	foreach($conditional_scripts as $handle => $src) {
 		wp_enqueue_script($handle, $src, array('jquery'), '', false );
@@ -84,7 +84,7 @@ function enqueue_additional_scripts($conditional_scripts) {
  * Localize Javascript variables
  * @link https://codex.wordpress.org/Function_Reference/wp_localize_script
  */
-function localize_script() {
+function {%THEME_PREFIX%}_localize_script() {
     // Localize the global admin-ajax URL
     // usage: {%THEME_PREFIX%}.ajaxurl;
     wp_localize_script(

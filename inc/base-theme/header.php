@@ -45,7 +45,7 @@
 						'container' => 'div',
 						'container_class' => 'collapse navbar-collapse',
 						'container_id' => 'main-nav',
-						'menu_class' => 'nav navbar-nav pull-right',
+						'menu_class' => 'nav navbar-nav navbar-right',
 						'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 						'walker' => new wp_bootstrap_navwalker()
 					));

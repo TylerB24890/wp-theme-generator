@@ -16,7 +16,7 @@
  * @param bool $middle middle of sentence?
  * @return string
  */
-function truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false) {
+function {%THEME_PREFIX%}_truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false) {
     if ($length == 0)
         return '';
 
@@ -41,7 +41,7 @@ function truncate($string, $length = 80, $etc = '&#133;', $break_words = false, 
 * @param  string  $parent the parent page ID, Title or Slug
 * @return boolean  page is or is not a child page
 */
-function is_child( $parent = '' ) {
+function {%THEME_PREFIX%}_is_child( $parent = '' ) {
      global $post;
 
      $parent_obj = get_page( $post->post_parent, ARRAY_A );
@@ -65,7 +65,7 @@ function is_child( $parent = '' ) {
 * @param int $id
 * @return array
 */
-function get_subpages($id) {
+function {%THEME_PREFIX%}_get_subpages($id) {
 
      $args = array(
           'post_type'         => 'page',
@@ -101,7 +101,7 @@ function get_subpages($id) {
  * @param string $content
  * @return string
  */
-function remove_images($content = null) {
+function {%THEME_PREFIX%}_remove_images($content = null) {
     if (!$content) {
         $content = get_the_content();
     }
