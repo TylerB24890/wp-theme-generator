@@ -125,7 +125,7 @@ class Create_Theme {
 				} else {
 
 					// Spam Check!
-					if($k === 'email' && strlen($v) > 0) {
+					if($k === 'email' && strlen($v) > 1) {
 						$return['error'] = true;
 						$return['msg'] = "We don't like spam...";
 						return $return;
