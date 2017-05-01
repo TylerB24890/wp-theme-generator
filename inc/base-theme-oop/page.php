@@ -16,7 +16,7 @@ get_header(); ?>
 				<?php if(have_posts()) : ?>
 					<?php while(have_posts()) : the_post(); ?>
 
-						<?php get_template_part( Design_Helper::$parts . 'post', 'list' ); ?>
+						<?php get_template_part( {%THEME_CLASS_NAMES%}_Helper::$parts . 'post', 'list' ); ?>
 
 					<?php endwhile; ?>
 				<?php else : ?>
