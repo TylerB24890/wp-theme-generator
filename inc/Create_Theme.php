@@ -251,11 +251,15 @@ class Create_Theme {
 			return (in_array($file, $exclude) === false);
 		};
 
-		// Use the Recursive*Iterator object to loop through files in theme directory
+
+		// Use the Recursive*Iterator object to retrieve all paths in the directory
 		// Filter the looped directories using the function declared above
-		foreach (new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(
+		$files = new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(
 			new RecursiveDirectoryIterator($dir,
-			RecursiveDirectoryIterator::SKIP_DOTS), $filter)) as $filename) {
+			RecursiveDirectoryIterator::SKIP_DOTS), $filter));
+
+		// Loop through the paths in the directory
+		foreach ($files as $filename) {
 
 			// If it is a file (not a directory)
 			if(is_file($filename)) {
@@ -286,32 +290,22 @@ class Create_Theme {
 	 */
 	private function change_file_names($data, $dir) {
 
-		$js_dir = $dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR;
+		$dirs = array(
+			$dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR,
+			$dir . DIRECTORY_SEPARATOR . 'inc'
+		);
 
-		// Change development JS file name
-		if(file_exists($js_dir . 'elexicon.js')) {
-			rename($js_dir . 'elexicon.js', $js_dir . $data['theme_slug'] . '.js');
-		}
-
-		// Change production (minified) JS file name
-		if(file_exists($js_dir . 'elexicon.min.js')) {
-			rename($js_dir . 'elexicon.min.js', $js_dir . $data['theme_slug'] . '.min.js');
-		}
-
-		if($data['structure'] !== 'procedural') {
-			$class_dir = $dir . DIRECTORY_SEPARATOR . 'inc';
-
-			if ($handle = opendir($class_dir)) {
-			    while (false !== ($fileName = readdir($handle))) {
-					if(strpos($fileName, 'elexicon') !== false) {
-						$newName = str_replace("elexicon", strtolower($data['theme_file_name']), $fileName);
-				        rename($class_dir . DIRECTORY_SEPARATOR . $fileName, $class_dir . DIRECTORY_SEPARATOR . $newName);
+		foreach($dirs as $file_dir) {
+			if ($handle = opendir($file_dir)) {
+				while (false !== ($file_name = readdir($handle))) {
+					if(strpos($file_name, 'elexicon') !== false) {
+						$new_name = str_replace("elexicon", strtolower($data['theme_file_name']), $file_name);
+					    rename($file_dir . DIRECTORY_SEPARATOR . $file_name, $file_dir . DIRECTORY_SEPARATOR . $new_name);
 					}
-			    }
-			    closedir($handle);
+				}
+				closedir($handle);
 			}
 		}
-
 	}
 
 	/**

@@ -6,3 +6,4 @@ node_modules/*
 inc/base-theme/inc/acf
 inc/base-theme/inc/acf/*
 inc/base-theme/inc/acf-include.php
+inc/count.txt
