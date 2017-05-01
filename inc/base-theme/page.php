@@ -10,17 +10,23 @@ get_header(); ?>
 
 <div id="<?php echo $post->post_name; ?>">
 	<div class="container">
+		<div class="col-md-12">
+			<div class="row">
 
-		<?php if(have_posts()) : ?>
-			<?php while(have_posts()) : the_post(); ?>
+				<?php if(have_posts()) : ?>
+					<?php while(have_posts()) : the_post(); ?>
 
-			<?php endwhile; ?>
-		<?php else : ?>
+						<?php the_content(); ?>
 
-			<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
+					<?php endwhile; ?>
+				<?php else : ?>
 
-		<?php endif; ?>
+					<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
 
+				<?php endif; ?>
+
+			</div>
+		</div>
 	</div><!-- .container -->
 </div>
 

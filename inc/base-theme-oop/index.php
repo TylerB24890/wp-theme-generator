@@ -8,17 +8,23 @@ get_header(); ?>
 
 <div id="index">
 	<div class="container">
+		<div class="col-md-12">
+			<div class="row">
 
-		<?php if(have_posts()) : ?>
-			<?php while(have_posts()) : the_post(); ?>
+				<?php if(have_posts()) : ?>
+					<?php while(have_posts()) : the_post(); ?>
 
-			<?php endwhile; ?>
-		<?php else : ?>
+						<?php get_template_part( Design_Helper::$parts . 'post', 'list' ); ?>
 
-			<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
+					<?php endwhile; ?>
+				<?php else : ?>
 
-		<?php endif; ?>
+					<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
 
+				<?php endif; ?>
+
+			</div>
+		</div>
 	</div><!-- .container -->
 </div>
 

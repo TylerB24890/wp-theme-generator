@@ -11,6 +11,12 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
 
 	class {%THEME_CLASS_NAMES%}_Helper {
 
+		public static $parts;
+
+		public function __construct() {
+			self::$parts = 'template-parts/';
+		}
+
 		/**
 		 * Truncates string to specified length.
 		 *

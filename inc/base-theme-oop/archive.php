@@ -9,15 +9,25 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div class="container">
-			<?php while ( have_posts() ) : the_post(); ?>
+<div class="container">
+	<div class="col-md-12">
+		<div class="row">
 
-				<h1><?php the_title(); ?></h1>
+			<?php if(have_posts()) : ?>
+				<?php while(have_posts()) : the_post(); ?>
 
-			<?php endwhile; // End of the loop. ?>
-		</div><!-- .container -->
-	</div><!-- #primary -->
+					<?php get_template_part( Design_Helper::$parts . 'post', 'list' ); ?>
+
+				<?php endwhile; ?>
+			<?php else : ?>
+
+				<h4><?php _e('No posts found!', '{%THEME_PREFIX%}'); ?></h4>
+
+			<?php endif; ?>
+
+		</div>
+	</div>
+</div><!-- .container -->
 
 <?php
 get_footer();

@@ -33,7 +33,7 @@
 		            	<span class="icon-bar middle-bar"></span>
 		            	<span class="icon-bar bottom-bar"></span>
 		          	</button>
-		          	<a class="navbar-brand" href="<?php echo home_url(); ?>"><img src="#"></a>
+		          	<a class="navbar-brand" href="<?php echo home_url(); ?>">{%THEME_NAME%}</a>
 				</div>
 
 				<?php
