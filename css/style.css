@@ -2050,10 +2050,15 @@ input.btn {
         color: #FFF;
         border-color: #ec9e3f;
         text-decoration: none; }
+        #theme-projects .project a:hover img {
+          transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          -webkit-transform: scale(1.1); }
       #theme-projects .project a img {
         max-width: 100%;
         width: 100%;
-        height: auto; }
+        height: auto;
+        transition: all 2s ease-in-out; }
       #theme-projects .project a .gradient {
         position: absolute;
         top: 0;
