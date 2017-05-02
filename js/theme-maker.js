@@ -11,12 +11,19 @@
     var domainArray = host.split(".");
     var baseDomain = "";
     var domainExt = "";
-    baseDomain = domainArray[0];
-    domainExt = domainArray[1];
+    if(domainArray.length > 2) {
+    baseDomain = domainArray[1];
+    domainExt = domainArray[2];
+    } else {
+        baseDomain = domainArray[0];
+        domainExt = domainArray[1];
+    }
+    var baseURL = "." + baseDomain + "." + domainExt;
+    var fullURL = protocol + '//' + host;
 
 	// Add target=_blank to all external links
     $('a').each(function() {
-        $(this).attr('target', (this.href.match( baseDomain)) ? '_self' :'_blank');
+        $(this).attr('target', (this.href.match( fullURL)) ? '_self' :'_blank');
     });
 
     // Increase counter
@@ -27,5 +34,14 @@
             count++;
             $('#theme-count').text(count);
         }, 5000);
+    });
+
+    // Inline scrolling
+    $('a.inline-link').click(function(e) {
+        var location = $(this).attr('href');
+        $('html, body').animate({
+            scrollTop: $(location).offset().top - 30
+        }, 1200);
+        return false;
     });
 })(jQuery);

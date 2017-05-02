@@ -2025,12 +2025,65 @@ input.btn {
   .form-group.submit .col-sm-6 span {
     text-align: left; } }
 
+#theme-projects {
+  margin-top: 60px;
+  border-top: 1px solid #CCC;
+  padding-top: 40px;
+  text-align: center; }
+  #theme-projects h3 {
+    margin: 0 0 30px; }
+  #theme-projects .project {
+    margin: 15px 0; }
+    #theme-projects .project a {
+      display: block;
+      position: relative;
+      border: 0;
+      max-height: 290px;
+      overflow: hidden;
+      border: 1px solid #CCC;
+      transition: border-color 0.2s ease-in-out; }
+      #theme-projects .project a:focus, #theme-projects .project a:active {
+        color: #FFF;
+        border-color: #CCC;
+        text-decoration: none; }
+      #theme-projects .project a:hover {
+        color: #FFF;
+        border-color: #ec9e3f;
+        text-decoration: none; }
+      #theme-projects .project a img {
+        max-width: 100%;
+        width: 100%;
+        height: auto; }
+      #theme-projects .project a .gradient {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: -moz-linear-gradient(top, transparent 41%, rgba(0, 0, 0, 0.02) 43%, rgba(8, 21, 51, 0.75) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(41%, transparent), color-stop(43%, rgba(0, 0, 0, 0.02)), color-stop(100%, rgba(8, 21, 51, 0.75)));
+        background: -webkit-linear-gradient(top, transparent 41%, rgba(0, 0, 0, 0.02) 43%, rgba(8, 21, 51, 0.75) 100%);
+        background: -o-linear-gradient(top, transparent 41%, rgba(0, 0, 0, 0.02) 43%, rgba(8, 21, 51, 0.75) 100%);
+        background: -ms-linear-gradient(top, transparent 41%, rgba(0, 0, 0, 0.02) 43%, rgba(8, 21, 51, 0.75) 100%);
+        background: linear-gradient(to bottom, transparent 41%, rgba(0, 0, 0, 0.02) 43%, rgba(8, 21, 51, 0.75) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6081533',GradientType=0 ); }
+      #theme-projects .project a .caption {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0; }
+        #theme-projects .project a .caption h4 {
+          font-family: "HelveticaNeueW01-65Medi";
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+          font-size: 24px; }
+
 /**
  * Global Footer Styles
  */
 footer {
   margin-top: 25px;
-  font-size: 22px; }
+  font-size: 22px;
+  padding-bottom: 30px; }
   footer i {
     color: red; }
   footer a {

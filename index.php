@@ -1,7 +1,7 @@
 <?php include_once('inc/header.php'); ?>
 
     <div class="container">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1">
             <h1 class="text-center">WP Base Theme Generator - Beta</h1>
 
             <p style="margin-bottom: 15px;">
@@ -12,8 +12,8 @@
                 If you would like to browse the theme source code or contribute to the project, feel free to do so over at <a href="https://github.com/TylerB24890/wp-theme-generator">GitHub!</a>
               </p>
 
-             <p class="text-center" style="margin-bottom: 30px;">
-                 <a href="http://elexicon.com/our-work/">View some of the projects using this base theme!</a>
+             <p style="margin-bottom: 30px;">
+                 <a class="inline-link" href="#theme-projects">View some of the projects using this base theme!</a>
              </p>
 
             <?php if(isset($resp)) : ?>
@@ -94,6 +94,43 @@
                     </div>
                 </div>
             </form>
+
+            <div id="theme-projects">
+                <h3>This Base Theme is Behind Some Awesome Projects:</h3>
+                <div class="col-md-12">
+                    <div class="project full">
+                        <a href="http://healthbeat.spectrumhealth.org">
+                            <img src="images/SH.jpg" alt="Spectrum Health - Health Beat" />
+                            <div class="gradient"></div>
+                            <div class="caption">
+                                <h4>Spectrum Health - Health Beat</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project">
+                        <a href="https://terryberry.com">
+                            <img src="images/tb-thmb.jpg" alt="Terryberry Co." />
+                            <div class="gradient"></div>
+                            <div class="caption">
+                                <h4>Terryberry Co.</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project">
+                        <a href="http://progressiveae.com">
+                            <img src="images/pae.jpg" alt="Progressive AE" />
+                            <div class="gradient"></div>
+                            <div class="caption">
+                                <h4>Progressive AE</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

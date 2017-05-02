@@ -1,0 +1,71 @@
+#theme-projects {
+	margin-top: 60px;
+	border-top: 1px solid #CCC;
+	padding-top: 40px;
+	text-align: center;
+
+	h3 {
+		margin: 0 0 30px;
+	}
+
+	.project {
+		margin: 15px 0;
+
+		a {
+			display: block;
+			position: relative;
+			border: 0;
+			max-height: 290px;
+			overflow: hidden;
+			border: 1px solid #CCC;
+			@include animate(border-color);
+
+			&:focus,
+			&:active {
+				color: #FFF;
+				border-color: #CCC;
+				text-decoration: none;
+			}
+
+			&:hover {
+				color: #FFF;
+				border-color: $elx-orange;
+				text-decoration: none;
+			}
+
+			img {
+				max-width: 100%;
+				width: 100%;
+				height: auto;
+			}
+
+			.gradient {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: -moz-linear-gradient(top, rgba(0,0,0,0) 41%, rgba(0,0,0,0.02) 43%, rgba(8,21,51,0.75) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(41%,rgba(0,0,0,0)), color-stop(43%,rgba(0,0,0,0.02)), color-stop(100%,rgba(8,21,51,0.75)));
+				background: -webkit-linear-gradient(top, rgba(0,0,0,0) 41%,rgba(0,0,0,0.02) 43%,rgba(8,21,51,0.75) 100%);
+				background: -o-linear-gradient(top, rgba(0,0,0,0) 41%,rgba(0,0,0,0.02) 43%,rgba(8,21,51,0.75) 100%);
+				background: -ms-linear-gradient(top, rgba(0,0,0,0) 41%,rgba(0,0,0,0.02) 43%,rgba(8,21,51,0.75) 100%);
+				background: linear-gradient(to bottom, rgba(0,0,0,0) 41%,rgba(0,0,0,0.02) 43%,rgba(8,21,51,0.75) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6081533',GradientType=0 );
+			}
+
+			.caption {
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				right: 0;
+
+				h4 {
+					font-family: $helvetica-med;
+				 	text-shadow: 0 1px 1px rgba(0,0,0,.7);
+					font-size: 24px;
+				}
+			}
+		}
+	}
+}
