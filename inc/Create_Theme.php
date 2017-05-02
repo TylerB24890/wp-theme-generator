@@ -298,10 +298,13 @@ class Create_Theme {
 				while (false !== ($file_name = readdir($handle))) {
 					// Find all file names with 'elexicon' in it
 					if(strpos($file_name, 'elexicon') !== false) {
+						$path = $file_dir . DIRECTORY_SEPARATOR;
+						// Create new file name
+						$new_name = strtolower($data['theme_file_name']);
 						// Replace the file name with the one generated
-						$new_name = str_replace("elexicon", strtolower($data['theme_file_name']), $file_name);
+						$new_name = str_replace("elexicon", $new_name, $file_name);
 						// Rename the file
-						rename($file_dir . DIRECTORY_SEPARATOR . $file_name, $file_dir . DIRECTORY_SEPARATOR . $new_name);
+						rename($path . $file_name, $path . $new_name);
 					}
 				}
 				// Close the directory
