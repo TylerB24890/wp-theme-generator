@@ -4,9 +4,13 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <h1 class="text-center">WP Base Theme Generator - Beta</h1>
 
-            <p style="margin-bottom: 30px;">
+            <p style="margin-bottom: 15px;">
                 Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
              </p>
+
+             <p style="margin-bottom: 30px;">
+                If you would like to browse the theme source code or contribute to the project, feel free to do so over at <a href="https://github.com/TylerB24890/wp-theme-generator">GitHub!</a>
+              </p>
 
              <p class="text-center" style="margin-bottom: 30px;">
                  <a href="http://elexicon.com/our-work/">View some of the projects using this base theme!</a>
@@ -50,7 +54,7 @@
                     <label>Theme Description:</label>
                     <textarea name="theme_description" class="form-control" placeholder="i.e. A very basic theme based on the Twitter Bootstrap CSS framework." style="min-height: 100px;" tabindex="5"></textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Theme Structure:</label>
                     <div class="radio">
