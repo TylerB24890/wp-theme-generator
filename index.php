@@ -96,7 +96,7 @@
             </form>
 
             <div id="theme-projects">
-                <h3>This Base Theme is Behind Some Awesome Projects:</h3>
+                <h3>Projects Built With This Base Theme</h3>
                 <div class="col-md-12">
                     <div class="project full">
                         <a href="http://healthbeat.spectrumhealth.org">
