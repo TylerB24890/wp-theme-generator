@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-    siteUrl:       '{%THEME_PREFIX%}.local',
+    siteUrl:       '{%THEME_SLUG%}.local',
     sassDir:          './scss/',
     sassMainFileName: 'style',
     cssDir:           './styles/',
