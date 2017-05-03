@@ -1,6 +1,6 @@
 @import 'bootstrap-overrides';
 @import 'bootstrap'; // Comment out the Bootstrap features you're not using in the _bootstrap.scss file
-@import '{%THEME_PREFIX%}-mixins';
+@import 'elx-mixins';
 @import 'global';
 
 @import 'header';
