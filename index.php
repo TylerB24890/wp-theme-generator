@@ -96,7 +96,10 @@
             </form>
 
             <div id="theme-projects">
-                <h3>Projects Built With This Base Theme</h3>
+                <h3 style="margin-bottom: 15px;">Projects Built With This Base Theme</h3>
+                <p style="margin-bottom: 30px;">
+                    This is just a few examples of what is possible with this base theme.<br />Don't waste your time learning a new framework... Simply fill out the form above and start coding.
+                </p>
                 <div class="col-md-12">
                     <div class="project full">
                         <a href="http://healthbeat.spectrumhealth.org">
@@ -126,6 +129,28 @@
                             <div class="gradient"></div>
                             <div class="caption">
                                 <h4>Progressive AE</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project">
+                        <a href="http://bradfordcompany.com/">
+                            <img src="images/bradford.png" alt="Bradford Company" />
+                            <div class="gradient"></div>
+                            <div class="caption">
+                                <h4>Bradford Co.</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project">
+                        <a href="http://elexicon.com/">
+                            <img src="images/elexicon.jpg" alt="Elexicon" />
+                            <div class="gradient"></div>
+                            <div class="caption">
+                                <h4>Elexicon</h4>
                             </div>
                         </a>
                     </div>
