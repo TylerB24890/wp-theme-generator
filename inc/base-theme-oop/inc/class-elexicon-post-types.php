@@ -12,7 +12,7 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Post_Types') ) :
 	class {%THEME_CLASS_NAMES%}_Post_Types {
 
 		public function __construct() {
-			add_action( 'init', '{%THEME_CLASS_NAMES%}_Post_Types::post_type_example' );
+			//add_action( 'init', '{%THEME_CLASS_NAMES%}_Post_Types::post_type_example' );
 		}
 
 		public static function post_type_example() {

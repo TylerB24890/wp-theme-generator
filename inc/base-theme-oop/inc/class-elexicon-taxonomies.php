@@ -15,7 +15,7 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Taxonomies') ) :
 		 * Initializes the custom taxonomies
 		 */
 		public function __construct() {
-			add_action( 'init', '{%THEME_CLASS_NAMES%}_Taxonomies::taxonomies', 0 );
+			//add_action( 'init', '{%THEME_CLASS_NAMES%}_Taxonomies::taxonomies', 0 );
 		}
 
 		/**
