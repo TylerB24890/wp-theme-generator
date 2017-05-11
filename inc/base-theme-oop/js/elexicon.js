@@ -31,18 +31,33 @@
     // Is touch device?
     var isTouch = !!("undefined" != typeof document.documentElement.ontouchstart)
 
-    // Add target=_blank to all external links
-    $('a').each(function() {
-      $(this).attr('target', (this.href.match( baseURL )) ? '_self' :'_blank');
+    /**
+     * Exeucte when DOM is ready
+     */
+    $(function() {
+
+        /**
+         * Add 'target="_blank"' to all external links
+         * @return string target=_blank attribute
+         */
+        $('a').each(function() {
+          $(this).attr('target', (this.href.match( baseURL )) ? '_self' :'_blank');
+        });
+
     });
 
-    // Animate Hamburger to 'X'
+    /**
+     * Animate the Bootstrap hamburger to an X on click
+     */
     $('.navbar-toggle').on('click', function() {
         $(this).toggleClass('active');
     });
 
-    // In page scrolling
-    // add .inline-link to any <a href="#div-id"> element
+    /**
+     * Inline scrolling
+     * @param  event e capture the JS click event
+     * @return false - prevents link redirection
+     */
     $('a.inline-link').click(function(e) {
         var location = $(this).attr('href');
 
@@ -53,4 +68,4 @@
         return false;
     });
 
-})(jQuery);
+})( jQuery );

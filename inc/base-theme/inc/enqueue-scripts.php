@@ -88,10 +88,11 @@ function {%THEME_PREFIX%}_localize_script() {
     // Localize the global admin-ajax URL
     // usage: {%THEME_PREFIX%}.ajaxurl;
     wp_localize_script(
-        '{%THEME_PREFIX%}-js',
+        '{%THEME_SLUG%}-js',
         '{%THEME_PREFIX%}',
         array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' )
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'isMobile' => (wp_is_mobile() ? true : false),
         )
     );
 }
