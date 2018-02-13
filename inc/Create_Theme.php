@@ -34,7 +34,7 @@ class Create_Theme {
 	*/
 	public function __construct() {
 
-		$this->source = __DIR__ . DIRECTORY_SEPARATOR . 'base-theme';
+		$this->source = __DIR__ . DIRECTORY_SEPARATOR . 'base-theme-oop';
 		$this->dest = __DIR__ . DIRECTORY_SEPARATOR . 'zip';
 		$this->permissions = 0755;
 
@@ -161,13 +161,11 @@ class Create_Theme {
 	*/
 	private function build_theme($data) {
 
-		$theme_source = ($data['structure'] === 'procedural' ? $this->source : $this->source . '-oop');
-
 		// Create the unique directory name for this theme
 		$base_dest = $this->dest . DIRECTORY_SEPARATOR . md5($data['theme_slug']);
 
 		// Create the theme directory and copy the base theme files over
-		$zip_dir = $this->create_theme_dir($theme_source, $base_dest, $this->permissions);
+		$zip_dir = $this->create_theme_dir($this->source, $base_dest, $this->permissions);
 
 		// If the file copy was successful, swap out the file data
 		if($zip_dir)

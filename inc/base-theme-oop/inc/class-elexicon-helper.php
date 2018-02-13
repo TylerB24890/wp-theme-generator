@@ -11,10 +11,27 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
 
 	class {%THEME_CLASS_NAMES%}_Helper {
 
-		public static $parts;
+		public static $parts, $icons_url;
 
 		public function __construct() {
 			self::$parts = 'template-parts/';
+			self::$icons_url = '//icongr.am/';
+		}
+
+		/**
+		 * Return an image element with an icon from icongr.am
+		 * @param  string  $lib   The icon library (clarity, entypo, feather, fontawesome, material, octicons, simple)
+		 * @param  string  $icon  The icon name
+		 * @param  integer $size  The size of the icon in pixels (default 24)
+		 * @param  string  $color Color of the icon to render
+		 * @return string         HTML image element
+		 */
+		public static function icongram_icon($lib, $icon, $size = 24, $color = 'FFFFFF', $echo = true) {
+			if($echo) {
+				echo '<img src="' . self::$icons_url . $lib . '/' . $icon . '.svg?size=' . $size . '&color=' . $color . '" />';
+			} else {
+				return '<img src="' . self::$icons_url . $lib . '/' . $icon . '.svg?size=' . $size . '&color=' . $color . '" />';
+			}
 		}
 
 		/**
@@ -118,6 +135,107 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
 		    }
 		    $content = trim(preg_replace('~(<a[^>]+>)?\s*(<img[^>]+>)\s*(</a>)?~sim', '', $content));
 		    return $content;
+		}
+
+		/**
+		 * Make URL string a clickable link
+		 * @param  string $text Link text to parse
+		 * @return string       Clickable link markup
+		 */
+		public static function make_url_link($text) {
+		  // The Regular Expression filter
+		  $regex_url = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+		  // Check if there is a url in the text
+		  if(preg_match($regex_url, $text, $url)) {
+		    // make the urls hyper links
+		    return preg_replace($regex_url, "<a target='_blank' href=" . $url[0] . ">" . $url[0] . "</a> ", $text);
+
+		  } else {
+
+		    // if no urls in the text just return the text
+		    return $text;
+
+		  }
+		}
+
+		/**
+		 * Count the number of returned search results
+		 * @return string Number of returned results
+		 */
+		public static function search_results_count() {
+		  if( is_search() ) {
+
+		    global $wp_query;
+
+		    if( $wp_query->found_posts == 1 ) {
+		      $result_count= '1 Result';
+		    } else {
+		      $result_count = $wp_query->found_posts.' Results';
+		    }
+
+		    return $result_count;
+
+		  }
+		}
+
+		/**
+		 * Get the Attachment ID for a given image URL.
+		 *
+		 * @link   http://wordpress.stackexchange.com/a/7094
+		 * @param  string $url
+		 * @return boolean|integer
+		 */
+		 public static function get_attachment_id_by_url( $url ) {
+			 	$attachment_id = 0;
+				$file = basename( $url );
+				$query_args = array(
+					'post_type'   => 'attachment',
+					'post_status' => 'inherit',
+					'fields'      => 'ids',
+					'meta_query'  => array(
+						array(
+							'value'   => $file,
+							'compare' => 'LIKE',
+							'key'     => '_wp_attachment_metadata',
+						),
+					)
+				);
+				$query = new WP_Query( $query_args );
+				if ( $query->have_posts() ) {
+					foreach ( $query->posts as $post_id ) {
+						$meta = wp_get_attachment_metadata( $post_id );
+						$original_file       = basename( $meta['file'] );
+						$cropped_image_files = wp_list_pluck( $meta['sizes'], 'file' );
+						if ( $original_file === $file || in_array( $file, $cropped_image_files ) ) {
+							$attachment_id = $post_id;
+							break;
+						}
+					}
+				}
+			 	return $attachment_id;
+ 		}
+
+		/**
+		 * Get the size of a file
+		 * @param  string $file Directory to the file
+		 * @return string       Size of the file
+		 */
+		public static function get_file_size($file){
+		  $bytes = filesize($file);
+		  $s = array('B', 'KB', 'MB', 'GB');
+		  $e = floor(log($bytes)/log(1024));
+		  return sprintf('%.2f '.$s[$e], ($bytes/pow(1024, floor($e))));
+		}
+
+		/**
+		 * Convert an image to SVG code
+		 * @param  string $url URL of image to convert
+		 * @return string      SVG code of the converted image
+		 */
+		public static function get_svg_code($url) {
+		  $svg_code = file_get_contents($url, FILE_USE_INCLUDE_PATH);
+		  return $svg_code;
 		}
 	}
 

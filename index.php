@@ -12,10 +12,6 @@
                 If you would like to browse the theme source code or contribute to the project, feel free to do so over at <a href="https://github.com/TylerB24890/wp-theme-generator">GitHub!</a>
               </p>
 
-             <p style="margin-bottom: 30px;">
-                 <a class="inline-link" href="#theme-projects">View some of the projects using this base theme!</a>
-             </p>
-
             <?php if(isset($resp)) : ?>
                 <div style="color: red; margin: 30px 0;">
                     <h3><?php echo $resp; ?></h3>
@@ -55,33 +51,6 @@
                     <textarea name="theme_description" class="form-control" placeholder="i.e. A very basic theme based on the Twitter Bootstrap CSS framework." style="min-height: 100px;" tabindex="5"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label>Theme Structure:</label>
-                    <div class="radio">
-                        <label><input type="radio" name="structure" value="procedural" checked /> Procedural PHP</label>
-                    </div>
-
-                    <div class="radio">
-                        <label><input type="radio" name="structure" value="oop" /> Object Oriented PHP - Beta</label>
-                    </div>
-                </div>
-
-                <!--
-                <div class="form-group checkboxes">
-                    <label>Theme Framework:</label>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="bootstrap3" /> Twitter Bootstrap V 3.3.6</label> - <a href="http://getbootstrap.com/">View</a>
-                    </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="bootstrap4" /> Twitter Bootstrap V 4.0.0-alpha.x</label> - <a href="https://v4-alpha.getbootstrap.com/">View</a>
-                    </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="framework[]" value="foundation" /> Zurb Foundation 6</label> - <a href="http://foundation.zurb.com/">View</a>
-                    </div>
-                </div>
-                -->
                 <div class="form-group submit">
                     <div class="row">
                         <div class="col-sm-6">
@@ -94,68 +63,6 @@
                     </div>
                 </div>
             </form>
-
-            <div id="theme-projects">
-                <h3 style="margin-bottom: 15px;">Projects Built With This Base Theme</h3>
-                <p style="margin-bottom: 30px;">
-                    This is just a few examples of what is possible with this base theme.<br />Don't waste your time learning a new framework... Simply fill out the form above and start coding.
-                </p>
-                <div class="col-md-12">
-                    <div class="project full">
-                        <a href="http://healthbeat.spectrumhealth.org">
-                            <img src="images/SH.jpg" alt="Spectrum Health - Health Beat" />
-                            <div class="gradient"></div>
-                            <div class="caption">
-                                <h4>Spectrum Health - Health Beat</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="project">
-                        <a href="https://terryberry.com">
-                            <img src="images/tb-thmb.jpg" alt="Terryberry Co." />
-                            <div class="gradient"></div>
-                            <div class="caption">
-                                <h4>Terryberry Co.</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="project">
-                        <a href="http://progressiveae.com">
-                            <img src="images/pae.jpg" alt="Progressive AE" />
-                            <div class="gradient"></div>
-                            <div class="caption">
-                                <h4>Progressive AE</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="project">
-                        <a href="http://bradfordcompany.com/">
-                            <img src="images/bradford.png" alt="Bradford Company" />
-                            <div class="gradient"></div>
-                            <div class="caption">
-                                <h4>Bradford Co.</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="project">
-                        <a href="http://elexicon.com/">
-                            <img src="images/elexicon.jpg" alt="Elexicon" />
-                            <div class="gradient"></div>
-                            <div class="caption">
-                                <h4>Elexicon</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

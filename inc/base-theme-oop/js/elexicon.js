@@ -31,20 +31,13 @@
     // Is touch device?
     var isTouch = !!("undefined" != typeof document.documentElement.ontouchstart)
 
-    /**
-     * Exeucte when DOM is ready
-     */
-    $(function() {
-
-        /**
-         * Add 'target="_blank"' to all external links
-         * @return string target=_blank attribute
-         */
-        $('a').each(function() {
-          $(this).attr('target', (this.href.match( baseURL )) ? '_self' :'_blank');
-        });
-
-    });
+		/**
+		 * Add 'target="_blank"' to all external links
+		 * @return string target=_blank attribute
+		 */
+		$('a').each(function() {
+			$(this).attr('target', (this.href.match( baseURL )) ? '_self' :'_blank');
+		});
 
     /**
      * Animate the Bootstrap hamburger to an X on click

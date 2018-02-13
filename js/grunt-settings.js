@@ -1,6 +1,6 @@
 module.exports = {
-    siteName:   'theme-maker',
-    siteUrl:        'theme-maker.local',
+    siteName:   'wp-theme-generator',
+    siteUrl:        'wp-theme-generator.local',
     sassDir:          './scss/',
     sassMainFileName: 'style',
     cssDir:           './css/',

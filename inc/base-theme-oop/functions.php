@@ -117,3 +117,35 @@ ${%THEME_PREFIX%}->theme_functions();
 
 // Load Pagination file
 include_once(get_template_directory() . '/inc/pagination.php');
+
+/**
+ * Extend search to include custom fields
+ * @param  string $join original search query
+ * @return string New search query
+ */
+function cf_search_join( $join ) {
+    global $wpdb;
+
+    if ( is_search() ) {
+        $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+    }
+
+    return $join;
+}
+add_filter('posts_join', 'cf_search_join' );
+
+/**
+ * Prevent duplicates
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_distinct
+ */
+function cf_search_distinct( $where ) {
+    global $wpdb;
+
+    if ( is_search() ) {
+        return "DISTINCT";
+    }
+
+    return $where;
+}
+add_filter( 'posts_distinct', 'cf_search_distinct' );
