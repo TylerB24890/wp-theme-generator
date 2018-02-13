@@ -57,9 +57,6 @@
                             <input type="submit" name="submit_theme" class="btn btn-primary" value="Build Theme"  tabindex="6"/>
                             <input type="reset" name="clear_theme" class="btn btn-danger" value="Start Over" />
                         </div>
-                        <div class="col-sm-6">
-                            <span><b>Themes Generated:</b> <span id="theme-count" style="display: inline;"><?php echo Create_Theme::count_themes_generated(); ?></span></span>
-                        </div>
                     </div>
                 </div>
             </form>
