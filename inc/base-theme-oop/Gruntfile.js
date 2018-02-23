@@ -146,6 +146,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['dev']);
 
     // Before pushing to production, run 'grunt dist' via terminal
-    grunt.registerTask('dist', ['imagemin', 'uglify']);
+    grunt.registerTask('dist', ['imagemin', 'uglify', 'sass:min']);
 
 };
