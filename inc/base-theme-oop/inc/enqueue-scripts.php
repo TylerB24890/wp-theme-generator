@@ -11,7 +11,7 @@
 if (!is_admin()) add_action("wp_enqueue_scripts", "{%THEME_PREFIX%}_jquery_enqueue", 11);
 function {%THEME_PREFIX%}_jquery_enqueue() {
   wp_deregister_script('jquery'); // Deregister WP default jQuery
-  wp_register_script('jquery', '//code.jquery.com/jquery-2.2.4.min.js', false, null);
+  wp_register_script('jquery', '//code.jquery.com/jquery-3.3.1', false, null);
   wp_enqueue_script('jquery'); // Register jQuery
 }
 
@@ -19,7 +19,7 @@ function {%THEME_PREFIX%}_jquery_enqueue() {
 add_action( 'wp_head', '{%THEME_PREFIX%}_jquery_load' );
 function {%THEME_PREFIX%}_jquery_load() {
   ?>
-  <script>if (!window.jQuery) { document.write('<script src="<?php echo get_template_directory_uri() . '/js/vendor/jquery-2.2.4.min.js'; ?>" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"><\/script>'); }</script>
+  <script>if (!window.jQuery) { document.write('<script src="<?php echo get_template_directory_uri() . '/js/vendor/jquery-3.3.1.min.js'; ?>" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"><\/script>'); }</script>
   <?php
 }
 
@@ -28,7 +28,7 @@ function {%THEME_PREFIX%}_add_jquery_integrity($tag, $handle) {
   if ($handle != 'jquery')
   return $tag;
 
-  return str_replace(' src', ' integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" src', $tag);
+  return str_replace(' src', ' integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" src', $tag);
 }
 
 

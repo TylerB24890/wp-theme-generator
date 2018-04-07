@@ -24,34 +24,34 @@
 <body <?php body_class(); ?>>
 
 	<header>
-		<nav class="navbar navbar-default">
-			<section class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false" aria-controls="navbar">
-		            	<span class="sr-only">Toggle Navigation</span>
-		            	<span class="icon-bar top-bar"></span>
-		            	<span class="icon-bar middle-bar"></span>
-		            	<span class="icon-bar bottom-bar"></span>
-		          	</button>
-		          	<a class="navbar-brand" href="<?php echo home_url(); ?>">{%THEME_NAME%}</a>
-				</div>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<div class="container-fluid">
+
+				<a class="navbar-brand" href="<?php echo home_url(); ?>">{%THEME_NAME%}</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar top-bar"></span>
+					<span class="icon-bar middle-bar"></span>
+					<span class="icon-bar bottom-bar"></span>
+				</button>
 
 				<?php
 					// {%THEME_NAME%} Theme Navigation
 					wp_nav_menu(array(
-						'menu' => 'primary',
+						'menu' => 'Primary Menu',
 						'theme_location' => 'primary',
 						'depth' => 2,
 						'container' => 'div',
 						'container_class' => 'collapse navbar-collapse',
 						'container_id' => 'main-nav',
-						'menu_class' => 'nav navbar-nav navbar-right',
-						'fallback_cb' => '{%THEME_CLASS_NAMES%}_Navwalker::fallback',
-						'walker' => new {%THEME_CLASS_NAMES%}_Navwalker()
+						'menu_class' => 'navbar-nav ml-auto',
+						'fallback_cb' => 'Beercode_Navwalker::fallback',
+						'walker' => new Beercode_Navwalker()
 					));
 				?>
-			</section>
+			</div>
 		</nav>
 	</header>
+
 
 	<div id="content" class="site-content">
