@@ -9,10 +9,9 @@
 get_header(); ?>
 
 <div id="<?php echo $post->post_name; ?>">
-	<div class="container">
-		<div class="col-md-12">
-			<div class="row">
-
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
 				<?php if(have_posts()) : ?>
 					<?php while(have_posts()) : the_post(); ?>
 

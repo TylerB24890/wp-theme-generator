@@ -10,9 +10,9 @@
 get_header(); ?>
 
 <div id="search">
-	<div class="container">
-		<div class="col-md-12">
-			<div class="row">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
 				<h1>Search</h1>
 				<h4>Results for: <?php echo get_search_query(); ?></h4>
 
