@@ -44,9 +44,9 @@
 						'container' => 'div',
 						'container_class' => 'collapse navbar-collapse',
 						'container_id' => 'main-nav',
-						'menu_class' => 'navbar-nav ml-auto',
-						'fallback_cb' => 'Beercode_Navwalker::fallback',
-						'walker' => new Beercode_Navwalker()
+						'menu_class' => 'navbar-nav mr-auto',
+						'fallback_cb' => '{%THEME_CLASS_NAMES%}_Navwalker::fallback',
+						'walker' => new {%THEME_CLASS_NAMES%}_Navwalker()
 					));
 				?>
 			</div>
