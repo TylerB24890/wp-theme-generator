@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Load in the configuration file
-    var PathConfig = require('./js/grunt-settings.js');
+    var PathConfig = require('./assets/js/grunt-settings.js');
 
     // tasks
     grunt.initConfig({
@@ -122,15 +122,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // Minify Javascript Files
-        uglify: {
-            dist: {
-                files: {
-                    '<%= config.jsDir %>{%THEME_PREFIX%}.min.js': ['<%= config.jsDir %>{%THEME_PREFIX%}.js']
-                }
-            }
-        }
     });
 
     // Register Watch Task
@@ -146,6 +137,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['dev']);
 
     // Before pushing to production, run 'grunt dist' via terminal
-    grunt.registerTask('dist', ['imagemin', 'uglify', 'sass:min']);
+    grunt.registerTask('dist', ['imagemin', 'sass:min']);
 
 };

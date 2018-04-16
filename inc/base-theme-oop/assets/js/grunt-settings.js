@@ -5,12 +5,12 @@
 
 module.exports = {
     siteUrl:       '{%THEME_SLUG%}.local',
-    sassDir:          './scss/',
+    sassDir:          './assets/scss/',
     sassMainFileName: 'style',
     cssDir:           './styles/',
     cssMainFileDir:   './styles/',
     cssMainFileName:  'style',
-    jsDir:            './js/',
     imgDir:           './img/',
+		jsDir:            './dist/',
     imgSourceDir:     'img/',
 };
