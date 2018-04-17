@@ -3,7 +3,8 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Load in the configuration file
-    var PathConfig = require('./assets/js/grunt-settings.js');
+    var PathConfig = require('./src/js/grunt-settings.js');
+		var webpackConfig = require('./webpack.config');
 
     // tasks
     grunt.initConfig({
@@ -70,6 +71,7 @@ module.exports = function(grunt) {
                 debounceDelay: 1,
                 // livereload: true,
             },
+						tasks: ['grunt-webpack'],
 
             // Compress Images On The Fly
             images: {
@@ -93,7 +95,15 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false,
                 }
-            }
+            },
+
+						js: {
+							files: ['./src/js/*.js', './src/js/**/*.js'],
+							tasks: ['webpack:dev'],
+							options: {
+								spawn: false
+							}
+						}
         },
 
         // Compress Images
@@ -122,6 +132,14 @@ module.exports = function(grunt) {
                 }
             }
         },
+
+				webpack: {
+					options: {
+						stats: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
+					},
+					prod: webpackConfig,
+					dev: webpackConfig
+				}
     });
 
     // Register Watch Task
@@ -131,7 +149,7 @@ module.exports = function(grunt) {
     grunt.registerTask('bs', ['browserSync']);
 
     // Init BrowserSync with Watch
-    grunt.registerTask('dev', ['browserSync', 'watch']);
+    grunt.registerTask('dev', ['browserSync', 'watch', 'webpack:dev']);
 
     // Set Default Environment as 'dev'
     grunt.registerTask('default', ['dev']);

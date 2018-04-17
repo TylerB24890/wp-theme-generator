@@ -284,7 +284,7 @@ class Create_Theme {
 
 		// Directories with files that need name changes
 		$dirs = array(
-			$dir . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR,
+			$dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR,
 			$dir . DIRECTORY_SEPARATOR . 'inc'
 		);
 

@@ -13,6 +13,7 @@
       "grunt-svg2string": "0.1.6",
       "grunt-svgmin": "^2.0.1",
       "grunt-svgstore": "0.5.0",
+      "grunt-webpack": "^3.1.1",
       "load-grunt-tasks": "3.2.0",
       "webpack": "^4.5.0",
       "webpack-cli": "^2.0.14"
@@ -24,8 +25,8 @@
       "html5shiv": "^3.7.3"
   },
   "scripts": {
-      "build": "webpack && grunt dist",
-      "watch": "webpack --watch",
-      "start": "grunt"
+      "build": "webpack --mode production && grunt dist",
+      "watch": "webpack --watch --mode development",
+      "start": "webpack"
   }
 }
