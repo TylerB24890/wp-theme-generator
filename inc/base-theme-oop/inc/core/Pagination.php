@@ -3,7 +3,7 @@
 /**
  * Custom Bootstrap Pagination for {%THEME_NAME%} theme
  *
- * @author Elexicon, Inc.
+ * @author Tyler Bailey <tylerb.media@gmail.com>
  * @version 1.0.0
  */
 

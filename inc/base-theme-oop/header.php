@@ -29,7 +29,7 @@
 
 				<a class="navbar-brand" href="<?php echo home_url(); ?>">{%THEME_NAME%}</a>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar top-bar"></span>
 					<span class="icon-bar middle-bar"></span>
 					<span class="icon-bar bottom-bar"></span>

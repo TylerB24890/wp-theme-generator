@@ -5,7 +5,7 @@
  *
  * Initial theme setup and functions
  *
- * @author Elexicon, Inc.
+ * @author Tyler Bailey <tylerb.media@gmail.com>
  * @version 1.0.0
  */
 
