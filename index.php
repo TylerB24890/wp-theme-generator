@@ -2,19 +2,18 @@
 
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
-            <h1 class="text-center">WordPress Theme Generator</h1>
+            <h1 class="text-center">Elexicon Theme Generator 2.0</h1>
 
             <p style="margin-bottom: 15px;">
-                Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
+                Building custom WordPress themes can be redundant and annoyingly repetitive. The <a href="http://elexicon.com">Elexicon</a> Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. This generator will give you a solid framework for building your theme from ground up. Complete with <a href="https://getcomposer.org/">Composer</a>, <a href="https://webpack.js.org/">webpack</a>, and <a href="https://getbootstrap.com">Bootstrap 4</a>, the Elexicon Theme Generator will start you off building your theme right.
              </p>
 
-             <p style="margin-bottom: 15px;">
-               <a href="/docs/">Read the documentation!</a>
-             </p>
-
-             <p style="margin-bottom: 30px;">
-                If you would like to browse the theme source code or contribute to the project, feel free to do so over at <a href="https://github.com/TylerB24890/wp-theme-generator">GitHub!</a>
-              </p>
+             <div class="text-center" style="margin: 30px 0 60px;">
+               <h2><a href="/docs/">Read the Docs!</a></h2>
+               <p style="font-size: 14px;">
+                 <b>Notice:</b> This theme contains several dependencies and it is highly recommended to review the documentation before moving foward.
+               </p>
+             </div>
 
             <?php if(isset($resp)) : ?>
                 <div style="color: red; margin: 30px 0;">

@@ -117,8 +117,6 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		  $theme_style = ({%THEME_CONST%}_DEV ? 'style.css' : 'style.min.css');
 		  wp_enqueue_style( \Elexicon\Helper::$theme_slug . '-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
 
-		  if ( !is_admin() ) wp_deregister_script('jquery');
-
 		  wp_enqueue_script( \Elexicon\Helper::$theme_slug . '-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), \Elexicon\Helper::$theme_version, true );
 
 		  // Localize scripts
