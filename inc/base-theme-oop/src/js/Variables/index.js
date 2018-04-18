@@ -1,2 +1,1 @@
-
-export { directory, fullURL } from './Url'
+export { directory, fullURL } from './url'

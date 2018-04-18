@@ -6,13 +6,23 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
 * [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
 * Complete rewrite of core theme functionality
+* PSR-4 Autoloading for core functionality
+* New Helper functions
 
 ## Features
+* Bootstrap 4.x
+* Bootstrap Nav Walker for easy management through the wp-admin dashboard
 * SCSS compiling and Browser Reload through Grunt
 * Webpack integration for modern JS and ES6 functionality
-* PHP PSR-4 Autoloading with Composer
+* PSR-4 Autoloading with Composer
 
 # Getting started
+## Requirements
+* \>PHP 5.4
+* Composer (Install it from https://getcomposer.org/)
+* Node & NPM (Install it from https://nodejs.org/en/)
+* WordPress \>4.5
+
 ## Installation
 * Head over to http://theme-generator.elexicon.com and fill out the form provided.
 * Unzip the downloaded file and copy it's contents over to your `/themes/` directory.
@@ -55,9 +65,9 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
       customizer.js
       grunt-settings.js
       themename.js
-      -Variables
+      -variables
         index.js
-        Url.js
+        url.js
     -scss
       _animated-hamburger.scss
       _bootstrap-overrides.scss
@@ -259,3 +269,53 @@ All theme variables can be accessed in the following structure: `\Elexicon\Helpe
 ### `\Elexicon\ThemeInit`
 
   Initiates the theme and configures it with WordPress. Standard `functions.php` functionality in here.
+
+## Theming
+
+  The Elexicon Theme uses [SCSS](https://sass-lang.com/) for styling and [GruntJS](https://gruntjs.org) for compiling it into CSS. If you're unfamiliar with SCSS I suggest you you head over to their [docs](https://sass-lang.com/guide) to familiarize yourself. The Javascript within the Elexicon theme is compiled into a script (bundle.js) through [webpack](https://webpack.js.org/). Like SCSS, if you're unfamiliar with webpack they have very fantastic [documentation](https://webpack.js.org/concepts/).
+
+  After you have ran the initial installation scripts such as `npm install`, `npm run-script build`, `composer install` your theme will be setup and viewable after activation through wp-admin.
+
+  - `npm install` Installs the necessary node packages
+  - `npm run-script build` Builds the initial stylesheet and bundle.js file. This will bring Bootstrap into your theme.
+  - `composer install` Configures the PSR-4 Autoloader.
+
+### Styling
+
+  All styles are located in the `/src/scss/` directory of the theme root. There are a few base SCSS files already in place, but you are encouraged to create your own and import them into the `_style.scss` stylesheet.
+
+  In order to begin styling your theme, you have to begin the `grunt` process. If you have a local development server setup (MAMP, Vagrant, Docker, etc..) and your `grunt-settings.js` file is updated (see the [Javascript section](/?id=javascript)) this should be a piece of cake.
+  - Open your terminal and `cd` to your theme root.
+  - Run `grunt`
+
+  That's it. Begin writing your SCSS and Javascript as instructed below and your browser will automatically refresh on changes. (JS changes take a couple of seconds due to their need to compile)
+
+  **NOTE:** The compiled styles are located in the `/dist/styles/` directory. There is no need to upload the `/src/` directory in production. See the Deployment section for more information.
+
+  - `_animated-hamburger.scss` - The styles to animate the Bootstrap `.navbar-toggler` element.
+  - `_bootstrap-overrides.scss` - Put all Bootstrap variable overrides here.
+  - `_elx-mixins.scss` - A collection of useful mixins for use throughout the project.
+  - `_global.scss` - Global styles for the theme (body, links, section, etc...)
+  - `_header.scss` - Styles for the Bootstrap navbar and global site header go here.
+  - `_footer.scss` - Styles for the global footer element go here.
+  - `_style.scss` - All SCSS files should be imported in this file for rendering.
+
+### Javascript
+
+  The scripts for the site are located in the `/src/js/` directory. Webpack compiles all scripts into a `bundle.js` file that is included in your theme. The `bundle.js` file is compiled from the `app.js` file. You should `import` your main scripts into this file for compiling. If you are unfamiliar with [Modern Javascript](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70) I suggest you [practice it](https://javascript.info/) it a little bit.
+
+  Within the `/src/js/` directory you will see a few files and directories. We're going to go through the files first, then move onto the directories and their contents.
+
+  - `app.js` The main file for you application. Import your custom Javascript files into here for compiling.
+  - `customizer.js` Used for the wp-admin dashboard Customizer. This file will **not** effect the frontend.
+  - `[your-theme-name].js` You should use this as your "main" theme file. Put all one-off jQuery functions and other small/global items in here.
+    - Be sure to `import $ from 'jquery'` to use jQuery in here.
+  - `grunt-settings.js` This file controls your `Gruntfile.js` script and holds your variables in one place.
+    - If you change your stylesheet directories you should make sure you change them here.
+    - This file also contains the Browser Reload URL for your theme. By default it is `http://[your-theme-name].local:3000` but you are free to change that to whatever your Virtual Host is configured to. (Just make sure the `:3000` is at the end.)
+
+  - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
+
+## Deploying
+
+  When you are ready to deploy, run the command `npm run-script build` to compile your files for production then copy all of your theme files (**except the `/src/` & `/node_modules/` directories**) to your target server.

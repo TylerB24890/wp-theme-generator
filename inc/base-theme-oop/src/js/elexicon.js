@@ -4,7 +4,7 @@
 */
 
 import $ from 'jquery'
-import { fullURL } from './Variables'
+import { fullURL } from './variables'
 
 $(document).ready(function() {
 	'use strict'
@@ -13,7 +13,7 @@ $(document).ready(function() {
 	 * Add 'target="_blank"' to all external links
 	 * @return string target=_blank attribute
 	 */
-	$('a').each(function() {
+	$(document.getElementByTagName('a')).each(function() {
 		$(this).attr('target', (this.href.match( fullURL )) ? '_self' :'_blank')
 	})
 
