@@ -45,8 +45,8 @@
 						'container_class' => 'collapse navbar-collapse',
 						'container_id' => 'main-nav',
 						'menu_class' => 'navbar-nav mr-auto',
-						'fallback_cb' => 'App\NavWalker::fallback',
-						'walker' => new Elexicon\NavWalker
+						'fallback_cb' => '\Elexicon\NavWalker::fallback',
+						'walker' => new \Elexicon\NavWalker
 					));
 				?>
 			</div>

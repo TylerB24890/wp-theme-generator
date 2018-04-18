@@ -39,9 +39,9 @@ if( !class_exists('Elexicon\Customizer') ) :
 		 * @return null
 		 */
 		public static function customize_preview_js() {
-			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), {%THEME_CLASS_NAMES%}::$theme_version, true );
+			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), \Elexicon\Helper::$theme_version, true );
 		}
 	}
 
-	new Elexicon\Customizer;
+	new \Elexicon\Customizer;
 endif;

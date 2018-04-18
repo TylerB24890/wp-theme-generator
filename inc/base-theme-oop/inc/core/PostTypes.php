@@ -19,23 +19,23 @@ if( !class_exists('Elexicon\PostTypes') ) :
 
 		public static function post_type_example() {
 			$labels = array(
-	         	'name'               => _x( 'Examples', 'post type general name', '{%THEME_PREFIX%}' ),
-	         	'singular_name'      => _x( 'Example', 'post type singular name', '{%THEME_PREFIX%}' ),
-	         	'add_new'            => _x( 'Add New', 'product', '{%THEME_PREFIX%}' ),
-	         	'add_new_item'       => __( 'Add New Example', '{%THEME_PREFIX%}' ),
-	         	'edit_item'          => __( 'Edit Example', '{%THEME_PREFIX%}' ),
-	         	'new_item'           => __( 'New Example', '{%THEME_PREFIX%}' ),
-	         	'all_items'          => __( 'All Examples', '{%THEME_PREFIX%}' ),
-	         	'view_item'          => __( 'View Example', '{%THEME_PREFIX%}' ),
-	         	'search_items'       => __( 'Search Examples', '{%THEME_PREFIX%}' ),
-	         	'not_found'          => __( 'No products or services found', '{%THEME_PREFIX%}' ),
-	         	'not_found_in_trash' => __( 'No products or services found in the Trash', '{%THEME_PREFIX%}' ),
+	         	'name'               => _x( 'Examples', 'post type general name', \Elexicon\Helper::$theme_prefix ),
+	         	'singular_name'      => _x( 'Example', 'post type singular name', \Elexicon\Helper::$theme_prefix ),
+	         	'add_new'            => _x( 'Add New', 'product', \Elexicon\Helper::$theme_prefix ),
+	         	'add_new_item'       => __( 'Add New Example', \Elexicon\Helper::$theme_prefix ),
+	         	'edit_item'          => __( 'Edit Example', \Elexicon\Helper::$theme_prefix ),
+	         	'new_item'           => __( 'New Example', \Elexicon\Helper::$theme_prefix ),
+	         	'all_items'          => __( 'All Examples', \Elexicon\Helper::$theme_prefix ),
+	         	'view_item'          => __( 'View Example', \Elexicon\Helper::$theme_prefix ),
+	         	'search_items'       => __( 'Search Examples', \Elexicon\Helper::$theme_prefix ),
+	         	'not_found'          => __( 'No products or services found', \Elexicon\Helper::$theme_prefix ),
+	         	'not_found_in_trash' => __( 'No products or services found in the Trash', \Elexicon\Helper::$theme_prefix ),
 	         	'parent_item_colon'  => '',
-	         	'menu_name'          => __('Examples', '{%THEME_PREFIX%}')
+	         	'menu_name'          => __('Examples', \Elexicon\Helper::$theme_prefix)
 	       	);
 	       	$args = array(
 	         	'labels'        => $labels,
-	         	'description'   => __('Holds our example specific data', '{%THEME_PREFIX%}'),
+	         	'description'   => __('Holds our example specific data', \Elexicon\Helper::$theme_prefix),
 	         	'public'        => true,
 	         	'menu_position' => 5,
 	         	'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes', 'revisions'),

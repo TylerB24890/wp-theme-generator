@@ -11,7 +11,7 @@ get_header(); ?>
 	<div class="container">
 		<div class="col-md-12">
 			<div class="row">
-				<h4><?php _e('404 Page Not Found', '{%THEME_PREFIX%}'); ?></h4>
+				<h4><?php _e('404 Page Not Found', \Elexicon\Helper::$theme_prefix); ?></h4>
 			</div>
 		</div>
 	</div><!-- .container -->

@@ -18,8 +18,8 @@ if( !class_exists('Elexicon\Pagination') ) :
         $defaults = array(
             'range'           => 4,
             'custom_query'    => FALSE,
-            'previous_string' => __( '<i class="fa fa-angle-left"></i>', '{%THEME_PREFIX%}' ),
-            'next_string'     => __( '<i class="fa fa-angle-right"></i>', '{%THEME_PREFIX%}' ),
+            'previous_string' => __( '<i class="fa fa-angle-left"></i>', \Elexicon\Helper::$theme_prefix ),
+            'next_string'     => __( '<i class="fa fa-angle-right"></i>', \Elexicon\Helper::$theme_prefix ),
             'before_output'   => '<div class="post-nav"><ul class="pager">',
             'after_output'    => '</ul></div>'
         );
@@ -64,10 +64,10 @@ if( !class_exists('Elexicon\Pagination') ) :
 
         $firstpage = esc_attr( get_pagenum_link(1) );
         if ( $firstpage && (1 != $page) )
-            $echo .= '<li class="previous"><a href="' . $firstpage . '">' . __( 'First', '{%THEME_PREFIX%}' ) . '</a></li>';
+            $echo .= '<li class="previous"><a href="' . $firstpage . '">' . __( 'First', \Elexicon\Helper::$theme_prefix ) . '</a></li>';
 
         if ( $previous && (1 != $page) )
-            $echo .= '<li><a href="' . $previous . '" title="' . __( 'previous', '{%THEME_PREFIX%}') . '">' . $args['previous_string'] . '</a></li>';
+            $echo .= '<li><a href="' . $previous . '" title="' . __( 'previous', \Elexicon\Helper::$theme_prefix) . '">' . $args['previous_string'] . '</a></li>';
 
         if ( !empty($min) && !empty($max) ) {
             for( $i = $min; $i <= $max; $i++ ) {
@@ -85,7 +85,7 @@ if( !class_exists('Elexicon\Pagination') ) :
 
     	// Only display 'First' link if NOT on the first page
         if ($next && ($count != $page) )
-            $echo .= '<li><a href="' . $next . '" title="' . __( 'next', '{%THEME_PREFIX%}') . '">' . $args['next_string'] . '</a></li>';
+            $echo .= '<li><a href="' . $next . '" title="' . __( 'next', \Elexicon\Helper::$theme_prefix) . '">' . $args['next_string'] . '</a></li>';
 
     	// Last page link
         $lastpage = esc_attr( get_pagenum_link($count) );
@@ -93,7 +93,7 @@ if( !class_exists('Elexicon\Pagination') ) :
     	// Only display 'Last' link if NOT on the last page
         if ( $lastpage ) {
         	if($count != $page) {
-        		$echo .= '<li class="next"><a href="' . $lastpage . '">' . __( 'Last', '{%THEME_PREFIX%}' ) . '</a></li>';
+        		$echo .= '<li class="next"><a href="' . $lastpage . '">' . __( 'Last', \Elexicon\Helper::$theme_prefix ) . '</a></li>';
         	}
         }
 

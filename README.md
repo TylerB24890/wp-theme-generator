@@ -1,15 +1,14 @@
-# Elexicon WP Theme Generator
+# [Elexicon Theme Generator](http://theme-generator.elexicon.com)
 
-Do you build custom WordPress themes regularly? Are you sick of running a find/replace on your entire project to make it unique to your client? Then this application is for you. Simply fill out the required fields and generate a very basic WordPress theme built on top of the Twitter Bootstrap framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will not include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
+Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
 
-## New in v2.0.0:
+## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
 * [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
 * Complete rewrite of core theme functionality
 
-You can generate your own theme by visiting http://theme-generator.elexicon.com
-
-## Installation:
+# Getting started
+## Installation
 * Head over to http://theme-generator.elexicon.com and fill out the form provided.
 * Unzip the downloaded file and copy it's contents over to your `/themes/` directory.
 * `cd` to the theme directory in your terminal.
@@ -49,7 +48,7 @@ You can generate your own theme by visiting http://theme-generator.elexicon.com
       app.js
       customizer.js
       grunt-settings.js
-      [themename].js
+      themename.js
       -Variables
         index.js
         Url.js
@@ -86,3 +85,40 @@ You can generate your own theme by visiting http://theme-generator.elexicon.com
   style.css
   webpack.config.js
 ```
+
+# Guide
+## Core Classes
+All Core Theme classes are setup under the `Elexicon` namespace. Classes contained within the `/inc/core/` directory are autoloaded using the Composer `PSR-4` autoloader. This means you can access core classes and methods like `Elexicon\NavWalker` which will give you access to the `NavWalker` class for the main navigation.
+
+The following are the available classes and methods available in the Theme Core.
+* `Elexicon\Customizer` - Core WP Customizer functionality
+* `Elexicon\Helper` - Helper functions for theme development
+  - `Elexicon\Helper::icongram_icon($lib, $icon, $size = 24, $color = 'FFFFFF', $echo = true)`
+
+  - `Elexicon\Helper::truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false)`
+
+  - `Elexicon\Helper::is_child( $parent = '' )`
+
+  - `Elexicon\Helper::get_subpages($id)`
+
+  - `Elexicon\Helper::remove_images($content = null)`
+
+  - `Elexicon\Helper::make_url_link($text)`
+
+  - `Elexicon\Helper::search_results_count()`
+
+  - `Elexicon\Helper::get_attachment_id_by_url( $url )`
+
+  - `Elexicon\Helper::get_file_size($file)`
+
+  - `Elexicon\Helper::get_svg_code($url)`
+
+* `Elexicon\NavWalker` - The WP Nav Walker extension to generate a Bootstrap 4.x navigation
+* `Elexicon\Pagination` - The pagination class to render Bootstrap 4.x pagination.
+* `Elexicon\PostTypes` - Theme post type registration (example provided in file)
+* `Elexicon\Taxonomies` - Theme taxonomy registration (example provided in file)
+* `Elexicon\ThemeInit` - Theme setup and configuration
+
+    - `Elexicon\ThemeInit::$theme_slug`
+    - `Elexicon\ThemeInit::$theme_version`
+    - `Elexicon\ThemeInit::$theme_prefix`

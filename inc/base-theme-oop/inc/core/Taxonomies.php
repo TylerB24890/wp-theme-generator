@@ -34,17 +34,17 @@ if( !class_exists('Elexicon\Taxonomies') ) :
 		        'hierarchical' => true,
 		        // This array of options controls the labels displayed in the WordPress Admin UI
 		        'labels' => array(
-		            'name' => _x( 'Taxonomy Name', 'taxonomy general name', '{%THEME_PREFIX%}'),
-		            'singular_name' => _x( 'Taxonomy Name', 'taxonomy singular name', '{%THEME_PREFIX%}'),
-		            'search_items' =>  __( 'Search Product & Services Categories', '{%THEME_PREFIX%}' ),
-		            'all_items' => __( 'All Product & Services Categories', '{%THEME_PREFIX%}' ),
-		            'parent_item' => __( 'Parent Taxonomy Name', '{%THEME_PREFIX%}' ),
-		            'parent_item_colon' => __( 'Parent Taxonomy Name:', '{%THEME_PREFIX%}' ),
-		            'edit_item' => __( 'Edit Taxonomy Name', '{%THEME_PREFIX%}' ),
-		            'update_item' => __( 'Update Taxonomy Name', '{%THEME_PREFIX%}' ),
-		            'add_new_item' => __( 'Add New Taxonomy Name', '{%THEME_PREFIX%}' ),
-		            'new_item_name' => __( 'New Taxonomy Name Name', '{%THEME_PREFIX%}' ),
-		            'menu_name' => __( 'Product & Service Categories', '{%THEME_PREFIX%}' ),
+		            'name' => _x( 'Taxonomy Name', 'taxonomy general name', \Elexicon\Helper::$theme_prefix),
+		            'singular_name' => _x( 'Taxonomy Name', 'taxonomy singular name', \Elexicon\Helper::$theme_prefix),
+		            'search_items' =>  __( 'Search Product & Services Categories', \Elexicon\Helper::$theme_prefix ),
+		            'all_items' => __( 'All Product & Services Categories', \Elexicon\Helper::$theme_prefix ),
+		            'parent_item' => __( 'Parent Taxonomy Name', \Elexicon\Helper::$theme_prefix ),
+		            'parent_item_colon' => __( 'Parent Taxonomy Name:', \Elexicon\Helper::$theme_prefix ),
+		            'edit_item' => __( 'Edit Taxonomy Name', \Elexicon\Helper::$theme_prefix ),
+		            'update_item' => __( 'Update Taxonomy Name', \Elexicon\Helper::$theme_prefix ),
+		            'add_new_item' => __( 'Add New Taxonomy Name', \Elexicon\Helper::$theme_prefix ),
+		            'new_item_name' => __( 'New Taxonomy Name Name', \Elexicon\Helper::$theme_prefix ),
+		            'menu_name' => __( 'Product & Service Categories', \Elexicon\Helper::$theme_prefix ),
 		        ),
 		        // Control the slugs used for this taxonomy
 		        'rewrite' => array(

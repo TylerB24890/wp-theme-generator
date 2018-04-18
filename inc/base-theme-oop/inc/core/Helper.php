@@ -13,9 +13,47 @@ if( !class_exists('Elexicon\Helper') ) :
 
 	class Helper {
 
-		public static $parts, $icons_url;
+		/**
+		 * The Global Theme Name
+		 * @var string
+		 */
+		public static $theme_name;
+
+		/**
+		 * Global theme slug
+		 * @var string
+		 */
+		public static $theme_slug;
+
+		/**
+		 * Global theme prefix
+		 * @var string
+		 */
+		public static $theme_prefix;
+
+		/**
+		 * Global theme version
+		 * @var string
+		 */
+		public static $theme_version;
+
+		/**
+		 * The Theme "template-parts" directory
+		 * @var string
+		 */
+		public static $parts;
+
+		/**
+		 * Icongr.am URL
+		 * @var string
+		 */
+		public static $icons_url;
 
 		public function __construct() {
+			self::$theme_name = '{%THEME_NAME%}';
+			self::$theme_slug = '{%THEME_SLUG%}';
+			self::$theme_prefix = '{%THEME_PREFIX%}';
+			self::$theme_version = '1.1.0';
 			self::$parts = 'template-parts/';
 			self::$icons_url = '//icongr.am/';
 		}
@@ -223,7 +261,7 @@ if( !class_exists('Elexicon\Helper') ) :
 		 * @param  string $file Directory to the file
 		 * @return string       Size of the file
 		 */
-		public static function get_file_size($file){
+		public static function get_file_size($file) {
 		  $bytes = filesize($file);
 		  $s = array('B', 'KB', 'MB', 'GB');
 		  $e = floor(log($bytes)/log(1024));
