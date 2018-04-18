@@ -7,12 +7,14 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CLASS_NAMES%}_Post_Types') ) :
+namespace Elexicon;
 
-	class {%THEME_CLASS_NAMES%}_Post_Types {
+if( !class_exists('Elexicon\PostTypes') ) :
+
+	class PostTypes {
 
 		public function __construct() {
-			//add_action( 'init', '{%THEME_CLASS_NAMES%}_Post_Types::post_type_example' );
+			//add_action( 'init', 'Elexicon\\PostTypes::post_type_example' );
 		}
 
 		public static function post_type_example() {
@@ -50,6 +52,4 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Post_Types') ) :
 			flush_rewrite_rules();
 		}
 	}
-
-	new {%THEME_CLASS_NAMES%}_Post_Types();
 endif;

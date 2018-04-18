@@ -7,15 +7,17 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CLASS_NAMES%}_Taxonomies') ) :
+namespace Elexicon;
 
-	class {%THEME_CLASS_NAMES%}_Taxonomies {
+if( !class_exists('Elexicon\Taxonomies') ) :
+
+	class Taxonomies {
 
 		/**
 		 * Initializes the custom taxonomies
 		 */
 		public function __construct() {
-			//add_action( 'init', '{%THEME_CLASS_NAMES%}_Taxonomies::taxonomies', 0 );
+			//add_action( 'init', 'Elexicon\\Taxonomies::taxonomies', 0 );
 		}
 
 		/**
@@ -55,6 +57,4 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Taxonomies') ) :
 			flush_rewrite_rules();
 		}
 	}
-
-	new {%THEME_CLASS_NAMES%}_Taxonomies();
 endif;

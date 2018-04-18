@@ -12,15 +12,17 @@
   * License: GPL-2.0+
   * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
   */
- 
+
+namespace Elexicon;
+
 /* Check if Class Exists. */
-if ( ! class_exists( '{%THEME_CLASS_NAMES%}_Navwalker' ) ) {
+if ( ! class_exists( 'Elexicon\NavWalker' ) ) {
 	/**
 	 * WP_Bootstrap_Navwalker class.
 	 *
 	 * @extends Walker_Nav_Menu
 	 */
-	class {%THEME_CLASS_NAMES%}_Navwalker extends Walker_Nav_Menu {
+	class NavWalker extends \Walker_Nav_Menu {
 
 		/**
 		 * Starts the list before the elements are added.

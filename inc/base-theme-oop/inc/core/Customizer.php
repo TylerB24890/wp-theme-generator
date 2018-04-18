@@ -7,16 +7,18 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CLASS_NAMES%}_Customizer') ) :
+namespace Elexicon;
 
-	class {%THEME_CLASS_NAMES%}_Customizer {
+if( !class_exists('Elexicon\Customizer') ) :
+
+	class Customizer {
 
 		/**
 		 * Initializes the theme customizer functions
 		 */
 		public function __construct() {
-			add_action( 'customize_register', '{%THEME_CLASS_NAMES%}_Customizer::customize_register' );
-			add_action( 'customize_preview_init', '{%THEME_CLASS_NAMES%}_Customizer::customize_preview_js' );
+			add_action( 'customize_register', 'Elexicon\\Customizer::customize_register' );
+			add_action( 'customize_preview_init', 'Elexicon\\Customizer::customize_preview_js' );
 		}
 
 		/**
@@ -41,5 +43,5 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Customizer') ) :
 		}
 	}
 
-	new {%THEME_CLASS_NAMES%}_Customizer();
+	new Elexicon\Customizer;
 endif;

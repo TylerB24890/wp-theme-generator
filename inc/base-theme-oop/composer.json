@@ -1,0 +1,15 @@
+{
+    "name": "{%THEME_PREFIX%}/{%THEME_SLUG%}",
+    "description": "{%THEME_DESCRIPTION%}",
+    "type": "project",
+    "license": "MIT",
+    "keywords": ["wordpress"],
+    "require": {
+      "php": ">=5.4"
+    },
+    "autoload": {
+      "psr-4": {
+        "Elexicon\\": "inc/core/"
+      }
+    }
+}

@@ -7,9 +7,11 @@
  * @version 1.0.0
  */
 
-if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
+namespace Elexicon;
 
-	class {%THEME_CLASS_NAMES%}_Helper {
+if( !class_exists('Elexicon\Helper') ) :
+
+	class Helper {
 
 		public static $parts, $icons_url;
 
@@ -238,6 +240,4 @@ if( !class_exists('{%THEME_CLASS_NAMES%}_Helper') ) :
 		  return $svg_code;
 		}
 	}
-
-	new {%THEME_CLASS_NAMES%}_Helper();
 endif;
