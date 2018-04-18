@@ -8,6 +8,10 @@
                 Generate a <i>very basic</i> WordPress theme built on top of the <a href="http://getbootstrap.com/">Twitter Bootstrap</a> framework. The generated theme will include a robust package.json file with a preconfigured Gruntfile for preprocessing SCSS and other helpful functions, as well as a few useful PHP snippets. The theme will <b>not</b> include any prebuilt templates or pages, but rather give you the starting point to do so yourself.
              </p>
 
+             <p style="margin-bottom: 15px;">
+               <a href="/docs/">Read the documentation!</a>
+             </p>
+
              <p style="margin-bottom: 30px;">
                 If you would like to browse the theme source code or contribute to the project, feel free to do so over at <a href="https://github.com/TylerB24890/wp-theme-generator">GitHub!</a>
               </p>
