@@ -2,6 +2,8 @@
 
 Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
 
+Want to see the generated theme code? [View the repo](https://github.com/TylerB24890/elexicon-base).
+
 ## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
 * [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
@@ -320,3 +322,13 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 ## Deploying
 
   When you are ready to deploy, run the command `npm run-script build` to compile your files for production then copy all of your theme files (**except the `/src/` & `/node_modules/` directories**) to your target server.
+
+# Showcase
+
+  Check out some of the great projects built on top of this base theme!
+
+  * [Spectrum Health | Health Beat](https://healthbeat.spectrumhealth.org)
+  * [Terryberry](https://terryberry.com)
+  * [Progressive AE](http://www.progressiveae.com)
+  * [GroundWork IT Solutions](https://www.gwos.com/)
+  * [Blackbaud TideTurners](https://tideturners.blackbaud.com/)

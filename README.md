@@ -2,7 +2,7 @@
 
 Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started. For full documentation visit http://theme-generator.elexicon.com/docs/
 
-#### Note: - This is NOT the theme. Please visit the [generator](http://theme-generator.elexicon.com) to get yourself a copy. 
+#### Note: - This is NOT the theme. Please visit the [generator](http://theme-generator.elexicon.com) to get yourself a copy.
 
 ## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
@@ -37,3 +37,5 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
   * Note you will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching.
 
 ### [Full Documentation](http://theme-generator.elexicon.com/docs/)
+
+### [Example Theme](https://github.com/TylerB24890/elexicon-base)
