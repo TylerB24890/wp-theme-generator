@@ -16,7 +16,7 @@ get_header(); ?>
 			<?php if(have_posts()) : ?>
 				<?php while(have_posts()) : the_post(); ?>
 
-					<?php get_template_part( \Elexicon\Helper::$parts . 'post', 'list' ); ?>
+					<?php \Elexicon\Helper::get_partial('post-list'); ?>
 
 				<?php endwhile; ?>
 			<?php else : ?>

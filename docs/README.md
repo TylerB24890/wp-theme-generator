@@ -192,16 +192,24 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   <br/>
   <br/>
 
+  - `::get_partial($dir)`
 
-  - `::truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false)`
+    Get a template part within the theme. Works very similar to WordPress's built in `get_template_part()` function but with less parameters and easier management. In WordPress's `get_template_part()` function you cannot pass variables such as `$exclude`. `::get_partial()` will allow you to do so.
+
+    - `$dir` - Can be the filename **with or without** the extension **or** the path to the file within the `/template-parts/` directory.
+
+    **Usage:** `\Elexicon\Helper::get_partial('single/content')` Will pull the file `/template-parts/single/content.php`
+  <br/>
+  <br/>
+
+  - `::truncate($string, $limit, $break=".", $pad="...")`
 
     Truncate a string
 
     - `$string (string)` The string to truncate
-    - `$length (int)` The number of characters to truncate the string down to
-    - `$etc (string)` What to put at the end of the truncated string to indicate more text
-    - `$break_words (bool)` Whether or not you want to cut a word off in the middle
-    - `$middle (bool)` A fall back for `$break_words` (you must set both options to true if you want to break a word in the middle.)
+    - `$limit (int)` The number of words to break down to.
+    - `$break (string)` What character to end the break at. (default is a period.)
+    - `$pad (bool)` What to put at the end of the string
 
     **Usage:** `\Elexicon\Helper::truncate(get_the_excerpt(), 120)`
   <br/>

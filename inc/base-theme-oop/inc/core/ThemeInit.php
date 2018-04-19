@@ -21,11 +21,18 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		 * Configures theme with WP
 		 */
 		public function __construct() {
+			$this->setup_theme();
+			$this->register_theme_menus();
+		}
 
+		/**
+		 * Hook into the WP actions to register the theme
+		 */
+		private function setup_theme() {
 			add_action( 'after_setup_theme', array($this, 'theme_init') );
 			add_action( 'wp_enqueue_scripts', array($this, 'enqueue_files') );
-			$this->register_theme_menus();
-			new \Elexicon\Customizer;
+			add_action( 'customize_register', 'Elexicon\\Customizer::customize_register' );
+			add_action( 'customize_preview_init', 'Elexicon\\Customizer::customize_preview_js' );
 		}
 
 		/**

@@ -1,0 +1,1 @@
+export { parallax } from './parallax'

@@ -75,32 +75,37 @@ if( !class_exists('Elexicon\Helper') ) :
 		}
 
 		/**
-		 * Truncates string to specified length.
-		 *
-		 * @param string $string string to truncate
-		 * @param int $length length to cut string
-		 * @param string $etc what to place after the string
-		 * @param bool $break_words break words?
-		 * @param bool $middle middle of sentence?
-		 * @return string
+		 * Truncate a string of text
+		 * @param  string $string The string to truncate
+		 * @param  int $limit	How many words are allowed in the string?
+		 * @param  string $break  Character to break the string at
+		 * @param  string $pad    Characters to place at the end of the string after chopped
+		 * @return string        	The truncated string
 		 */
-		public static function truncate($string, $length = 80, $etc = '&#133;', $break_words = false, $middle = false) {
-		    if ($length == 0)
-		        return '';
+		public static function truncate($string, $limit, $break=".", $pad="...") {
+		  	// return with no change if string is shorter than $limit
+		  	if(strlen($string) <= $limit) return $string;
 
-		    if (strlen($string) > $length) {
-		        $length -= min($length, strlen($etc));
-		        if (!$break_words && !$middle) {
-		            $string = preg_replace('/\s+?(\S+)?$/', '', substr($string, 0, $length+1));
-		        }
-		        if(!$middle) {
-		            return substr($string, 0, $length) . $etc;
-		        } else {
-		            return substr($string, 0, $length/2) . $etc . substr($string, -$length/2);
-		        }
-		    } else {
-		        return $string;
-		    }
+		  	// is $break present between $limit and the end of the string?
+		  	if(false !== ($breakpoint = strpos($string, $break, $limit))) {
+		    	if($breakpoint < strlen($string) - 1) {
+					$string = substr($string, 0, $breakpoint) . $pad;
+				}
+			}
+
+			return $string;
+		}
+
+		/**
+		 * Get a Template Part
+		 * @param  string $dir File name or path to file
+		 * @return null
+		 */
+		public static function get_partial($dir) {
+			if(strpos('.php', $dir) !== false) {
+				$dir = preg_replace("/(.+)\.php$/", "$1", $dir);
+			}
+			locate_template(self::$parts . $dir . '.php', true, false);
 		}
 
 		/**
@@ -182,21 +187,19 @@ if( !class_exists('Elexicon\Helper') ) :
 		 * @param  string $text Link text to parse
 		 * @return string       Clickable link markup
 		 */
-		public static function make_url_link($text) {
-		  // The Regular Expression filter
-		  $regex_url = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+		public static function make_url_link($message) {
+			//Convert all urls to links
+	    $message = preg_replace('#([\s|^])(www)#i', '$1http://$2', $message);
+	    $pattern = '#((http|https|ftp|telnet|news|gopher|file|wais):\/\/[^\s]+)#i';
+	    $replacement = '<a href="$1" target="_blank">$1</a>';
+	    $message = preg_replace($pattern, $replacement, $message);
 
-		  // Check if there is a url in the text
-		  if(preg_match($regex_url, $text, $url)) {
-		    // make the urls hyper links
-		    return preg_replace($regex_url, "<a target='_blank' href=" . $url[0] . ">" . $url[0] . "</a> ", $text);
-
-		  } else {
-
-		    // if no urls in the text just return the text
-		    return $text;
-
-		  }
+	    /* Convert all E-mail matches to appropriate HTML links */
+	    $pattern = '#([0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.';
+	    $pattern .= '[a-wyz][a-z](fo|g|l|m|mes|o|op|pa|ro|seum|t|u|v|z)?)#i';
+	    $replacement = '<a href="mailto:\\1">\\1</a>';
+	    $message = preg_replace($pattern, $replacement, $message);
+	    return $message;
 		}
 
 		/**
