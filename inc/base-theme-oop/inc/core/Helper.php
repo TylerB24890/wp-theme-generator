@@ -278,4 +278,6 @@ if( !class_exists('Elexicon\Helper') ) :
 		  return $svg_code;
 		}
 	}
+
+	new \Elexicon\Helper;
 endif;

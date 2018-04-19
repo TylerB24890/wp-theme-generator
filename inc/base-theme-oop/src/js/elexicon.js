@@ -13,7 +13,7 @@ $(document).ready(function() {
 	 * Add 'target="_blank"' to all external links
 	 * @return string target=_blank attribute
 	 */
-	$(document.getElementByTagName('a')).each(function() {
+	$(document.getElementsByTagName('a')).each(function() {
 		$(this).attr('target', (this.href.match( fullURL )) ? '_self' :'_blank')
 	})
 

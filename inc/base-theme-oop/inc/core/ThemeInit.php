@@ -142,6 +142,7 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		    \Elexicon\Helper::$theme_slug . '-js',
 		    \Elexicon\Helper::$theme_prefix,
 		    array(
+					'ajaxnonce' => wp_create_nonce('ajax-nonce'),
 		      'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		      'isMobile' => (wp_is_mobile() ? true : false),
 		      'curPage' => $cur_page,
