@@ -9,6 +9,8 @@
 
 namespace Elexicon;
 
+use \Elexicon\ShareCount\Counts;
+
 if( !class_exists('\Elexicon\Shortcodes') ) :
 
 	class Shortcodes {
@@ -16,6 +18,7 @@ if( !class_exists('\Elexicon\Shortcodes') ) :
     public function register_shortcodes() {
       add_shortcode('mailto', array($this, 'encode_email'));
       add_shortcode('iframe', array($this, 'iframe_shortcode'));
+			add_shortcode('sharecount', array($this, 'sharecount_shortcode'));
     }
 
     /**
@@ -66,5 +69,22 @@ if( !class_exists('\Elexicon\Shortcodes') ) :
 
       return $html;
     }
+
+		/**
+     * Render a responsive iframe from a link
+     * @param  array $atts   Shortcode attributes
+     * @return string        HTML Markup for iframe
+     *
+     * Usage: [sharecount] || [sharecount url="https://theurlhere.com"]
+     */
+		public function sharecount_shortcode($atts) {
+			$atts = shortcode_atts(array(
+				"url" => get_the_permalink()
+			), $atts, 'sharecount');
+
+			$counts = new Counts();
+
+			return $counts->total_shares($atts['url']);
+		}
 	}
 endif;
