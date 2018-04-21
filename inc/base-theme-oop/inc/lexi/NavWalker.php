@@ -13,10 +13,10 @@
   * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
   */
 
-namespace Elexicon;
+namespace Lexi\Core;
 
 /* Check if Class Exists. */
-if ( ! class_exists( 'Elexicon\NavWalker' ) ) {
+if ( ! class_exists( 'Lexi\Core\NavWalker' ) ) {
 	/**
 	 * WP_Bootstrap_Navwalker class.
 	 *

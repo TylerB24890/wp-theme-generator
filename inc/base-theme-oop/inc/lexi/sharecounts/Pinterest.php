@@ -7,9 +7,11 @@
  * @version 1.0.0
  */
 
-namespace Elexicon\ShareCount;
+namespace Lexi\ShareCount;
 
-if( !class_exists('\Elexicon\ShareCount\Pinterest') ) :
+use \Lexi\Core\Helper;
+
+if( !class_exists('\Lexi\ShareCount\Pinterest') ) :
 
 	class Pinterest {
 
@@ -27,7 +29,7 @@ if( !class_exists('\Elexicon\ShareCount\Pinterest') ) :
 		 * Get number of shares on pinterest
 		 */
 		private function get_pinterest_counts() {
-      $return_data = \Elexicon\Helper::curl_request('http://api.pinterest.com/v1/urls/count.json?url='.$this->url);
+      $return_data = Helper::curl_request('http://api.pinterest.com/v1/urls/count.json?url='.$this->url);
 
 			if($return_data === false || isset($return_data['error'])) return 0;
 

@@ -16,12 +16,12 @@ get_header(); ?>
 			<?php if(have_posts()) : ?>
 				<?php while(have_posts()) : the_post(); ?>
 
-					<?php \Elexicon\Helper::get_partial('post-list'); ?>
+					<?php \Lexi\Core\Helper::get_partial('post-list'); ?>
 
 				<?php endwhile; ?>
 			<?php else : ?>
 
-				<h4><?php _e('No posts found!', \Elexicon\Helper::$theme_prefix); ?></h4>
+				<h4><?php _e('No posts found!', \Lexi\Core\Helper::$theme_prefix); ?></h4>
 
 			<?php endif; ?>
 

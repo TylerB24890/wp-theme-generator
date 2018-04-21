@@ -1,6 +1,6 @@
-# [Elexicon Theme Generator](http://theme-generator.elexicon.com)
+# [Lexi Theme Generator](http://theme-generator.elexicon.com)
 
-Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
+Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator **(Lexi)** aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
 
 Want to see the generated theme code? [View the repo](https://github.com/TylerB24890/elexicon-base).
 
@@ -50,7 +50,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     index.php    
   -inc
     index.php
-    -core
+    -lexi
       Customizer.php
       Helper.php
       index.php
@@ -59,7 +59,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       PostTypes.php
       Taxonomies.php
       ThemeInit.php
-      -ShareCount
+      -sharecounts
         -Counts.php
         -Facebook.php
         -LinkedIn.php
@@ -76,6 +76,9 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       -variables
         index.js
         url.js
+      -functions
+        index.js
+        parallax.js
     -scss
       _animated-hamburger.scss
       _bootstrap-overrides.scss
@@ -157,18 +160,20 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
 
+  - `/functions/` Place all _shared_ JS functions here. See the `/functions/parallax.js` file for usage.
+
 ## Core Classes
-  All Core Theme classes are setup under the `Elexicon` namespace. Classes contained within the `/inc/core/` directory are autoloaded using the Composer `PSR-4` autoloader. This means you can access core classes and methods like `\Elexicon\NavWalker` which will give you access to the `NavWalker` class for the main navigation.
+  All Core Theme classes are setup under the `Lexi` namespace. Classes contained within the `/inc/lexi/` directory are autoloaded using the Composer `PSR-4` autoloader. This means you can access core classes and methods like `\Lexi\Core\NavWalker` which will give you access to the `NavWalker` class for the main navigation.
 
-### `\Elexicon\Customizer`
-  The Customizer class is an extension of the [WordPress Customizer API](https://developer.wordpress.org/themes/customize-api/). Put all of your custom theme "Customizer" code within this class. It is instantiated in the `__construct()` function of the `\Elexicon\ThemeInit` class.
+### `\Lexi\Core\Customizer`
+  The Customizer class is an extension of the [WordPress Customizer API](https://developer.wordpress.org/themes/customize-api/). Put all of your custom theme "Customizer" code within this class. It is instantiated in the `__construct()` function of the `\Lexi\Core\ThemeInit` class.
 
-### `\Elexicon\Helper`
+### `\Lexi\Core\Helper`
   The Helper class is a collection of useful static PHP functions that can be accessed throughout the theme.
 
 #### Variables
 
-  All theme variables can be accessed in the following structure: `\Elexicon\Helper::$variable_name`
+  All theme variables can be accessed in the following structure: `\Lexi\Core\Helper::$variable_name`
 
   - `::$theme_name` - Global Theme Name
 
@@ -180,7 +185,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   - `::$parts` - Quick access to the `/template-parts/` directory.
 
-    **Usage:** `get_template_directory(\Elexicon\Helper::$parts . 'post', 'list');`
+    **Usage:** `get_template_directory(\Lexi\Core\Helper::$parts . 'post', 'list');`
 
   - `::$icons_url` - The Icongr.am URL
 
@@ -194,7 +199,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     - `$color (string)` The color of the icon
     - `$echo (bool)` Echo the icon markup into the page.
 
-    **Usage:** `\Elexicon\Helper::icongram_icon('clarity', 'home', 24, '000000');`
+    **Usage:** `\Lexi\Core\Helper::icongram_icon('clarity', 'home', 24, '000000');`
   <br/>
   <br/>
 
@@ -204,7 +209,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$dir` - Can be the filename **with or without** the extension **or** the path to the file within the `/template-parts/` directory.
 
-    **Usage:** `\Elexicon\Helper::get_partial('single/content')` Will pull the file `/template-parts/single/content.php`
+    **Usage:** `\Lexi\Core\Helper::get_partial('single/content')` Will pull the file `/template-parts/single/content.php`
   <br/>
   <br/>
 
@@ -217,7 +222,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     - `$break (string)` What character to end the break at. (default is a period.)
     - `$pad (bool)` What to put at the end of the string
 
-    **Usage:** `\Elexicon\Helper::truncate(get_the_excerpt(), 120)`
+    **Usage:** `\Lexi\Core\Helper::truncate(get_the_excerpt(), 120)`
   <br/>
   <br/>
 
@@ -228,7 +233,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$parent (int)` The ID of the post or page to check.
 
-    **Usage:** `\Elexicon\Helper::is_child($post->ID);`
+    **Usage:** `\Lexi\Core\Helper::is_child($post->ID);`
   <br/>
   <br/>
 
@@ -238,7 +243,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$id (int)` The ID of the page to retrieve the children for
 
-    **Usage:** `\Elexicon\Helper::get_subpages($post->ID)`
+    **Usage:** `\Lexi\Core\Helper::get_subpages($post->ID)`
   <br/>
   <br/>
 
@@ -248,7 +253,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$content (string)` The content to strip all `<img>` tags from. Will default to the current post content if `$content` is `null`
 
-    **Usage:** `\Elexicon\Helper::remove_images(get_the_content())`
+    **Usage:** `\Lexi\Core\Helper::remove_images(get_the_content())`
   <br/>
   <br/>
 
@@ -258,7 +263,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$text (string)` The text to parse and "linkify"
 
-    **Usage:** `\Elexicon\Helper::make_url_link(get_the_content())`
+    **Usage:** `\Lexi\Core\Helper::make_url_link(get_the_content())`
   <br/>
   <br/>
 
@@ -274,7 +279,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$url (string)` The URL of the media attachment
 
-    **Usage:** `\Elexicon\Helper::get_attachment_id_by_url(get_the_post_thumbnail_url());`
+    **Usage:** `\Lexi\Core\Helper::get_attachment_id_by_url(get_the_post_thumbnail_url());`
   <br/>
   <br/>
 
@@ -284,7 +289,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     - `$file (string)` The path to the file
 
-    **Usage:** `$file_size = \Elexicon\Helper::get_file_size(get_template_directory() . '/img/logo.png');`
+    **Usage:** `$file_size = \Lexi\Core\Helper::get_file_size(get_template_directory() . '/img/logo.png');`
   <br/>
   <br/>
 
@@ -292,16 +297,16 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     Google Chrome (and other browsers) don't render `.svg` images very consistently. This function will get the SVG code of your .svg image to fix these little quirks.
 
-    **Usage:** `echo \Elexicon\Helper::get_svg_code(get_template_directory_uri() . '/img/logo.svg');`
+    **Usage:** `echo \Lexi\Core\Helper::get_svg_code(get_template_directory_uri() . '/img/logo.svg');`
   <br/>
   <br/>
   - `::curl_request($url)`
 
     Your standard cURL request
 
-    **Usage:** `$res = \Elexicont\Helper::curl_request($api_url);`
+    **Usage:** `$res = \Lexi\Core\Helper::curl_request($api_url);`
 
-### `\Elexicon\NavWalker`
+### `\Lexi\Core\NavWalker`
 
   The Boostrap Nav Walker for WordPress Navigation.
 
@@ -315,52 +320,54 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     'container_class' => 'collapse navbar-collapse',
     'container_id' => 'main-nav',
     'menu_class' => 'navbar-nav mr-auto',
-    'fallback_cb' => '\Elexicon\NavWalker::fallback',
-    'walker' => new \Elexicon\NavWalker
+    'fallback_cb' => '\Lexi\Core\NavWalker::fallback',
+    'walker' => new \Lexi\Core\NavWalker
   ));
   ```
 
-### `\Elexicon\Shortcodes`
+### `\Lexi\Core\Shortcodes`
 
-#### `[mailto]`
+  Registers theme shortcodes.
+
+### `\Lexi\Core\Pagination`
+
+  The Bootstrap Pagination
+
+  **Usage:** `\Lexi\Core\Pagination::render_pagination()`
+
+### `\Lexi\Core\PostTypes`
+
+  Register custom post types with WordPress. See the `/inc/lexi/PostTypes.php` file for an example.
+
+### `\Lexi\Core\Taxonomies`
+
+  Register custom post types with WordPress. See the `/inc/lexi/Taxonomies.php` file for an example.
+
+### `\Lexi\Core\ThemeInit`
+
+  Initiates the theme and configures it with WordPress. Standard `functions.php` functionality in here.
+
+## Shortcodes
+
+### `[mailto]`
 
   Encodes the an email address and spits out an `<a href="mailto:[encoded-email-here]">Text</a>`
 
   **Usage:** `[mailto email="awesometheme@gmail.com"]Email Us![/mailto]`
 
-#### `[iframe]`
+### `[iframe]`
 
   Renders a responsive iframe with Bootstrap 4's responsive embed feature
 
   **Usage:** `[iframe url="http://www.elexicon.com"]`
 
-#### `[sharecount]`
+### `[sharecount]`
 
   Queries Facebook, LinkedIn & Pinterest and gets the share count for the supplied URL (or current post/page)
 
   **Usage:**
   <br />`[sharecount echo]` - Will echo the current post share counts
   <br />`[sharecount url="https://theurlhere.com"]` - Will return the share count for ANY url provided
-
-
-### `\Elexicon\Pagination`
-
-  The Bootstrap Pagination
-
-  **Usage:** `\Elexicon\Pagination::render_pagination()`
-
-### `\Elexicon\PostTypes`
-
-  Register custom post types with WordPress. See the `/inc/core/PostTypes.php` file for an example.
-
-### `\Elexicon\Taxonomies`
-
-  Register custom post types with WordPress. See the `/inc/core/Taxonomies.php` file for an example.
-
-### `\Elexicon\ThemeInit`
-
-  Initiates the theme and configures it with WordPress. Standard `functions.php` functionality in here.
-
 
 ## Deploying
 

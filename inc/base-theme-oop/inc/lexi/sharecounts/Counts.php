@@ -7,13 +7,13 @@
  * @version 1.0.0
  */
 
-namespace Elexicon\ShareCount;
+namespace Lexi\ShareCount;
 
-use \Elexicon\ShareCount\LinkedIn;
-use \Elexicon\ShareCount\Facebook;
-use \Elexicon\ShareCount\Pinterest;
+use \Lexi\ShareCount\LinkedIn;
+use \Lexi\ShareCount\Facebook;
+use \Lexi\ShareCount\Pinterest;
 
-if( !class_exists('\Elexicon\ShareCount\Counts') ) :
+if( !class_exists('\Lexi\ShareCount\Counts') ) :
 
 	class Counts {
 
@@ -96,6 +96,6 @@ if( !class_exists('\Elexicon\ShareCount\Counts') ) :
 		}
 	}
 
-  new \Elexicon\ShareCount\Counts;
+  new \Lexi\ShareCount\Counts;
 
 endif;

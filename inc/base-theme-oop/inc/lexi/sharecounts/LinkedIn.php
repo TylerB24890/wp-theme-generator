@@ -7,9 +7,11 @@
  * @version 1.0.0
  */
 
-namespace Elexicon\ShareCount;
+namespace Lexi\ShareCount;
 
-if( !class_exists('\Elexicon\ShareCount\LinkedIn') ) :
+use \Lexi\Core\Helper;
+
+if( !class_exists('\Lexi\ShareCount\LinkedIn') ) :
 
 	class LinkedIn {
 
@@ -28,7 +30,7 @@ if( !class_exists('\Elexicon\ShareCount\LinkedIn') ) :
 		 */
 		private function get_linkedin_counts() {
 
-			$json_string = \Elexicon\Helper::curl_request('http://www.linkedin.com/countserv/count/share?url=' . $this->url . '&format=json');
+			$json_string = Helper::curl_request('http://www.linkedin.com/countserv/count/share?url=' . $this->url . '&format=json');
 
 			if($json_string === false || isset($json_string['error'])) return 0;
 

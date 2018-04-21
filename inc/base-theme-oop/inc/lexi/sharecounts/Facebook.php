@@ -7,9 +7,11 @@
  * @version 1.0.0
  */
 
-namespace Elexicon\ShareCount;
+namespace Lexi\ShareCount;
 
-if( !class_exists('\Elexicon\ShareCount\Facebook') ) :
+use \Lexi\Core\Helper;
+
+if( !class_exists('\Lexi\ShareCount\Facebook') ) :
 
 	class Facebook {
 
@@ -28,7 +30,7 @@ if( !class_exists('\Elexicon\ShareCount\Facebook') ) :
 		 */
 		private function get_facebook_counts() {
 
-			$json_request = \Elexicon\Helper::curl_request('http://graph.facebook.com/?id=' . $this->url);
+			$json_request = Helper::curl_request('http://graph.facebook.com/?id=' . $this->url);
 
       $json_string = json_decode($json_request, true);
 

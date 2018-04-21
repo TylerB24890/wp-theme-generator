@@ -7,11 +7,11 @@
  * @version 1.0.0
  */
 
-namespace Elexicon;
+namespace Lexi\Core;
 
-use \Elexicon\ShareCount\Counts;
+use \Lexi\ShareCount\Counts;
 
-if( !class_exists('\Elexicon\Shortcodes') ) :
+if( !class_exists('\Lexi\Core\Shortcodes') ) :
 
 	class Shortcodes {
 

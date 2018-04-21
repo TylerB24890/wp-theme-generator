@@ -14,34 +14,34 @@ if(isset($_POST['submit_theme'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elexicon | Theme Generator</title>
+    <title>Lexi | Theme Generator</title>
 
-    <meta name="description" content="A simple WordPress theme generator based on the Twitter Bootstrap framework.">
+    <meta name="description" content="An advanced WordPress Theme based on the Twitter Bootstrap framework.">
 
     <meta property="og:url" content="http://theme-generator.elexicon.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="elexicon | WordPress Theme Generator" />
-    <meta property="og:description" content="A basic WordPress theme generator for starter themes." />
+    <meta property="og:title" content="Lexi | Theme Generator" />
+    <meta property="og:description" content="An advanced WordPress Theme based on the Twitter Bootstrap framework." />
     <meta property="og:image" content="http://theme-generator.elexicon.com/images/elexicon_bug.jpg" />
 
     <!-- Open Graph -->
-	<meta property="og:title" content="elexicon | WordPress Theme Generator"/>
-	<meta property="og:description" content="A basic WordPress theme generator for starter themes." />
+	<meta property="og:title" content="Lexi | Theme Generator"/>
+	<meta property="og:description" content="An advanced WordPress Theme based on the Twitter Bootstrap framework." />
    	<meta property="og:type" content="website"/>
    	<meta property="og:url" content="http://theme-generator.elexicon.com/"/>
-   	<meta property="og:site_name" content="elexicon | WordPress Theme Generator"/>
+   	<meta property="og:site_name" content="Lexi | Theme Generator"/>
    	<meta property="og:image" content="http://theme-generator.elexicon.com/images/elexicon_bug.jpg" />
 
    	<!-- Schema.org markup for Google+ -->
-	<meta itemprop="name" content="elexicon | WordPress Theme Generator">
-	<meta itemprop="description" content="A basic WordPress theme generator for starter themes.">
+	<meta itemprop="name" content="Lexi | Theme Generator">
+	<meta itemprop="description" content="An advanced WordPress Theme based on the Twitter Bootstrap framework.">
 	<meta itemprop="image" content="http://theme-generator.elexicon.com/images/elexicon_bug.jpg">
 
 	<!-- Twitter Card data -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@MakeThingsClear">
-	<meta name="twitter:title" content="elexicon | WordPress Theme Generator">
-	<meta name="twitter:description" content="A basic WordPress theme generator for starter themes.">
+	<meta name="twitter:title" content="Lexi | Theme Generator">
+	<meta name="twitter:description" content="An advanced WordPress Theme based on the Twitter Bootstrap framework.">
 	<meta name="twitter:creator" content="@TyBailey23">
 	<meta name="twitter:image:src" content="http://theme-generator.elexicon.com/images/elexicon_bug.jpg">
 

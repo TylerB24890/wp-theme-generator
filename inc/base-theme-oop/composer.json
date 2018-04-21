@@ -4,13 +4,20 @@
     "type": "project",
     "license": "MIT",
     "keywords": ["wordpress"],
+    "authors": [
+      {
+        "name": "Tyler Bailey",
+        "email": "tylerb.media@gmail.com",
+        "homepage": "https://www.tylerb.me"
+      }
+    ],
     "require": {
       "php": ">=5.4"
     },
     "autoload": {
       "psr-4": {
-        "Elexicon\\": "inc/core/",
-        "Elexicon\\ShareCount\\": "inc/core/ShareCount/"
+        "Lexi\\Core\\": "inc/lexi/",
+        "Lexi\\ShareCount\\": "inc/lexi/sharecounts/"
       }
     }
 }

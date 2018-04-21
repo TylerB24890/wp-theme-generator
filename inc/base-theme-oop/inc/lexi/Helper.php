@@ -7,9 +7,9 @@
  * @version 1.0.0
  */
 
-namespace Elexicon;
+namespace Lexi\Core;
 
-if( !class_exists('Elexicon\Helper') ) :
+if( !class_exists('Lexi\Core\Helper') ) :
 
 	class Helper {
 
@@ -312,5 +312,5 @@ if( !class_exists('Elexicon\Helper') ) :
 		}
 	}
 
-	new \Elexicon\Helper;
+	new \Lexi\Core\Helper;
 endif;

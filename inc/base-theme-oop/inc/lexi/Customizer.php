@@ -7,9 +7,9 @@
  * @version 1.0.0
  */
 
-namespace Elexicon;
+namespace Lexi\Core;
 
-if( !class_exists('Elexicon\Customizer') ) :
+if( !class_exists('Lexi\Core\Customizer') ) :
 
 	class Customizer {
 
@@ -31,7 +31,7 @@ if( !class_exists('Elexicon\Customizer') ) :
 		 * @return null
 		 */
 		public static function customize_preview_js() {
-			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/dist/js/customizer.js', array( 'customize-preview' ), \Elexicon\Helper::$theme_version, true );
+			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/dist/js/customizer.js', array( 'customize-preview' ), \Lexi\Helper::$theme_version, true );
 		}
 	}
 endif;
