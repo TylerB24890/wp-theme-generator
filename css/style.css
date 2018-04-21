@@ -1963,6 +1963,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 750px; }
 
+.container-fluid {
+  max-width: 1440px;
+  width: 100%; }
+
 a {
   text-decoration: none;
   border-bottom: 1px dotted #FFF;
@@ -1970,6 +1974,24 @@ a {
   a:hover {
     text-decoration: none;
     border-bottom-color: #ec9e3f; }
+
+.splash {
+  height: 100vh;
+  display: flex;
+  align-items: center; }
+  .splash a.logo {
+    text-decoration: none;
+    border-bottom: 0;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 100%; }
+    .splash a.logo img {
+      max-width: 50%; }
+  .splash h1 {
+    font-size: 64px;
+    margin: 0 0 50px;
+    line-height: 1;
+    padding-left: 15px; }
 
 header {
   margin: 30px 0; }

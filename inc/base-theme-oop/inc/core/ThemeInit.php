@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {%THEME_NAME%} Theme initialization class
+ * beercode Theme initialization class
  *
  * Initial theme setup and functions
  *
@@ -21,18 +21,28 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		 * Configures theme with WP
 		 */
 		public function __construct() {
+
 			$this->setup_theme();
 			$this->register_theme_menus();
+			$this->register_theme_ajax();
+			$this->register_theme_shortcodes();
 		}
 
-		/**
-		 * Hook into the WP actions to register the theme
-		 */
 		private function setup_theme() {
 			add_action( 'after_setup_theme', array($this, 'theme_init') );
 			add_action( 'wp_enqueue_scripts', array($this, 'enqueue_files') );
 			add_action( 'customize_register', 'Elexicon\\Customizer::customize_register' );
 			add_action( 'customize_preview_init', 'Elexicon\\Customizer::customize_preview_js' );
+		}
+
+		private function register_theme_ajax() {
+			add_action( 'wp_ajax_nopriv_ajax_subscribe', 'Elexicon\\NewsLetter::ajax_subscribe' );
+      add_action( 'wp_ajax_ajax_subscribe', 'Elexicon\\NewsLetter::ajax_subscribe' );
+		}
+
+		private function register_theme_shortcodes() {
+			$shortcodes = new \Elexicon\Shortcodes;
+			$shortcodes->register_shortcodes();
 		}
 
 		/**
@@ -43,10 +53,10 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 			/*
 			 * Make theme available for translation.
 			 * Translations can be filed in the /languages/ directory.
-			 * If you're building a theme based on {%THEME_PREFIX%}, use a find and replace
-			 * to change '{%THEME_PREFIX%}' to the name of your theme in all the template files.
+			 * If you're building a theme based on beer, use a find and replace
+			 * to change 'beer' to the name of your theme in all the template files.
 			 */
-			load_theme_textdomain( \Elexicon\Helper::$theme_prefix, get_template_directory() . '/languages' );
+			load_theme_textdomain( 'beer', get_template_directory() . '/languages' );
 
 			// Add default posts and comments RSS feed links to head.
 			add_theme_support( 'automatic-feed-links' );
@@ -66,9 +76,9 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 
 			// This theme uses wp_nav_menu() in one location.
 			register_nav_menus( array(
-				'primary' => esc_html__( 'Primary', \Elexicon\Helper::$theme_prefix),
-				'secondary' => esc_html__( 'Secondary', \Elexicon\Helper::$theme_prefix),
-				'footer' => esc_html__( 'Footer', \Elexicon\Helper::$theme_prefix)
+				'primary' => esc_html__( 'Primary', 'beer'),
+				'secondary' => esc_html__( 'Secondary', 'beer'),
+				'footer' => esc_html__( 'Footer', 'beer')
 			) );
 
 			/*
@@ -121,10 +131,10 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		  wp_enqueue_style( 'wp-styles', get_stylesheet_uri() );
 		  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
-		  $theme_style = ({%THEME_CONST%}_DEV ? 'style.css' : 'style.min.css');
-		  wp_enqueue_style( \Elexicon\Helper::$theme_slug . '-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
+		  $theme_style = (BEER_DEV ? 'style.css' : 'style.min.css');
+		  wp_enqueue_style( \Elexicon\Helper::$theme_prefix . '-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
 
-		  wp_enqueue_script( \Elexicon\Helper::$theme_slug . '-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), \Elexicon\Helper::$theme_version, true );
+		  wp_enqueue_script( \Elexicon\Helper::$theme_prefix . '-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), '1.0.0', true );
 
 		  // Localize scripts
 		  $this->localize_theme_scripts();
@@ -146,15 +156,15 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		  // Localize the global admin-ajax URL
 		  // usage: autoloader.ajaxurl;
 		  wp_localize_script(
-		    \Elexicon\Helper::$theme_slug . '-js',
-		    \Elexicon\Helper::$theme_prefix,
+		    \Elexicon\Helper::$theme_prefix . '-js',
+		    \Elexicon\Helper::$theme_slug,
 		    array(
-					'ajaxnonce' => wp_create_nonce('ajax-nonce'),
 		      'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		      'isMobile' => (wp_is_mobile() ? true : false),
 		      'curPage' => $cur_page,
 		      'isHome' => (is_home() || is_front_page() ? true : false),
 		      'isSingle' => (is_single() ? true : false),
+					'ajaxnonce' => wp_create_nonce('ajax-nonce'),
 		    )
 		  );
 		}
@@ -166,9 +176,9 @@ if( !class_exists('Elexicon\ThemeInit') ) :
 		private static function register_theme_menus() {
 			// Register the nav menu locations
 			register_nav_menus( array(
-				'primary' => esc_html__( 'Primary', \Elexicon\Helper::$theme_prefix),
-				'secondary' => esc_html__( 'Secondary', \Elexicon\Helper::$theme_prefix),
-				'footer' => esc_html__( 'Footer', \Elexicon\Helper::$theme_prefix)
+				'primary' => esc_html__( 'Primary', \Elexicon\Helper::$theme_prefix ),
+				'secondary' => esc_html__( 'Secondary', \Elexicon\Helper::$theme_prefix ),
+				'footer' => esc_html__( 'Footer', \Elexicon\Helper::$theme_prefix )
 			) );
 		}
 	}

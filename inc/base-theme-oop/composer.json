@@ -9,7 +9,8 @@
     },
     "autoload": {
       "psr-4": {
-        "Elexicon\\": "inc/core/"
+        "Elexicon\\": "inc/core/",
+        "Elexicon\\ShareCount\\": "inc/core/ShareCount/"
       }
     }
 }

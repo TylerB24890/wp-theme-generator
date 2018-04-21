@@ -8,6 +8,11 @@ body {
 	min-height: 750px;
 }
 
+.container-fluid {
+	max-width: 1440px;
+	width: 100%;
+}
+
 a {
 	text-decoration: none;
 	border-bottom: 1px dotted #FFF;
@@ -16,6 +21,31 @@ a {
 	&:hover {
 		text-decoration: none;
 		border-bottom-color: $elx-orange;
+	}
+}
+
+.splash {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+
+	a {
+		&.logo {
+			text-decoration: none;
+			border-bottom: 0;
+			margin-bottom: 15px;
+			display: inline-block;
+			width: 100%;
+			img {
+				max-width: 50%;
+			}
+		}
+	}
+	h1 {
+		font-size: 64px;
+		margin: 0 0 50px;
+		line-height: 1;
+		padding-left: 15px;
 	}
 }
 

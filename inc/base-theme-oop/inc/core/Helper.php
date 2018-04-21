@@ -280,6 +280,36 @@ if( !class_exists('Elexicon\Helper') ) :
 		  $svg_code = file_get_contents($url, FILE_USE_INCLUDE_PATH);
 		  return $svg_code;
 		}
+
+		/**
+		 * General cURL request
+		 */
+		public static function curl_request($url) {
+
+			$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+			curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+			if (defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4'))
+				curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+
+			$cont = curl_exec($ch);
+
+			if(curl_errno($ch)) {
+				//die(curl_error($ch));
+				$c_err['curl_message'] = curl_error($ch);
+				$c_err['error'] = "0";
+				return $c_err;
+			}
+
+			curl_close($ch);
+			return $cont;
+		}
 	}
 
 	new \Elexicon\Helper;
