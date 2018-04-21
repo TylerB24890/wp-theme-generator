@@ -50,9 +50,9 @@ if( !class_exists('Lexi\Core\Helper') ) :
 		public static $icons_url;
 
 		public function __construct() {
-			self::$theme_name = '{%THEME_NAME%}';
-			self::$theme_slug = '{%THEME_SLUG%}';
-			self::$theme_prefix = '{%THEME_PREFIX%}';
+			self::$theme_name = 'lexitheme';
+			self::$theme_slug = 'lexi';
+			self::$theme_prefix = 'lexi';
 			self::$theme_version = '1.1.0';
 			self::$parts = 'template-parts/';
 			self::$icons_url = '//icongr.am/';

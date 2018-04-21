@@ -1,7 +1,7 @@
 <?php
 
 /**
- * beercode Theme initialization class
+ * Theme initialization class
  *
  * Initial theme setup and functions
  *
@@ -11,7 +11,11 @@
 
 namespace Lexi\Core;
 
-if( !class_exists('Lexi\\Core\ThemeInit') ) :
+use \Lexi\Shortcodes\Register as RegisterShortcodes;
+use \Lexi\Core\Helper;
+use \Lexi\Factory;
+
+if( !class_exists('Lexi\Core\ThemeInit') ) :
 
 	class ThemeInit {
 
@@ -35,8 +39,10 @@ if( !class_exists('Lexi\\Core\ThemeInit') ) :
 		}
 
 		private function register_theme_shortcodes() {
-			$shortcodes = new \Lexi\Core\Shortcodes;
-			$shortcodes->register_shortcodes();
+			new RegisterShortcodes();
+
+			//new Factory\PostType('product');
+			//new Factory\Taxonomy('category', array('product', 'shit'));
 		}
 
 		/**
@@ -50,7 +56,7 @@ if( !class_exists('Lexi\\Core\ThemeInit') ) :
 			 * If you're building a theme based on beer, use a find and replace
 			 * to change 'beer' to the name of your theme in all the template files.
 			 */
-			load_theme_textdomain( \Lexi\Core\Helper::$theme_prefix, get_template_directory() . '/languages' );
+			load_theme_textdomain( Helper::$theme_prefix, get_template_directory() . '/languages' );
 
 			// Add default posts and comments RSS feed links to head.
 			add_theme_support( 'automatic-feed-links' );
@@ -70,9 +76,9 @@ if( !class_exists('Lexi\\Core\ThemeInit') ) :
 
 			// This theme uses wp_nav_menu() in one location.
 			register_nav_menus( array(
-				'primary' => esc_html__( 'Primary', \Lexi\Core\Helper::$theme_prefix),
-				'secondary' => esc_html__( 'Secondary', \Lexi\Core\Helper::$theme_prefix),
-				'footer' => esc_html__( 'Footer', \Lexi\Core\Helper::$theme_prefix)
+				'primary' => esc_html__( 'Primary', Helper::$theme_prefix),
+				'secondary' => esc_html__( 'Secondary', Helper::$theme_prefix),
+				'footer' => esc_html__( 'Footer', Helper::$theme_prefix)
 			) );
 
 			/*
@@ -125,7 +131,7 @@ if( !class_exists('Lexi\\Core\ThemeInit') ) :
 		  wp_enqueue_style( 'wp-styles', get_stylesheet_uri() );
 		  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
-		  $theme_style = ({%THEME_CONST%}_DEV ? 'style.css' : 'style.min.css');
+		  $theme_style = (LEXI_DEV ? 'style.css' : 'style.min.css');
 		  wp_enqueue_style( 'lexi-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
 
 		  wp_enqueue_script( 'lexi-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), '1.0.0', true );
@@ -170,9 +176,9 @@ if( !class_exists('Lexi\\Core\ThemeInit') ) :
 		private static function register_theme_menus() {
 			// Register the nav menu locations
 			register_nav_menus( array(
-				'primary' => esc_html__( 'Primary', \Lexi\Core\Helper::$theme_prefix ),
-				'secondary' => esc_html__( 'Secondary', \Lexi\Core\Helper::$theme_prefix ),
-				'footer' => esc_html__( 'Footer', \Lexi\Core\Helper::$theme_prefix )
+				'primary' => esc_html__( 'Primary', Helper::$theme_prefix ),
+				'secondary' => esc_html__( 'Secondary', Helper::$theme_prefix ),
+				'footer' => esc_html__( 'Footer', Helper::$theme_prefix )
 			) );
 		}
 	}

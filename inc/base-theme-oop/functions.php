@@ -11,9 +11,9 @@
  );
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
-    define('{%THEME_CONST%}_DEV', true);
+    define('LEXI_DEV', true);
 } else {
-	define('{%THEME_CONST%}_DEV', false);
+	define('LEXI_DEV', false);
 }
 
 define('LEXI_DIR', __DIR__ . '/inc/lexi/');

@@ -30,7 +30,7 @@ if( !class_exists('\Lexi\ShareCount\Facebook') ) :
 		 */
 		private function get_facebook_counts() {
 
-			$json_request = Helper::curl_request('http://graph.facebook.com/?id=' . $this->url);
+			$json_request = Helper::curl_request('https://graph.facebook.com/?id=' . $this->url);
 
       $json_string = json_decode($json_request, true);
 

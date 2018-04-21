@@ -17,7 +17,8 @@
         <label>Theme Prefix:<span class="req">*</span></label>
         <input type="text" name="theme_prefix" class="form-control" placeholder="i.e. elx" tabindex="3" required />
         <p class="help-block">
-            Used for internationalization and prefixing theme specific functions
+            Used for internationalization and prefixing theme specific functions<br />
+            <b>Note:</b> Do not use "<code>lexi</code>" as your prefix.
         </p>
     </div>
 

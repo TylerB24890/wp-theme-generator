@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Custom Bootstrap Pagination for {%THEME_NAME%} theme
+ * Custom Bootstrap Pagination for lexitheme theme
  *
  * @author Tyler Bailey <tylerb.media@gmail.com>
  * @version 1.0.0
  */
 
 namespace Lexi\Core;
+
+use \Lexi\Core\Helper;
 
 if( !class_exists('Lexi\Core\Pagination') ) :
 
@@ -18,8 +20,8 @@ if( !class_exists('Lexi\Core\Pagination') ) :
 			$defaults = array(
 					'range'           => 4,
 					'custom_query'    => FALSE,
-					'previous_string' => __( '<i class="fa fa-angle-left"></i>', \Lexi\Core\Helper::$theme_prefix ),
-					'next_string'     => __( '<i class="fa fa-angle-right"></i>', \Lexi\Core\Helper::$theme_prefix ),
+					'previous_string' => __( '<i class="fa fa-angle-left"></i>', Helper::$theme_prefix ),
+					'next_string'     => __( '<i class="fa fa-angle-right"></i>', Helper::$theme_prefix ),
 					'before_output'   => '<div class="post-nav"><ul class="pagination justify-content-center">',
 					'after_output'    => '</ul></div>'
 			);
@@ -64,10 +66,10 @@ if( !class_exists('Lexi\Core\Pagination') ) :
 
 			$firstpage = esc_attr( get_pagenum_link(1) );
 			if ( $firstpage && (1 != $page) )
-					$echo .= '<li class="previous page-item"><a class="page-link" href="' . $firstpage . '">' . __( 'First', \Lexi\Core\Helper::$theme_prefix ) . '</a></li>';
+					$echo .= '<li class="previous page-item"><a class="page-link" href="' . $firstpage . '">' . __( 'First', Helper::$theme_prefix ) . '</a></li>';
 
 			if ( $previous && (1 != $page) )
-					$echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __( 'previous', \Lexi\Core\Helper::$theme_prefix) . '">' . $args['previous_string'] . '</a></li>';
+					$echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __( 'previous', Helper::$theme_prefix) . '">' . $args['previous_string'] . '</a></li>';
 
 			if ( !empty($min) && !empty($max) ) {
 					for( $i = $min; $i <= $max; $i++ ) {
@@ -85,7 +87,7 @@ if( !class_exists('Lexi\Core\Pagination') ) :
 
 		// Only display 'First' link if NOT on the first page
 			if ($next && ($count != $page) )
-					$echo .= '<li class="page-item"><a class="page-link" href="' . $next . '" title="' . __( 'next', \Lexi\Core\Helper::$theme_prefix) . '">' . $args['next_string'] . '</a></li>';
+					$echo .= '<li class="page-item"><a class="page-link" href="' . $next . '" title="' . __( 'next', Helper::$theme_prefix) . '">' . $args['next_string'] . '</a></li>';
 
 		// Last page link
 			$lastpage = esc_attr( get_pagenum_link($count) );
@@ -93,7 +95,7 @@ if( !class_exists('Lexi\Core\Pagination') ) :
 		// Only display 'Last' link if NOT on the last page
 			if ( $lastpage ) {
 				if($count != $page) {
-					$echo .= '<li class="next page-item"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', \Lexi\Core\Helper::$theme_prefix ) . '</a></li>';
+					$echo .= '<li class="next page-item"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', Helper::$theme_prefix ) . '</a></li>';
 				}
 			}
 

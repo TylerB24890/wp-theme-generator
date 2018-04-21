@@ -9,6 +9,8 @@
 
 namespace Lexi\Core;
 
+use \Lexi\Core\Helper;
+
 if( !class_exists('Lexi\Core\Customizer') ) :
 
 	class Customizer {
@@ -31,7 +33,7 @@ if( !class_exists('Lexi\Core\Customizer') ) :
 		 * @return null
 		 */
 		public static function customize_preview_js() {
-			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/dist/js/customizer.js', array( 'customize-preview' ), \Lexi\Helper::$theme_version, true );
+			wp_enqueue_script( 'customizer', get_template_directory_uri() . '/dist/js/customizer.js', array( 'customize-preview' ), Helper::$theme_version, true );
 		}
 	}
 endif;

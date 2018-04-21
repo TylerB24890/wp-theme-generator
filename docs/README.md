@@ -11,6 +11,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * PSR-4 Autoloading for core functionality
 * New Helper functions
 * Useful Shortcodes!
+* Developer Factory to create Custom Post Types and Taxonomies
 
 ## Features
 * Bootstrap 4.x
@@ -59,11 +60,19 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       PostTypes.php
       Taxonomies.php
       ThemeInit.php
+      -factory
+        PostType.php
+        Taxonomy.php
       -sharecounts
         -Counts.php
         -Facebook.php
         -LinkedIn.php
         -Pinterest.php
+      -shortcodes
+        Iframe.php
+        MailTo.php
+        Register.php
+        Shares.php
   -languages
     index.php
     readme.txt
@@ -161,6 +170,28 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
 
   - `/functions/` Place all _shared_ JS functions here. See the `/functions/parallax.js` file for usage.
+
+  ## Shortcodes
+
+  ### `[mailto]`
+
+    Encodes the an email address and spits out an `<a href="mailto:[encoded-email-here]">Text</a>`
+
+    **Usage:** `[mailto email="awesometheme@gmail.com"]Email Us![/mailto]`
+
+  ### `[iframe]`
+
+    Renders a responsive iframe with Bootstrap 4's responsive embed feature
+
+    **Usage:** `[iframe url="http://www.elexicon.com"]`
+
+  ### `[sharecount]`
+
+    Queries Facebook, LinkedIn & Pinterest and gets the share count for the supplied URL (or current post/page)
+
+    **Usage:**
+    <br />`[sharecount echo]` - Will echo the current post share counts
+    <br />`[sharecount url="https://theurlhere.com"]` - Will return the share count for ANY url provided
 
 ## Core Classes
   All Core Theme classes are setup under the `Lexi` namespace. Classes contained within the `/inc/lexi/` directory are autoloaded using the Composer `PSR-4` autoloader. This means you can access core classes and methods like `\Lexi\Core\NavWalker` which will give you access to the `NavWalker` class for the main navigation.
@@ -325,49 +356,40 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   ));
   ```
 
-### `\Lexi\Core\Shortcodes`
-
-  Registers theme shortcodes.
-
 ### `\Lexi\Core\Pagination`
 
   The Bootstrap Pagination
 
   **Usage:** `\Lexi\Core\Pagination::render_pagination()`
 
-### `\Lexi\Core\PostTypes`
-
-  Register custom post types with WordPress. See the `/inc/lexi/PostTypes.php` file for an example.
-
-### `\Lexi\Core\Taxonomies`
-
-  Register custom post types with WordPress. See the `/inc/lexi/Taxonomies.php` file for an example.
-
 ### `\Lexi\Core\ThemeInit`
 
   Initiates the theme and configures it with WordPress. Standard `functions.php` functionality in here.
 
-## Shortcodes
+## Factory
 
-### `[mailto]`
+  The Lexi Factory is a useful library for creating custom post types and taxonomies. All functionality lives under the `\Lexi\Factory` namespace.
 
-  Encodes the an email address and spits out an `<a href="mailto:[encoded-email-here]">Text</a>`
+### `\Lexi\Factory\PostType($name, $args = array(), $labels = array())`
 
-  **Usage:** `[mailto email="awesometheme@gmail.com"]Email Us![/mailto]`
+  Used to register a custom post type with WordPress.
 
-### `[iframe]`
+  - `$name (string)` **Required** The name of the custom post type. Spaces **are** allowed here.
+  - `$args (array)` Can pass default WordPress `register_post_type()` arguments. [Codex](https://codex.wordpress.org/Function_Reference/register_post_type)
+  - `$labels (array)` Can pass defualt WordPress `register_post_type()` labels. [Codex](https://codex.wordpress.org/Function_Reference/register_post_type)
 
-  Renders a responsive iframe with Bootstrap 4's responsive embed feature
+  **Usage:** `new \Lexi\Factory\PostType('Product')` - Will register the 'Product' post type.
 
-  **Usage:** `[iframe url="http://www.elexicon.com"]`
+### `\Lexi\Factory\Taxonomy($name, $post_type = '', $args = array(), $labels = array())`
 
-### `[sharecount]`
+  Used to register custom taxonomies with WP and assign taxonomies to post types.
 
-  Queries Facebook, LinkedIn & Pinterest and gets the share count for the supplied URL (or current post/page)
+  - `$name (string)` **Required** The name of the custom taxonomy. Spaces **are** allowed here.
+  - `$post_type (string)` **Required** The name of the post type to register this taxonomy to. **If the post type is not created, this function will create it for you.** This parameter can also be an array of post types.
+  - `$args (array)` Can pass default WordPress `register_taxonomy()` arguments. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
+  - `$labels (array)` Can pass defualt WordPress `register_taxonomy()` labels. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
 
-  **Usage:**
-  <br />`[sharecount echo]` - Will echo the current post share counts
-  <br />`[sharecount url="https://theurlhere.com"]` - Will return the share count for ANY url provided
+  **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'))` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types.
 
 ## Deploying
 
