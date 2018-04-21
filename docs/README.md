@@ -10,6 +10,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * Complete rewrite of core theme functionality
 * PSR-4 Autoloading for core functionality
 * New Helper functions
+* Useful Shortcodes!
 
 ## Features
 * Bootstrap 4.x
@@ -58,6 +59,11 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       PostTypes.php
       Taxonomies.php
       ThemeInit.php
+      -ShareCount
+        -Counts.php
+        -Facebook.php
+        -LinkedIn.php
+        -Pinterest.php
   -languages
     index.php
     readme.txt
@@ -178,7 +184,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   - `::$icons_url` - The Icongr.am URL
 
-  #### Methods
+#### Methods
   - `::icongram_icon($lib, $icon, $size = 24, $color = 'FFFFFF', $echo = true)`
 
     [FontAwesome](https://fontawesome.com/) is pre-loaded into the theme, however if you have the need for an icon not found in the [FontAwesome Library](https://fontawesome.com/icons?from=io), you can pull the icon from the handy service [Icongr.am](https://icongr.am/).
@@ -287,7 +293,13 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     Google Chrome (and other browsers) don't render `.svg` images very consistently. This function will get the SVG code of your .svg image to fix these little quirks.
 
     **Usage:** `echo \Elexicon\Helper::get_svg_code(get_template_directory_uri() . '/img/logo.svg');`
+  <br/>
+  <br/>
+  - `::curl_request($url)`
 
+    Your standard cURL request
+
+    **Usage:** `$res = \Elexicont\Helper::curl_request($api_url);`
 
 ### `\Elexicon\NavWalker`
 
@@ -307,6 +319,29 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     'walker' => new \Elexicon\NavWalker
   ));
   ```
+
+### `\Elexicon\Shortcodes`
+
+#### `[mailto]`
+
+  Encodes the an email address and spits out an `<a href="mailto:[encoded-email-here]">Text</a>`
+
+  **Usage:** `[mailto email="awesometheme@gmail.com"]Email Us![/mailto]`
+
+#### `[iframe]`
+
+  Renders a responsive iframe with Bootstrap 4's responsive embed feature
+
+  **Usage:** `[iframe url="http://www.elexicon.com"]`
+
+#### `[sharecount]`
+
+  Queries Facebook, LinkedIn & Pinterest and gets the share count for the supplied URL (or current post/page)
+
+  **Usage:**
+  <br />`[sharecount echo]` - Will echo the current post share counts
+  <br />`[sharecount url="https://theurlhere.com"]` - Will return the share count for ANY url provided
+
 
 ### `\Elexicon\Pagination`
 

@@ -79,10 +79,15 @@ if( !class_exists('\Elexicon\Shortcodes') ) :
      */
 		public function sharecount_shortcode($atts) {
 			$atts = shortcode_atts(array(
-				"url" => get_the_permalink()
+				"url" => get_the_permalink(),
+				"echo" => false
 			), $atts, 'sharecount');
 
 			$counts = new Counts();
+
+			if($atts['echo']) {
+				echo $counts->total_shares($atts['url']);
+			}
 
 			return $counts->total_shares($atts['url']);
 		}
