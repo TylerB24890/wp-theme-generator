@@ -11,7 +11,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * PSR-4 Autoloading for core functionality
 * New Helper functions
 * Useful Shortcodes!
-* Developer Factory to create Custom Post Types and Taxonomies
+* Developer Factory to create Custom Post Types, Taxonomies & Widget Areas (sidebars)
 
 ## Features
 * Bootstrap 4.x
@@ -19,10 +19,11 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * SCSS compiling and Browser Reload through Grunt
 * Webpack integration for modern JS and ES6 functionality
 * PSR-4 Autoloading with Composer
+* WordPress Entity Generators
 
 # Getting started
 ## Requirements
-* \>PHP 5.4
+* \>PHP 7.0
 * Composer (Install it from https://getcomposer.org/)
 * Node & NPM (Install it from https://nodejs.org/en/)
 * WordPress \>4.5
@@ -390,6 +391,15 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `$labels (array)` Can pass defualt WordPress `register_taxonomy()` labels. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
 
   **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'))` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types.
+
+### `\Lexi\Factory\Sidebar($name)`
+
+  Used to generate custom widget areas for your theme. **Note** you still have to render the sidebar using `dynamic_sidebar($id)`
+
+  - `$name (string)` The name of the widget area. This **can** have spaces. The sidebar ID you will need to reference it will be your name lowercased with underscores. For example `\Lexi\Factory\Sidebar('Custom Sidebar');` will have the ID `custom_sidebar`
+
+  **Usage:** `\Lexi\Factory\Sidebar('My Widget Area');` -- To register the widget area.<br/>
+  **In Template:** `dynamic_sidebar('my_widget_area');` -- To display the widget in your template.
 
 ## Deploying
 
