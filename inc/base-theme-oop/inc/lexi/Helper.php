@@ -282,7 +282,46 @@ if( !class_exists('Lexi\Core\Helper') ) :
 		}
 
 		/**
+		 * Pluralize a string
+		 * @param  string $string String to make plural
+		 * @return string         Pluralized string
+		 */
+		public static function pluralize($string) {
+			$last = $string[strlen($string) - 1];
+
+			if($last == 'y') {
+				$cut = substr($string, 0, -1);
+				//convert y to ies
+				$plural = $cut . 'ies';
+			} else {
+				// just attach an s
+				$plural = $string . 's';
+			}
+
+			return $plural;
+		}
+
+		/**
+		 * Format string for title display`
+		 * @param  string $string String to format
+		 * @return string         Formatted/Beautified string
+		 */
+		public static function beautify_title($string) {
+			return ucwords(str_replace("_", " ", $string));
+		}
+
+		/**
+		 * Format string for database saving
+		 * @param  string $string String to format
+		 * @return string         Database safe formatted string
+		 */
+		public static function uglify_title($string) {
+			return strtolower(str_replace(' ', '_', $string));
+		}
+
+		/**
 		 * General cURL request
+		 * @param string $url		URL to send to the cURL request to
 		 */
 		public static function curl_request($url) {
 

@@ -31,7 +31,7 @@ if( !class_exists('Lexi\Factory\PostType') ) :
 		public function __construct($name, $args = array(), $labels = array()) {
 
 			// Set some important variables
-			$this->post_type_name = strtolower(str_replace( ' ', '_', $name ));
+			$this->post_type_name = Helper::uglify_title($name);
 			$this->post_type_args = $args;
 			$this->post_type_labels = $labels;
 
@@ -46,8 +46,8 @@ if( !class_exists('Lexi\Factory\PostType') ) :
 		 */
 		public function register_post_type() {
 			//Capitilize the words and make it plural
-			$name = ucwords( str_replace( '_', ' ', $this->post_type_name ) );
-			$plural  = $name . 's';
+			$name = Helper::beautify_title($this->post_type_name);
+			$plural = Helper::pluralize($name);
 
 			$default_labels = array(
 				'name'                  => _x( $plural, 'post type general name', Helper::$theme_prefix ),

@@ -15,7 +15,6 @@ if( !class_exists('Lexi\Factory\Taxonomy') ) :
 
 	class Taxonomy {
 
-		private $name;
 		private $tax_name;
 		private $post_type;
 		private $args;
@@ -36,11 +35,10 @@ if( !class_exists('Lexi\Factory\Taxonomy') ) :
 		 * If taxonomy EXISTS it will be added to the specified post types
 		 */
 		public function __construct($name, $post_type = '', $args = array(), $labels = array()) {
-			$this->name = $name;
+			$this->tax_name = Helper::uglify_title($name);
 			$this->post_type = $post_type;
 			$this->args = $args;
 			$this->labels = $labels;
-			$this->tax_name = strtolower(str_replace(' ', '_', $this->name));
 
 			if(empty($name) || empty($post_type))
 				return;
@@ -90,8 +88,8 @@ if( !class_exists('Lexi\Factory\Taxonomy') ) :
 		 */
 		private function create_taxonomy() {
 			//Capitilize the words and make it plural
-			$name       = ucwords( str_replace( '_', ' ', $this->name ) );
-			$plural     = $name . 's';
+			$name = Helper::beautify_title($this->tax_name);
+			$plural = Helper::pluralize($name);
 
 			$default_labels = array(
 				'name'                  => _x( $plural, 'taxonomy general name', Helper::$theme_prefix),

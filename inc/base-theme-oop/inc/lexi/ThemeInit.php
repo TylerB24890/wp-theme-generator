@@ -13,7 +13,6 @@ namespace Lexi\Core;
 
 use \Lexi\Shortcodes\Register as RegisterShortcodes;
 use \Lexi\Core\Helper;
-use \Lexi\Factory;
 
 if( !class_exists('Lexi\Core\ThemeInit') ) :
 
@@ -38,11 +37,11 @@ if( !class_exists('Lexi\Core\ThemeInit') ) :
 			add_action( 'customize_preview_init', 'Lexi\\Core\\Customizer::customize_preview_js' );
 		}
 
+		/**
+		 * Register theme shortcodes
+		 */
 		private function register_theme_shortcodes() {
 			new RegisterShortcodes();
-
-			//new Factory\PostType('product');
-			//new Factory\Taxonomy('category', array('product', 'shit'));
 		}
 
 		/**
