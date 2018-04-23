@@ -4,7 +4,8 @@
 */
 
 import $ from 'jquery'
-import { fullURL } from './variables'
+import { lexi } from './variables'
+import { inlineScroll } from './functions'
 
 $(document).ready(function() {
 	'use strict'
@@ -14,7 +15,7 @@ $(document).ready(function() {
 	 * @return string target=_blank attribute
 	 */
 	$('a').each(function() {
-		$(this).attr('target', (this.href.match( fullURL )) ? '_self' :'_blank')
+		$(this).attr('target', (this.href.match( lexi.url.fullUrl )) ? '_self' :'_blank')
 	})
 
 	/**
@@ -30,12 +31,7 @@ $(document).ready(function() {
 	 * @return false - prevents link redirection
 	 */
 	$('a.inline-link').click(function(e) {
-			var location = $(this).attr('href')
-
-			$('html, body').animate({
-					scrollTop: $(location).offset().top
-			}, 1200)
-
+			inlineScroll($(this).attr('href'))
 			return false
 	})
 })

@@ -1,8 +1,10 @@
-@import 'bootstrap-overrides';
+@import 'variables/variables';
+
 @import '../../node_modules/bootstrap/scss/bootstrap';
+
 @import 'functions/functions';
 @import 'mixins/mixins';
-@import 'global';
 
-@import 'header';
-@import 'footer';
+@import 'global';
+@import 'components/header';
+@import 'components/footer';

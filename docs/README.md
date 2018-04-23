@@ -381,16 +381,17 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   **Usage:** `new \Lexi\Factory\PostType('Product')` - Will register the 'Product' post type.
 
-### `\Lexi\Factory\Taxonomy($name, $post_type = '', $args = array(), $labels = array())`
+### `\Lexi\Factory\Taxonomy($name, $post_type = '', $column = false, $args = array(), $labels = array())`
 
   Used to register custom taxonomies with WP and assign taxonomies to post types.
 
   - `$name (string)` **Required** The name of the custom taxonomy. Spaces **are** allowed here.
   - `$post_type (string)` **Required** The name of the post type to register this taxonomy to. **If the post type is not created, this function will create it for you.** This parameter can also be an array of post types.
+  - `$column (bool)` Create a filterable column on the post type table in wp-admin of this taxonomy
   - `$args (array)` Can pass default WordPress `register_taxonomy()` arguments. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
   - `$labels (array)` Can pass defualt WordPress `register_taxonomy()` labels. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
 
-  **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'))` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types.
+  **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'), true)` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types. Will also create a 'Product Category' column on the Product and Post post types in wp-admin.
 
 ### `\Lexi\Factory\Sidebar($name)`
 

@@ -3,17 +3,22 @@ var pathArray = window.location.href.split( '/' )
 var protocol = pathArray[0]
 var host = pathArray[2]
 var domainArray = host.split(".")
-var baseDomain = ""
-var domainExt = ""
+var domain = ""
+var ext = ""
 if(domainArray.length > 2) {
-	baseDomain = domainArray[1]
-	domainExt = domainArray[2]
+	domain = domainArray[1]
+	ext = domainArray[2]
 } else {
-	baseDomain = domainArray[0]
-	domainExt = domainArray[1]
+	domain = domainArray[0]
+	ext = domainArray[1]
 }
+var directory = pathArray[3]
+var fullURL = protocol + '//' + host
 
-const directory = pathArray[3]
-const fullURL = protocol + '//' + host
-
-export { directory, fullURL }
+export {
+	host,
+	domain,
+	ext,
+	directory,
+	fullURL
+}
