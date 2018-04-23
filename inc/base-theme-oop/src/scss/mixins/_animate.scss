@@ -1,0 +1,17 @@
+/*
+* Animate css properties
+* usage
+* scss - @include animate(color);
+*     or @include animate(color width);
+*     or @include animate(color width, 1s, linear);
+*/
+$animation-speed: .25s !default;
+
+@mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
+	$list:();
+	@each $prop in $properties {
+		$str: #{$prop} #{$duration} #{$easing};
+		$list: join($list, #{$str}, comma);
+	}
+	transition: $list;
+}
