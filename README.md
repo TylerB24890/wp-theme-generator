@@ -1,6 +1,6 @@
-# [Elexicon Theme Generator](http://theme-generator.elexicon.com)
+# [Lexi Theme Generator](http://theme-generator.elexicon.com)
 
-Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started. For full documentation visit http://theme-generator.elexicon.com/docs/
+Building custom WordPress themes can be redundant and annoyingly repetitive. The [Lexi](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started. For full documentation visit http://theme-generator.elexicon.com/docs/
 
 #### Note: - This is NOT the theme. Please visit the [generator](http://theme-generator.elexicon.com) to get yourself a copy.
 
