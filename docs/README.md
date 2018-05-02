@@ -82,20 +82,39 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       app.js
       customizer.js
       grunt-settings.js
+      lexi.js
       themename.js
       -variables
         index.js
+        theme.js
         url.js
       -functions
         index.js
         parallax.js
+        inlineScroll.js
     -scss
-      _animated-hamburger.scss
-      _bootstrap-overrides.scss
-      _elx-mixins.scss
-      _footer.scss
+      -components
+        _animated-hamburger.scss
+        _components.scss
+        _footer.scss
+        _header.scss
+      -functions
+        _functions.scss
+        _str-replace.scss
+        _val.scss
+      -mixins
+        _animate.scss
+        _font-smoothing.scss
+        _gradient.scss
+        _keyframes.scss
+        _mixins.scss
+        _placeholder.scss
+        _vendor.scss
+      -variables
+        _bootstrap-overrides.scss
+        _colors.scss
+        _variables.scss
       _global.scss
-      _header.scss
       style.scss
   -template-parts
     index.php
@@ -146,14 +165,6 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   **NOTE:** The compiled styles are located in the `/dist/styles/` directory. There is no need to upload the `/src/` directory in production. See the Deployment section for more information.
 
-  - `_animated-hamburger.scss` - The styles to animate the Bootstrap `.navbar-toggler` element.
-  - `_bootstrap-overrides.scss` - Put all Bootstrap variable overrides here.
-  - `_elx-mixins.scss` - A collection of useful mixins for use throughout the project.
-  - `_global.scss` - Global styles for the theme (body, links, section, etc...)
-  - `_header.scss` - Styles for the Bootstrap navbar and global site header go here.
-  - `_footer.scss` - Styles for the global footer element go here.
-  - `_style.scss` - All SCSS files should be imported in this file for rendering.
-
 ### Javascript
 
   The scripts for the site are located in the `/src/js/` directory. Webpack compiles all scripts into a `bundle.js` file that is included in your theme. The `bundle.js` file is compiled from the `app.js` file. You should `import` your main scripts into this file for compiling. If you are unfamiliar with [Modern Javascript](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70) I suggest you [practice it](https://javascript.info/) it a little bit.
@@ -161,7 +172,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   Within the `/src/js/` directory you will see a few files and directories. We're going to go through the files first, then move onto the directories and their contents.
 
   - `app.js` The main file for you application. Import your custom Javascript files into here for compiling.
-  - `customizer.js` Used for the wp-admin dashboard Customizer. This file will **not** effect the frontend.
+  - `lexi.js` Miscelleneous JS functions to help with theme development are placed here.
   - `[your-theme-name].js` You should use this as your "main" theme file. Put all one-off jQuery functions and other small/global items in here.
     - Be sure to `import $ from 'jquery'` to use jQuery in here.
   - `grunt-settings.js` This file controls your `Gruntfile.js` script and holds your variables in one place.
@@ -170,7 +181,41 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
 
-  - `/functions/` Place all _shared_ JS functions here. See the `/functions/parallax.js` file for usage.
+  **All default variables are located under the `lexi` object. You must `import { lexi } from './variables'` to use them.**
+
+      - `theme.js` - This file contains multiple variables regarding the theme being developed.
+
+        - `lexi.ajaxurl (string)` - The wp-admin AJAX Url for the theme.<br/>`console.log(lexi.ajaxurl)`
+
+        - `lexi.isMobile (bool)` - Detects mobile agents on page load.<br/>`console.log(lexi.isMobile)`
+
+        - `lexi.currentPage (string)` - The slug of the current page.<br/>`console.log(lexi.currentPage)`
+
+        - `lexi.isSinglePost (bool)` - True/False if you are on a single post page.<br/>`console.log(lexi.isSinglePost)`
+
+        - `lexi.ajaxnonce (string)` - WP Nonce for AJAX Security.<br/>`console.log(lexi.ajaxnonce)` (see the [codex](https://codex.wordpress.org/WordPress_Nonces))
+
+      - `url.js` - This file contains a couple helpful variables dealing with the URL.
+
+      **The Lexi URL variables live under the `lexi.url` object.**
+
+        - `lexi.url.protocol (string)` - The URL protocol (http/https)<br/>`console.log(lexi.url.protocol)`
+
+    		- `lexi.url.host (string)` - The site URL without the protocol<br/>`console.log(lexi.url.host)`
+
+    		- `lexi.url.domain (string)` - The site domain (i.e. elexicon from "elexicon.com")<br/>`console.log(lexi.url.domain)`
+
+    		- `lexi.url.extension (string)` - .com, .org, .net, etc...<br/>`console.log(lexi.url.extension)`
+
+    		- `lexi.url.directory (string)` - The directory in the URL (i.e. elexicon.com/our-work/ would be "our-work")<br/>`console.log(lexi.url.directory)`
+
+    		-  `lexi.url.fullUrl (string)` - The full site URL. Used in `lexi.js` to add `target="_blank"` to all external URL links.<br/>`console.log(lexi.url.fullUrl)`
+
+  - `/functions/` Place all _shared_ JS functions here. Remember to export them from the `/src/js/functions/index.js` file.
+
+      - `inlineScroll.js` - Simply add `.inline-link` to **any** `<a href=""></a>` element with a valid target ID (such as `#footer`) to create a smooth inline scrolling experience.
+
+      - `parallax.js` - Wish to use parallax on a background image? `import` the parallax script into your theme scripts like `import { parallax } from './functions'` then you can call it on any element like `parallax(document.getElementById("banner"), 50%, .2)`
 
   ## Shortcodes
 
@@ -391,7 +436,9 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `$args (array)` Can pass default WordPress `register_taxonomy()` arguments. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
   - `$labels (array)` Can pass defualt WordPress `register_taxonomy()` labels. [Codex](https://codex.wordpress.org/Function_Reference/register_taxonomy)
 
-  **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'), true)` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types. Will also create a 'Product Category' column on the Product and Post post types in wp-admin.
+  **Usage:** `new \Lexi\Factory\Taxonomy('Product Category', array('post', 'product'), true)` - Will register the 'product_category' taxonomy to the 'post' and 'product' post types.
+
+  **Note: If the post type passed to the Taxonomy factory does NOT exist, it will be created for you with the default arguments. This is useful if you do not need custom parameters passed to the post type generator.**
 
 ### `\Lexi\Factory\Sidebar($name)`
 
@@ -410,6 +457,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   Check out some of the great projects built on top of this base theme!
 
+  * [Elexicon](https://elexicon.com)
   * [Spectrum Health | Health Beat](https://healthbeat.spectrumhealth.org)
   * [Terryberry](https://terryberry.com)
   * [Progressive AE](http://www.progressiveae.com)

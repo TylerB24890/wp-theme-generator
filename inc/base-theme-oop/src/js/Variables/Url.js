@@ -16,6 +16,7 @@ var directory = pathArray[3]
 var fullURL = protocol + '//' + host
 
 export {
+	protocol,
 	host,
 	domain,
 	ext,

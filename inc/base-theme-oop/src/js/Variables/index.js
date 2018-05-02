@@ -1,4 +1,5 @@
 import {
+	protocol,
 	host,
 	domain,
 	ext,
@@ -16,11 +17,12 @@ import {
 
 const lexi = {
 	url: {
+		protocol: protocol,
 		host: host,
 		domain: domain,
 		extension: ext,
 		directory: directory,
-		fullUrl: fullURL 
+		fullUrl: fullURL
 	},
 	ajaxurl: ajaxurl,
 	isMobile: isMobile,

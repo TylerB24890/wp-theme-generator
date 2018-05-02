@@ -282,7 +282,7 @@ class Create_Theme {
 	*/
 	private static function change_file_names($data, $dir) {
 
-		$file_dir = $dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR;
+		$file_dir = $dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'js';
 
 		// Open the directory
 		if ($handle = opendir($file_dir)) {

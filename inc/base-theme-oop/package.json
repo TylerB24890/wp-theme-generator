@@ -15,6 +15,7 @@
       "grunt-svgstore": "0.5.0",
       "grunt-webpack": "^3.1.1",
       "load-grunt-tasks": "3.2.0",
+      "uglifyjs-webpack-plugin": "^1.2.5",
       "webpack": "^4.5.0",
       "webpack-cli": "^2.0.14"
   },
