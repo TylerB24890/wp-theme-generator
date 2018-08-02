@@ -99,13 +99,21 @@ if( !class_exists('Lexi\Core\Helper') ) :
 		/**
 		 * Get a Template Part
 		 * @param  string $dir File name or path to file
+		 * @param  bool		$once Include once?
 		 * @return null
 		 */
-		public static function get_partial($dir) {
+		public static function get_partial($dir, $once = true) {
 			if(strpos('.php', $dir) !== false) {
 				$dir = preg_replace("/(.+)\.php$/", "$1", $dir);
 			}
-			locate_template(self::$parts . $dir . '.php', true, false);
+
+			if($once) {
+				include_once(locate_template(self::$parts . $dir . '.php', true, false));
+			} else {
+				include(locate_template(self::$parts . $dir . '.php', true, false));
+			}
+
+			return;
 		}
 
 		/**
