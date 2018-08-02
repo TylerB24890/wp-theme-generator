@@ -280,11 +280,12 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   <br/>
   <br/>
 
-  - `::get_partial($dir)`
+  - `::get_partial($dir, $once = true)`
 
     Get a template part within the theme. Works very similar to WordPress's built in `get_template_part()` function but with less parameters and easier management. In WordPress's `get_template_part()` function you cannot pass variables such as `$exclude`. `::get_partial()` will allow you to do so.
 
     - `$dir` - Can be the filename **with or without** the extension **or** the path to the file within the `/template-parts/` directory.
+    - `$once` - Can be set to false to include the template part multiple times (useful for loops)
 
     **Usage:** `\Lexi\Core\Helper::get_partial('single/content')` Will pull the file `/template-parts/single/content.php`
   <br/>
