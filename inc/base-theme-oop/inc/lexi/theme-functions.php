@@ -14,7 +14,7 @@ function lexi_truncate($string, $limit, $break=".", $pad="...") {
   return $lexi->truncate($string, $limit, $break, $pad);
 }
 
-function lexi_is_child($parent = '') {
+function lexi_is_child($parent = 0) {
   $lexi = new \Lexi\Core\Helper;
   return $lexi->is_child($parent);
 }

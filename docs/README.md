@@ -4,6 +4,11 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 
 Want to see the generated theme code? [View the repo](https://github.com/TylerB24890/elexicon-base).
 
+## Changelog 9.19.2018
+* Removed Share Count functionality and shortcode (unused/inconsistent)
+* Performance Enhancements
+* **NEW** `theme-functions.php` file for easier helper functions
+
 ## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
 * [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
@@ -61,19 +66,14 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       PostTypes.php
       Taxonomies.php
       ThemeInit.php
+      theme-functions.php
       -factory
         PostType.php
         Taxonomy.php
-      -sharecounts
-        -Counts.php
-        -Facebook.php
-        -LinkedIn.php
-        -Pinterest.php
       -shortcodes
         Iframe.php
         MailTo.php
         Register.php
-        Shares.php
   -languages
     index.php
     readme.txt
@@ -92,6 +92,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
         index.js
         parallax.js
         inlineScroll.js
+        isInView.js
     -scss
       -components
         _animated-hamburger.scss
@@ -217,6 +218,8 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
       - `parallax.js` - Wish to use parallax on a background image? `import` the parallax script into your theme scripts like `import { parallax } from './functions'` then you can call it on any element like `parallax(document.getElementById("banner"), 50%, .2)`
 
+      - `isInView.js` - Pass a DOM object to the `isInView()` function to determine if the element is in the viewport
+
   ## Shortcodes
 
   ### `[mailto]`
@@ -231,14 +234,6 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     **Usage:** `[iframe url="http://www.elexicon.com"]`
 
-  ### `[sharecount]`
-
-    Queries Facebook, LinkedIn & Pinterest and gets the share count for the supplied URL (or current post/page)
-
-    **Usage:**
-    <br />`[sharecount echo]` - Will echo the current post share counts
-    <br />`[sharecount url="https://theurlhere.com"]` - Will return the share count for ANY url provided
-
 ## Core Classes
   All Core Theme classes are setup under the `Lexi` namespace. Classes contained within the `/inc/lexi/` directory are autoloaded using the Composer `PSR-4` autoloader. This means you can access core classes and methods like `\Lexi\Core\NavWalker` which will give you access to the `NavWalker` class for the main navigation.
 
@@ -246,7 +241,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   The Customizer class is an extension of the [WordPress Customizer API](https://developer.wordpress.org/themes/customize-api/). Put all of your custom theme "Customizer" code within this class. It is instantiated in the `__construct()` function of the `\Lexi\Core\ThemeInit` class.
 
 ### `\Lexi\Core\Helper`
-  The Helper class is a collection of useful static PHP functions that can be accessed throughout the theme.
+  The Helper class is a collection of useful PHP functions that can be accessed throughout the theme. Most functions can be called through one of the functions in the `theme-functions.php` file.
 
 #### Variables
 
@@ -264,125 +259,82 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
     **Usage:** `get_template_directory(\Lexi\Core\Helper::$parts . 'post', 'list');`
 
-  - `::$icons_url` - The Icongr.am URL
+### Theme Functions
 
-#### Methods
-  - `::icongram_icon($lib, $icon, $size = 24, $color = 'FFFFFF', $echo = true)`
+  - `lexi_partial($dir, array $params = array(), $output = true)`
 
-    [FontAwesome](https://fontawesome.com/) is pre-loaded into the theme, however if you have the need for an icon not found in the [FontAwesome Library](https://fontawesome.com/icons?from=io), you can pull the icon from the handy service [Icongr.am](https://icongr.am/).
-    - `$lib (string)` The library you wish to pull from (Icongram has many to choose from)
-    - `$icon (string)` The icon you wish to pull from Icongram
-    - `$size (int)` The size of the icon
-    - `$color (string)` The color of the icon
-    - `$echo (bool)` Echo the icon markup into the page.
+    Includes a template part and allows the passing of variables. Pass an array of variables to the `$params` parameter and you may use them within your template part. The **array key** will be the variable name, the **array value** will be the value of the variable.
 
-    **Usage:** `\Lexi\Core\Helper::icongram_icon('clarity', 'home', 24, '000000');`
-  <br/>
-  <br/>
+    - `$dir (string)` Can be the filename with or without the extension or the path to the file within the `/template-parts/` directory.
+    - `$params (array)` Array. An array of variables to pass to the partial. Array key is the variable name to be called.
+    - `$output (bool)` Output the template part. Set to `false` to return the template part as a string.
 
-  - `::get_partial($dir, $once = true)`
+  - `lexi_truncate($string, $limit, $break=".", $pad="...")`
 
-    Get a template part within the theme. Works very similar to WordPress's built in `get_template_part()` function but with less parameters and easier management. In WordPress's `get_template_part()` function you cannot pass variables such as `$exclude`. `::get_partial()` will allow you to do so.
+    Truncate a string.
 
-    - `$dir` - Can be the filename **with or without** the extension **or** the path to the file within the `/template-parts/` directory.
-    - `$once` - Can be set to false to include the template part multiple times (useful for loops)
+    - `$string (string)` The string of text to truncate.
+    - `$limit (int)` The number of characters allowed in the truncated string.
+    - `$break (string)` What character to end the break at. Default is a period. (prevents strings from cutting mid sentence.)
+    - `$pad (string)` What to put at the end of the truncated string. Default is `...`
 
-    **Usage:** `\Lexi\Core\Helper::get_partial('single/content')` Will pull the file `/template-parts/single/content.php`
-  <br/>
-  <br/>
+  - `lexi_is_child($parent = 0)`
 
-  - `::truncate($string, $limit, $break=".", $pad="...")`
+    Determine if the current post or page is a child of another. Pass the current post ID as a variable. Will return the parent post ID if it is a child.
 
-    Truncate a string
+    - `$parent (int)` The ID of the current post or page.
 
-    - `$string (string)` The string to truncate
-    - `$limit (int)` The number of words to break down to.
-    - `$break (string)` What character to end the break at. (default is a period.)
-    - `$pad (bool)` What to put at the end of the string
+  - `lexi_get_subpages($id = 0)`
 
-    **Usage:** `\Lexi\Core\Helper::truncate(get_the_excerpt(), 120)`
-  <br/>
-  <br/>
+    Get child pages if available. Useful for creating subpage navigations.
 
+    - `$id (int)` The ID of the parent page.
 
-  - `::is_child( $parent = '' )`
+  - `lexi_make_links($content = '')`
 
-    Check if the current page or post is a child of another page or post.
+    Parse a string of text and convert all URLs into `<a>` elements for linking.
 
-    - `$parent (int)` The ID of the post or page to check.
+    - `$content (string)` String of content to parse
 
-    **Usage:** `\Lexi\Core\Helper::is_child($post->ID);`
-  <br/>
-  <br/>
+  - `lexi_count_search_results()`
 
-  - `::get_subpages($id)`
+    Count the number of items returned from the standard WP search results page
 
-    Get children pages (useful for creating sidebar navigations)
+  - `lexi_attachment_id_from_url($url = '')`
 
-    - `$id (int)` The ID of the page to retrieve the children for
+    Get an attaachment ID by it's URL
 
-    **Usage:** `\Lexi\Core\Helper::get_subpages($post->ID)`
-  <br/>
-  <br/>
+    - `$url (string)` The URL of the attachment
 
-  - `::remove_images($content = null)`
+  - `lexi_file_size($file)`
 
-    Remove all images from a posts content
+    Get the size of a file
 
-    - `$content (string)` The content to strip all `<img>` tags from. Will default to the current post content if `$content` is `null`
+    - `$file` The location & filename of the file
 
-    **Usage:** `\Lexi\Core\Helper::remove_images(get_the_content())`
-  <br/>
-  <br/>
+  - `lexi_svg($file)`
 
-  - `::make_url_link($text)`
+    Return the SVG code for an SVG image
 
-    Parse text and wrap all valid URLs in `<a href=""></a>` elements.
+    - `$file (string)` the URL/location of the SVG image
 
-    - `$text (string)` The text to parse and "linkify"
+  - `lexi_make_plural($str)`
 
-    **Usage:** `\Lexi\Core\Helper::make_url_link(get_the_content())`
-  <br/>
-  <br/>
+     Make a string plural.
 
-  - `::search_results_count()`
+     - `$str (string)` String of the word to pluralize
 
-    Get the number of returned search results.
-  <br/>
-  <br/>
+  - `lexi_beautify($str)`
 
-  - `::get_attachment_id_by_url( $url )`
+    Beautify a title. Remove dashes, capitalize words, etc..
 
-    Get a post attachment ID from it's Media Library URL.
+    - `$str (string)` String to beautify
 
-    - `$url (string)` The URL of the media attachment
+  - `lexi_uglify($str)`
 
-    **Usage:** `\Lexi\Core\Helper::get_attachment_id_by_url(get_the_post_thumbnail_url());`
-  <br/>
-  <br/>
+    Uglify a title. Replace spaces with dashes and lowercase words.
 
-  - `::get_file_size($file)`
-
-    Get the size in kb, mb, gb of a file.
-
-    - `$file (string)` The path to the file
-
-    **Usage:** `$file_size = \Lexi\Core\Helper::get_file_size(get_template_directory() . '/img/logo.png');`
-  <br/>
-  <br/>
-
-  - `::get_svg_code($url)`
-
-    Google Chrome (and other browsers) don't render `.svg` images very consistently. This function will get the SVG code of your .svg image to fix these little quirks.
-
-    **Usage:** `echo \Lexi\Core\Helper::get_svg_code(get_template_directory_uri() . '/img/logo.svg');`
-  <br/>
-  <br/>
-  - `::curl_request($url)`
-
-    Your standard cURL request
-
-    **Usage:** `$res = \Lexi\Core\Helper::curl_request($api_url);`
+    - `$str (string)` String to uglify
 
 ### `\Lexi\Core\NavWalker`
 
