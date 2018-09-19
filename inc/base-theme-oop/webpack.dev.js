@@ -4,7 +4,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-	mode: 'production',
+	mode: 'development',
 	entry: {
 		main: './src/js/app.js'
 	},
@@ -27,18 +27,6 @@ module.exports = {
 		]
 	},
 	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				uglifyOptions: {
-					parallel: true,
-					compress: {
-						drop_console: true
-					},
-					output: {
-						comments: false
-					}
-				}
-			})
-		]
+		minimize: false
 	}
 };

@@ -1,19 +1,19 @@
 <?php
 /**
- * {%THEME_SLUG%} functions and definitions.
- *
- * @package {%THEME_SLUG%}
- */
+* {%THEME_SLUG%} functions and definitions.
+*
+* @package {%THEME_SLUG%}
+*/
 
- $whitelist = array(
-     '127.0.0.1',
-     '::1'
- );
+$whitelist = array(
+  '127.0.0.1',
+  '::1'
+);
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
-    define('LEXI_DEV', true);
+  define('LEXI_DEV', true);
 } else {
-	define('LEXI_DEV', false);
+  define('LEXI_DEV', false);
 }
 
 define('LEXI_DIR', __DIR__ . '/inc/lexi/');

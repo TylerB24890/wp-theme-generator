@@ -9,18 +9,14 @@
 
 namespace Lexi\Shortcodes;
 
-if( !class_exists('\Lexi\Shortcodes\Register') ) :
+class Register {
 
-	class Register {
-
-    public function __construct() {
-      $this->register_shortcodes();
-    }
-
-    private function register_shortcodes() {
-      add_shortcode('mailto', '\Lexi\Shortcodes\MailTo::mailto_shortcode');
-      add_shortcode('iframe', '\Lexi\Shortcodes\Iframe::iframe_shortcode');
-			add_shortcode('sharecount', '\Lexi\Shortcodes\Shares::sharecount_shortcode');
-    }
+	public function __construct() {
+		$this->register_shortcodes();
 	}
-endif;
+
+	private function register_shortcodes() {
+		add_shortcode('mailto', '\Lexi\Shortcodes\MailTo::mailto_shortcode');
+		add_shortcode('iframe', '\Lexi\Shortcodes\Iframe::iframe_shortcode');
+	}
+}
