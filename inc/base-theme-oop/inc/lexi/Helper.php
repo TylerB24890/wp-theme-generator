@@ -100,7 +100,7 @@ class Helper {
 		$file = locate_template(self::$parts . $dir . '.php', false, false);
 
 		if(!$file) {
-			trigger_error(sprintf(__('Error locating %s for inclusion.', self::$theme_slug), $file), E_USER_ERROR);
+			trigger_error(sprintf(__('Error locating %s for inclusion.', 'lexi'), $file), E_USER_ERROR);
 		}
 
 		extract($params);
@@ -218,9 +218,9 @@ class Helper {
 			global $wp_query;
 
 			if($wp_query->found_posts == 1) {
-				$result_count = '1 ' . __('Result', self::$theme_slug);
+				$result_count = '1 ' . __('Result', 'lexi');
 			} else {
-				$result_count = $wp_query->found_posts . ' ' . __('Results', self::$theme_slug);
+				$result_count = $wp_query->found_posts . ' ' . __('Results', 'lexi');
 			}
 
 			return $result_count;

@@ -155,7 +155,7 @@ class ThemeInit {
 	public function add_svg_support($file_types) {
 		$new_filetypes = array();
 		$new_filetypes['svg'] = 'image/svg+xml';
-		$file_types = array_merge($file_types, $new_filetypes );
+		$file_types = array_merge( $file_types, $new_filetypes );
 		return $file_types;
 	}
 

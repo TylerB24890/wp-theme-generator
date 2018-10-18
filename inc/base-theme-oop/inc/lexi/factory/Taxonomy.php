@@ -91,14 +91,14 @@ class Taxonomy {
 		$default_labels = array(
 			'name' => $plural,
 			'singular_name' => $name,
-			'search_items' => sprintf(__('Search %s', Helper::$theme_slug), $plural),
-			'all_items' => sprintf(__('All %s', Helper::$theme_slug), $plural),
-			'parent_item' => sprintf(__('Parent %s', Helper::$theme_slug), $name),
-			'parent_item_colon' => sprintf(__('Parent %s:', Helper::$theme_slug), $name),
-			'edit_item' => sprintf(__('Edit %s', Helper::$theme_slug), $name),
-			'update_item' => sprintf(__('Update %s', Helper::$theme_slug), $name),
-			'add_new_item' => sprintf(__('Add New %s', Helper::$theme_slug), $name),
-			'new_item_name' => sprintf(__('New %s Name', Helper::$theme_slug), $name),
+			'search_items' => sprintf(__('Search %s', 'lexi'), $plural),
+			'all_items' => sprintf(__('All %s', 'lexi'), $plural),
+			'parent_item' => sprintf(__('Parent %s', 'lexi'), $name),
+			'parent_item_colon' => sprintf(__('Parent %s:', 'lexi'), $name),
+			'edit_item' => sprintf(__('Edit %s', 'lexi'), $name),
+			'update_item' => sprintf(__('Update %s', 'lexi'), $name),
+			'add_new_item' => sprintf(__('Add New %s', 'lexi'), $name),
+			'new_item_name' => sprintf(__('New %s Name', 'lexi'), $name),
 			'menu_name' => $name,
 		);
 

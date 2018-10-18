@@ -8,7 +8,6 @@
  */
 
 namespace Lexi\Core;
-use \Lexi\Core\Helper;
 
 class Pagination {
 
@@ -17,8 +16,8 @@ class Pagination {
 		$defaults = array(
 			'range' => 4,
 			'custom_query' => FALSE,
-			'previous_string' => __( '<i class="fa fa-angle-left"></i>', Helper::$theme_slug ),
-			'next_string' => __( '<i class="fa fa-angle-right"></i>', Helper::$theme_slug ),
+			'previous_string' => __( '<i class="fa fa-angle-left"></i>', 'lexi' ),
+			'next_string' => __( '<i class="fa fa-angle-right"></i>', 'lexi' ),
 			'before_output' => '<div class="post-nav"><ul class="pagination justify-content-center">',
 			'after_output' => '</ul></div>'
 		);
@@ -68,11 +67,11 @@ class Pagination {
 
 		$firstpage = esc_attr(get_pagenum_link(1));
 		if($firstpage && (1 != $page)) {
-			$echo .= '<li class="previous page-item"><a class="page-link" href="' . $firstpage . '">' . __('First', Helper::$theme_slug) . '</a></li>';
+			$echo .= '<li class="previous page-item"><a class="page-link" href="' . $firstpage . '">' . __('First', 'lexi') . '</a></li>';
 		}
 
 		if($previous && (1 != $page)) {
-			$echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __('previous', Helper::$theme_slug) . '">' . $args['previous_string'] . '</a></li>';
+			$echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __('previous', 'lexi') . '">' . $args['previous_string'] . '</a></li>';
 		}
 
 		if(!empty($min) && !empty($max)) {
@@ -91,7 +90,7 @@ class Pagination {
 
 		// Only display 'First' link if NOT on the first page
 		if($next && ($count != $page)) {
-			$echo .= '<li class="page-item"><a class="page-link" href="' . $next . '" title="' . __( 'next', Helper::$theme_slug) . '">' . $args['next_string'] . '</a></li>';
+			$echo .= '<li class="page-item"><a class="page-link" href="' . $next . '" title="' . __( 'next', 'lexi') . '">' . $args['next_string'] . '</a></li>';
 		}
 
 		// Last page link
@@ -100,7 +99,7 @@ class Pagination {
 		// Only display 'Last' link if NOT on the last page
 		if($lastpage) {
 			if($count != $page) {
-				$echo .= '<li class="next page-item"><a class="page-link" href="' . $lastpage . '">' . __('Last', Helper::$theme_slug) . '</a></li>';
+				$echo .= '<li class="next page-item"><a class="page-link" href="' . $lastpage . '">' . __('Last', 'lexi') . '</a></li>';
 			}
 		}
 

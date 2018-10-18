@@ -24,7 +24,7 @@ get_header(); ?>
 					<?php endwhile; ?>
 				<?php else : ?>
 
-					<h4><?php _e('No posts found!', \Lexi\Core\Helper::$theme_slug); ?></h4>
+					<h4><?php _e('No posts found!', 'lexi'); ?></h4>
 
 				<?php endif; ?>
 
