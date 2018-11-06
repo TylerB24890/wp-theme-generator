@@ -4,27 +4,27 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 
 Want to see the generated theme code? [View the repo](https://github.com/TylerB24890/elexicon-base).
 
-## Changelog 9.19.2018
+## Changelog
+
+### v2.2 - 11.6.2018
+* No more need to run `composer install` -- the Autoloader is pre-packaged.
+* Fixed misc. markup issues with the new Bootstrap 4 containers.
+* Fixed WordPress i18n functions to use the generated theme slug rather than `lexi`
+* Misc. style additions and fixes
+* New `isUser` and `isDev` JavaScript variables [Read the docs!](/#javascript)
+
+### v2.1 - 9.19.2018
 * Removed Share Count functionality and shortcode (unused/inconsistent)
 * Performance Enhancements
 * **NEW** `theme-functions.php` file for easier helper functions
 
-## What's New
-* [Bootstrap v4.1.0](https://getbootstrap.com) integration
-* [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
-* Complete rewrite of core theme functionality
-* PSR-4 Autoloading for core functionality
-* New Helper functions
-* Useful Shortcodes!
-* Developer Factory to create Custom Post Types, Taxonomies & Widget Areas (sidebars)
-
 ## Features
-* Bootstrap 4.x
+* [Bootstrap 4.x](https://getbootstrap.com) integration
 * Bootstrap Nav Walker for easy management through the wp-admin dashboard
 * SCSS compiling and Browser Reload through Grunt
-* Webpack integration for modern JS and ES6 functionality
+* [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
 * PSR-4 Autoloading with Composer
-* WordPress Entity Generators
+* Developer Factory to create Custom Post Types, Taxonomies & Widget Areas (sidebars) [Read the docs!](/#factory)
 
 # Getting started
 ## Requirements
@@ -39,7 +39,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * `cd` to the theme directory in your terminal.
 * `npm install`
 * `npm run-script build`
-* `composer install`
+* **(PRE v1.2 (Released on 11.6.2018) ONLY)** `composer install`
 * Activate the theme from your wp-admin dashboard.
 * Begin building!
   * Note you will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching.
@@ -195,6 +195,10 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
         - `lexi.isSinglePost (bool)` - True/False if you are on a single post page.<br/>`console.log(lexi.isSinglePost)`
 
         - `lexi.ajaxnonce (string)` - WP Nonce for AJAX Security.<br/>`console.log(lexi.ajaxnonce)` (see the [codex](https://codex.wordpress.org/WordPress_Nonces))
+
+        - `lexi.isUser (bool)` - Determines if the current user is logged into WordPress
+
+        - `lexi.isDev (bool)` - Determines if we are working on a local development environment
 
       - `url.js` - This file contains a couple helpful variables dealing with the URL.
 

@@ -20,7 +20,7 @@ get_header(); ?>
 					<?php endwhile; ?>
 				<?php else : ?>
 
-					<h4><?php _e('No posts found!', 'lexi'); ?></h4>
+					<h4><?php _e('No posts found!', '{%THEME_SLUG%}'); ?></h4>
 
 				<?php endif; ?>
 
