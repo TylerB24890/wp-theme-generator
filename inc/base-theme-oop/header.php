@@ -48,6 +48,8 @@
 						'fallback_cb' => '\Lexi\Core\NavWalker::fallback',
 						'walker' => new \Lexi\Core\NavWalker
 					));
+
+					get_search_form();
 				?>
 			</div>
 		</nav>
