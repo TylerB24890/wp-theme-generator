@@ -10,8 +10,6 @@
  */
 
 namespace Lexi\Core;
-
-use \Lexi\Shortcodes\Register as RegisterShortcodes;
 use \Lexi\Core\Helper;
 
 class ThemeInit {
@@ -23,7 +21,6 @@ class ThemeInit {
 	 */
 	public function __construct() {
 		$this->setup_theme();
-		require_once(LEXI_DIR . 'theme-functions.php');
 	}
 
 	private function setup_theme() {
@@ -34,14 +31,17 @@ class ThemeInit {
 		add_action('init', array($this, 'register_theme_menus'));
 		add_action('upload_mimes', array($this, 'add_svg_support'));
 
-		$this->register_theme_shortcodes();
+		$this->load_dependencies();
 	}
 
 	/**
-	 * Register theme shortcodes
+	 * Load Lexi dependency files & register shortcodes
+	 * @return null
 	 */
-	private function register_theme_shortcodes() {
-		new RegisterShortcodes();
+	private function load_dependencies() {
+		require_once(LEXI_DIR . 'theme-functions.php');
+
+		new \Lexi\Shortcodes\Register();
 	}
 
 	/**
