@@ -1,0 +1,19 @@
+form {
+  &#searchform {
+
+    input {
+      @include placeholder {
+        color: #b8b8b8;
+        font-style: italic;
+        font-size: 14px;
+      }
+    }
+
+    button {
+      &#search {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

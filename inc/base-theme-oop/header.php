@@ -44,7 +44,7 @@
 						'container' => 'div',
 						'container_class' => 'collapse navbar-collapse',
 						'container_id' => 'main-nav',
-						'menu_class' => 'navbar-nav mr-auto',
+						'menu_class' => 'navbar-nav ml-auto',
 						'fallback_cb' => '\Lexi\Core\NavWalker::fallback',
 						'walker' => new \Lexi\Core\NavWalker
 					));
