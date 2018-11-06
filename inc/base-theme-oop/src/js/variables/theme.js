@@ -1,14 +1,16 @@
 
 const ajaxurl = lexi.ajaxurl
-const isMobile = lexi.isMobile
 const currentPage = lexi.curPage
 const isSinglePost = lexi.isSingle
 const ajaxnonce = lexi.ajaxnonce
+const isUser = lexi.isUser
+const isDev = lexi.isDev
 
 export {
 	ajaxurl,
-	isMobile,
 	currentPage,
 	isSinglePost,
-	ajaxnonce
+	ajaxnonce,
+	isUser,
+	isDev
 }

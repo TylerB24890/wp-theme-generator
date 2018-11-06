@@ -12,8 +12,6 @@ $whitelist = array(
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
   define('LEXI_DEV', true);
-} else {
-  define('LEXI_DEV', false);
 }
 
 define('LEXI_DIR', __DIR__ . '/inc/lexi/');

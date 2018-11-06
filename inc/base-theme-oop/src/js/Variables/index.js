@@ -9,10 +9,11 @@ import {
 
 import {
 	ajaxurl,
-	isMobile,
 	currentPage,
 	isSinglePost,
-	ajaxnonce
+	ajaxnonce,
+	isUser,
+	isDev
 } from './theme'
 
 const lexi = {
@@ -25,10 +26,11 @@ const lexi = {
 		fullUrl: fullURL
 	},
 	ajaxurl: ajaxurl,
-	isMobile: isMobile,
 	currentPage: currentPage,
 	isSingle: isSinglePost,
-	nonce: ajaxnonce
+	nonce: ajaxnonce,
+	isUser: isUser,
+	isDev: isDev
 }
 
 export { lexi }

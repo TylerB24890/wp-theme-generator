@@ -137,7 +137,7 @@ class ThemeInit {
 		wp_enqueue_style('wp-styles', get_stylesheet_uri());
 		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
-		$theme_style = (LEXI_DEV ? 'style.css' : 'style.min.css');
+		$theme_style = (defined('LEXI_DEV') ? 'style.css' : 'style.min.css');
 		wp_enqueue_style('lexi-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
 
 		wp_enqueue_script('lexi-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), '1.0.0', true);
@@ -178,11 +178,12 @@ class ThemeInit {
 			'lexi',
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'isMobile' => (wp_is_mobile() ? true : false),
 				'curPage' => $cur_page,
 				'isHome' => (is_home() || is_front_page() ? true : false),
 				'isSingle' => (is_single() ? true : false),
-				'ajaxnonce' => wp_create_nonce('ajax-nonce'),
+				'ajaxnonce' => wp_create_nonce('lexi-nonce'),
+				'isUser' => (is_user_logged_in() ? true : false),
+				'isDev' => (defined('LEXI_DEV') ? true : false)
 			)
 		);
 	}
