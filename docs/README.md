@@ -1,10 +1,19 @@
-# [Lexi Theme Generator](http://theme-generator.elexicon.com)
+# [Lexi Framework](http://theme-generator.elexicon.com)
 
-Building custom WordPress themes can be redundant and annoyingly repetitive. The [Elexicon](http://elexicon.com) Theme Generator **(Lexi)** aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
+Building custom WordPress themes can be redundant and annoyingly repetitive. The Lexi Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started.
 
 Want to see the generated theme code? [View the repo](https://github.com/TylerB24890/elexicon-base).
 
 ## Changelog
+
+### v2.2 - New Option Available - 11.30.2018
+* You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
+* `include` the Lexi file (`/lexi/lexi.php`) in your `functions.php` file.
+
+  EX: `include_once( get_template_directory() . /lexi/lexi.php );`
+* That's it! All of your favorite Lexi features are now available to you in any theme you wish to use.
+
+* **Please note this is the same Lexi (with minor changes for compatibility) that is included with the Lexi Theme Generator. The version number and functionality did not change and the documentation on this page applies to both the Lexi Theme Generator and the Lexi standalone Framework.**
 
 ### v2.2 - 11.6.2018
 * No more need to run `composer install` -- the Autoloader is pre-packaged.
@@ -34,6 +43,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * WordPress \>4.5
 
 ## Installation
+### Theme Generator
 * Head over to http://theme-generator.elexicon.com and fill out the form provided.
 * Unzip the downloaded file and copy it's contents over to your `/themes/` directory.
 * `cd` to the theme directory in your terminal.
@@ -43,6 +53,12 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * Activate the theme from your wp-admin dashboard.
 * Begin building!
   * Note you will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching.
+
+### Other Themes
+* You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
+* `include` the Lexi file (`/lexi/lexi.php`) in your `functions.php` file. EX: `include_once get_template_directory() . /lexi/lexi.php;`
+* That's it! All of your favorite Lexi features are now available to you in any theme you wish to use.
+* Please note that this is an experimental feature right now and is under active development.
 
 ## Theme Structure
 ```
