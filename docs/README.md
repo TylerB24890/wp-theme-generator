@@ -12,7 +12,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * NEW: EASIER INSTALLATION! ZERO CONFIG!
 * Fixed a few bugs with naming conventions during theme creation.
 
-### v2.2 - New Option Available - 11.30.2018
+### v2.2.5 - New Option Available - 11.30.2018
 * You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
 * `include` the Lexi file (`/lexi/lexi.php`) in your `functions.php` file.
 
