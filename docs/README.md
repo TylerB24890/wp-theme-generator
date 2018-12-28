@@ -9,6 +9,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 ### V2.3 - No more GruntJS! - 12.28.2018
 * The original configuration of Webpack and GruntJS has been depreciated as Lexi has adopted [LaravelMix](https://laravel-mix.com/)!
   * **Note:** This **does** come with initial setup changes. Please see the [Installation](/#installation) section for more info.
+* NEW: EASIER INSTALLATION! ZERO CONFIG!
 * Fixed a few bugs with naming conventions during theme creation.
 
 ### v2.2 - New Option Available - 11.30.2018
