@@ -4,7 +4,7 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 
 ## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
-* [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
+* [Webpack.js](https://webpack.js.org/) integration brought to you by [Laravel Mix](https://laravel-mix.com)
 * Complete rewrite of core theme functionality
 * PSR-4 Autoloading for core functionality
 * New Helper functions
@@ -12,14 +12,13 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 ## Features
 * Bootstrap 4.x
 * Bootstrap Nav Walker for easy management through the wp-admin dashboard
-* SCSS compiling and Browser Reload through Grunt
+* SCSS compiling and Browser Reload through Webpack
 * Webpack integration for modern JS and ES6 functionality
 * PSR-4 Autoloading with Composer
 
 # Getting started
 ## Requirements
-* \>PHP 5.4
-* Composer (Install it from https://getcomposer.org/)
+* \>PHP 7.0
 * Node & NPM (Install it from https://nodejs.org/en/)
 * WordPress \>4.5
 
@@ -28,10 +27,9 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 * Unzip the downloaded file and copy it's contents over to your `/themes/` directory.
 * `cd` to the theme directory in your terminal.
 * `npm install`
-* `npm run-script build`
-* `composer install`
+* `npm run watch`
 * Activate the theme from your wp-admin dashboard.
 * Begin building!
-  * Note you will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching.
+  * Note you will have to `cd` to your theme directory and run the `npm run watch` command to enable Live Reloading and File Watching.
 
 ### [Full Documentation](http://theme-generator.elexicon.com/docs/)
