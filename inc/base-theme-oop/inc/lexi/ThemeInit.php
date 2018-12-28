@@ -140,7 +140,8 @@ class ThemeInit {
 		$theme_style = (defined('LEXI_DEV') ? 'style.css' : 'style.min.css');
 		wp_enqueue_style('lexi-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );
 
-		wp_enqueue_script('lexi-js', get_template_directory_uri() . '/dist/js/bundle.js', array(), '1.0.0', true);
+		$theme_script = (defined('LEXI_DEV') ? 'bundle.js' : 'bundle.min.js');
+		wp_enqueue_script('lexi-js', get_template_directory_uri() . '/dist/js/' . $theme_script, array(), '1.0.0', true);
 
 		// Localize scripts
 		$this->localize_theme_scripts();
