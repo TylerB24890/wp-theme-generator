@@ -6,6 +6,11 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ## Changelog
 
+### V2.3 - No more GruntJS! - 12.28.2018
+* The original configuration of Webpack and GruntJS has been depreciated as Lexi has adopted [LaravelMix](https://laravel-mix.com/)!
+  * **Note:** This **does** come with initial setup changes. Please see the [Installation](/#installation) section for more info.
+* Fixed a few bugs with naming conventions during theme creation.
+
 ### v2.2 - New Option Available - 11.30.2018
 * You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
 * `include` the Lexi file (`/lexi/lexi.php`) in your `functions.php` file.
@@ -48,11 +53,12 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * Unzip the downloaded file and copy it's contents over to your `/themes/` directory.
 * `cd` to the theme directory in your terminal.
 * `npm install`
-* `npm run-script build`
+* `npm run watch`
 * **(PRE v1.2 (Released on 11.6.2018) ONLY)** `composer install`
 * Activate the theme from your wp-admin dashboard.
 * Begin building!
-  * Note you will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching.
+
+  * **(PRE v1.3 (Released on 12.28.2018) ONLY)** You will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching. (If you are using v1.3+ you can skip this step.)
 
 ### Other Themes
 * You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
@@ -97,7 +103,6 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
     -js
       app.js
       customizer.js
-      grunt-settings.js
       lexi.js
       themename.js
       -variables
@@ -136,13 +141,13 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   -template-parts
     index.php
     post-list.php
+  -vendor
   404.php
   archive.php
   comments.php
   composer.json
   footer.php
   functions.php
-  Gruntfile.js
   header.php
   index.php
   package.json
@@ -156,7 +161,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   sidebar.php
   single.php
   style.css
-  webpack.config.js
+  webpack.mix.js
 ```
 
 # Guide
@@ -164,19 +169,18 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   The Elexicon Theme uses [SCSS](https://sass-lang.com/) for styling and [GruntJS](https://gruntjs.org) for compiling it into CSS. If you're unfamiliar with SCSS I suggest you you head over to their [docs](https://sass-lang.com/guide) to familiarize yourself. The Javascript within the Elexicon theme is compiled into a script (bundle.js) through [webpack](https://webpack.js.org/). Like SCSS, if you're unfamiliar with webpack they have very fantastic [documentation](https://webpack.js.org/concepts/).
 
-  After you have ran the initial installation scripts such as `npm install`, `npm run-script build`, `composer install` your theme will be setup and viewable after activation through wp-admin.
+  After you have ran the initial installation scripts such as `npm install`, `npm run watch` your theme will be setup and viewable after activation through wp-admin.
 
   - `npm install` Installs the necessary node packages
-  - `npm run-script build` Builds the initial stylesheet and bundle.js file. This will bring Bootstrap into your theme.
-  - `composer install` Configures the PSR-4 Autoloader.
+  - `npm run watch` Will compile the assets and begin the BrowserSync module for development
 
 ### Styling
 
   All styles are located in the `/src/scss/` directory of the theme root. There are a few base SCSS files already in place, but you are encouraged to create your own and import them into the `_style.scss` stylesheet.
 
-  In order to begin styling your theme, you have to begin the `grunt` process. If you have a local development server setup (MAMP, Vagrant, Docker, etc..) and your `grunt-settings.js` file is updated (see the [Javascript section](/?id=javascript)) this should be a piece of cake.
+  In order to begin styling your theme, you have to begin the `watch` process.
   - Open your terminal and `cd` to your theme root.
-  - Run `grunt`
+  - Run `npm run watch`
 
   That's it. Begin writing your SCSS and Javascript as instructed below and your browser will automatically refresh on changes. (JS changes take a couple of seconds due to their need to compile)
 
@@ -192,9 +196,6 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `lexi.js` Miscelleneous JS functions to help with theme development are placed here.
   - `[your-theme-name].js` You should use this as your "main" theme file. Put all one-off jQuery functions and other small/global items in here.
     - Be sure to `import $ from 'jquery'` to use jQuery in here.
-  - `grunt-settings.js` This file controls your `Gruntfile.js` script and holds your variables in one place.
-    - If you change your stylesheet directories you should make sure you change them here.
-    - This file also contains the Browser Reload URL for your theme. By default it is `http://[your-theme-name].local:3000` but you are free to change that to whatever your Virtual Host is configured to. (Just make sure the `:3000` is at the end.)
 
   - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
 
@@ -424,7 +425,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ## Deploying
 
-  When you are ready to deploy, run the command `npm run-script build` to compile your files for production then copy all of your theme files (**except the `/src/` & `/node_modules/` directories**) to your target server.
+  When you are ready to deploy, run the command `npm run prod` to compile your files for production then copy all of your theme files (**except the `/src/` & `/node_modules/` directories**) to your target server.
 
 # Showcase
 
