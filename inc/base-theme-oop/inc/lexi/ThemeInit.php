@@ -42,6 +42,10 @@ class ThemeInit {
 		require_once(LEXI_DIR . 'theme-functions.php');
 
 		new \Lexi\Shortcodes\Register();
+
+		if( file_exists( {%THEME_CONST%}_DIR . 'inc/{%THEME_FILE_NAME%}-functions.php' ) ) {
+			include_once( {%THEME_CONST%}_DIR . 'inc/{%THEME_FILE_NAME%}-functions.php' );
+		}
 	}
 
 	/**
