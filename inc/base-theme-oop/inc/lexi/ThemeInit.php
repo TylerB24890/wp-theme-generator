@@ -43,8 +43,8 @@ class ThemeInit {
 
 		new \Lexi\Shortcodes\Register();
 
-		if( file_exists( {%THEME_CONST%}_DIR . 'inc/{%THEME_FILE_NAME%}-functions.php' ) ) {
-			include_once( {%THEME_CONST%}_DIR . 'inc/{%THEME_FILE_NAME%}-functions.php' );
+		if( file_exists( {%THEME_CONST%}_DIR . '/inc/{%THEME_FILE_NAME%}-functions.php' ) ) {
+			include_once( {%THEME_CONST%}_DIR . '/inc/{%THEME_FILE_NAME%}-functions.php' );
 		}
 	}
 
@@ -59,7 +59,7 @@ class ThemeInit {
 		 * If you're building a theme based on beer, use a find and replace
 		 * to change 'beer' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain(Helper::$theme_slug, get_template_directory() . '/languages');
+		load_theme_textdomain('lexi', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support('automatic-feed-links');
@@ -126,10 +126,10 @@ class ThemeInit {
 		remove_action('wp_head', 'rest_output_link_wp_head', 10);
 		remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 		remove_action('template_redirect', 'rest_output_link_header', 11, 0);
-		remove_action('wp_head', 'print_emoji_detection_script', 7);
-		remove_action('wp_print_styles', 'print_emoji_styles');
-		remove_action('admin_print_scripts', 'print_emoji_detection_script');
-		remove_action('admin_print_styles', 'print_emoji_styles');
+		//remove_action('wp_head', 'print_emoji_detection_script', 7);
+		//remove_action('wp_print_styles', 'print_emoji_styles');
+		//remove_action('admin_print_scripts', 'print_emoji_detection_script');
+		//remove_action('admin_print_styles', 'print_emoji_styles');
 	}
 
 	/**
