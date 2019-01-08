@@ -17,7 +17,7 @@ mix.js('src/js/app.js', 'dist/js/bundle.js')
    })
    .minify(['dist/js/bundle.js', 'dist/styles/style.css'])
    .browserSync({
-     proxy: 'tymeplugins.local',
+     proxy: '{%THEME_SLUG%}.local',
      port: 8000,
      files: [
        'dist/styles/{*,**/*}.css',
