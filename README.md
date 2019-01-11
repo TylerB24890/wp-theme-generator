@@ -6,7 +6,6 @@ Building custom WordPress themes can be redundant and annoyingly repetitive. The
 
 ## What's New
 * [Bootstrap v4.1.0](https://getbootstrap.com) integration
-* [Webpack.js](https://webpack.js.org/) and [Grunt.js](https://gruntjs.com/) integration
 * Complete rewrite of core theme functionality
 * PSR-4 Autoloading for core functionality
 * New Helper functions

@@ -139,7 +139,7 @@ class ThemeInit {
 	public function enqueue_files() {
 		// Stylesheets
 		wp_enqueue_style('wp-styles', get_stylesheet_uri());
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+		wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.6.3/css/all.css');
 
 		$theme_style = (defined('LEXI_DEV') ? 'style.css' : 'style.min.css');
 		wp_enqueue_style('lexi-style', get_template_directory_uri() . '/dist/styles/' . $theme_style );

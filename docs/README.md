@@ -6,6 +6,9 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ## Changelog
 
+### V2.3.1 - 1.11.19
+* Updated the Font Awesome package to v.5.6.3
+
 ### V2.3 - No more GruntJS! - 12.28.2018
 * The original configuration of Webpack and GruntJS has been depreciated as Lexi has adopted [LaravelMix](https://laravel-mix.com/)!
   * **Note:** This **does** come with initial setup changes. Please see the [Installation](/#installation) section for more info.
@@ -168,7 +171,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 # Guide
 ## Theming
 
-  The Elexicon Theme uses [SCSS](https://sass-lang.com/) for styling and [GruntJS](https://gruntjs.org) for compiling it into CSS. If you're unfamiliar with SCSS I suggest you you head over to their [docs](https://sass-lang.com/guide) to familiarize yourself. The Javascript within the Elexicon theme is compiled into a script (bundle.js) through [webpack](https://webpack.js.org/). Like SCSS, if you're unfamiliar with webpack they have very fantastic [documentation](https://webpack.js.org/concepts/).
+  The Elexicon Theme uses [SCSS](https://sass-lang.com/) for styling. If you're unfamiliar with SCSS I suggest you you head over to their [docs](https://sass-lang.com/guide) to familiarize yourself. The Javascript within the Elexicon theme is compiled into a script (bundle.js) through [webpack](https://webpack.js.org/). Like SCSS, if you're unfamiliar with webpack they have very fantastic [documentation](https://webpack.js.org/concepts/).
 
   After you have ran the initial installation scripts such as `npm install`, `npm run watch` your theme will be setup and viewable after activation through wp-admin.
 
@@ -196,7 +199,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `app.js` The main file for you application. Import your custom Javascript files into here for compiling.
   - `lexi.js` Miscelleneous JS functions to help with theme development are placed here.
   - `[your-theme-name].js` You should use this as your "main" theme file. Put all one-off jQuery functions and other small/global items in here.
-    - Be sure to `import $ from 'jquery'` to use jQuery in here.
+    - jQuery is imported by default through WebPack.
 
   - `/variables/` - This directory contains a couple of files off the bat. The most important file here is the `index.js` file. To keep things clean, you should separate your global variables into individual files. For example, all variables dealing with the URL are located in the `url.js` file and imported into the `index.js` file for easy exporting.
 
