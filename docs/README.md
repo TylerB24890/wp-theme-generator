@@ -6,7 +6,10 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ## Changelog
 
-### V2.3.1 - 1.11.19
+### V2.3.2 - 1.15.2019
+* Fixed bug where some helper functions were being called statically
+
+### V2.3.1 - 1.11.2019
 * Updated the Font Awesome package to v.5.6.3
 
 ### V2.3 - No more GruntJS! - 12.28.2018

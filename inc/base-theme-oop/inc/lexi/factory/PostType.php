@@ -18,6 +18,7 @@ class PostType {
 	private $post_type_name;
 	private $post_type_args;
 	private $post_type_labels;
+	private $helper;
 
 	/**
 	 * Construct a custom post type
@@ -28,8 +29,10 @@ class PostType {
 	 */
 	public function __construct($name, $args = array(), $labels = array()) {
 
+		$this->helper = new Helper();
+
 		// Set some important variables
-		$this->post_type_name = Helper::uglify_title($name);
+		$this->post_type_name = $this->helper->uglify_title($name);
 		$this->post_type_args = $args;
 		$this->post_type_labels = $labels;
 
@@ -44,8 +47,8 @@ class PostType {
 	 */
 	public function register_post_type() {
 		//Capitilize the words and make it plural
-		$name = Helper::beautify_title($this->post_type_name);
-		$plural = Helper::pluralize($name);
+		$name = $this->helper->beautify_title($this->post_type_name);
+		$plural = $this->helper->pluralize($name);
 
 		$default_labels = array(
 			'name' => $plural,

@@ -16,6 +16,7 @@ class Taxonomy {
 	private $post_type;
 	private $args;
 	private $labels;
+	private $helper;
 
 	/**
 	 * Create custom taxonomy
@@ -32,7 +33,9 @@ class Taxonomy {
 	 * If taxonomy EXISTS it will be added to the specified post types
 	 */
 	public function __construct($name, $post_type = '', $args = array(), $labels = array()) {
-		$this->tax_name = Helper::uglify_title($name);
+		$this->helper = new Helper();
+
+		$this->tax_name = $this->helper->uglify_title($name);
 		$this->post_type = $post_type;
 		$this->args = $args;
 		$this->labels = $labels;
@@ -85,8 +88,8 @@ class Taxonomy {
 	 */
 	private function create_taxonomy() {
 		//Capitilize the words and make it plural
-		$name = Helper::beautify_title($this->tax_name);
-		$plural = Helper::pluralize($name);
+		$name = $this->helper->beautify_title($this->tax_name);
+		$plural = $this->helper->pluralize($name);
 
 		$default_labels = array(
 			'name' => $plural,
