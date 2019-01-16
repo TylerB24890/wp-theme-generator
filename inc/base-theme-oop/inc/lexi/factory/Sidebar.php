@@ -18,6 +18,7 @@ class Sidebar {
 	private $sidebar_name;
 	private $sidebar_id;
 	private $sidebar_args;
+	private $helper;
 
 	/**
 	 * Construct a custom post type
@@ -26,8 +27,10 @@ class Sidebar {
 	 */
 	public function __construct($name, $args = array()) {
 
-		$this->sidebar_name = Helper::beautify_title($name);
-		$this->sidebar_id = Helper::uglify_title($this->sidebar_name);
+		$this->helper = new Helper();
+
+		$this->sidebar_name = $this->helper->beautify_title($name);
+		$this->sidebar_id = $this->helper->uglify_title($this->sidebar_name);
 		$this->sidebar_args = $args;
 
 		add_action('widgets_init', array(&$this, 'create_sidebar'));
