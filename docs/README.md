@@ -8,6 +8,8 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ### V2.3.2 - 1.15.2019
 * Fixed bug where some helper functions were being called statically
+* Fixed misc. i18n bugs
+* Disabled Gutenberg by default
 
 ### V2.3.1 - 1.11.2019
 * Updated the Font Awesome package to v.5.6.3
@@ -61,115 +63,14 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 * `cd` to the theme directory in your terminal.
 * `npm install`
 * `npm run watch`
-* **(PRE v1.2 (Released on 11.6.2018) ONLY)** `composer install`
 * Activate the theme from your wp-admin dashboard.
 * Begin building!
-
-  * **(PRE v1.3 (Released on 12.28.2018) ONLY)** You will have to `cd` to your theme directory and run the `grunt` command to enable Live Reloading and File Watching. (If you are using v1.3+ you can skip this step.)
 
 ### Other Themes
 * You can now use Lexi on **any** theme! Download the external package [here](http://theme-generator.elexicon.com/lexi.zip)
 * `include` the Lexi file (`/lexi/lexi.php`) in your `functions.php` file. EX: `include_once get_template_directory() . /lexi/lexi.php;`
 * That's it! All of your favorite Lexi features are now available to you in any theme you wish to use.
 * Please note that this is an experimental feature right now and is under active development.
-
-## Theme Structure
-```
--themename
-  -dist
-    index.php
-    -js
-      index.php
-    -styles
-      index.php      
-  -img
-    index.php    
-  -inc
-    index.php
-    -lexi
-      Customizer.php
-      Helper.php
-      index.php
-      NavWalker.php
-      Pagination.php
-      PostTypes.php
-      Taxonomies.php
-      ThemeInit.php
-      theme-functions.php
-      -factory
-        PostType.php
-        Taxonomy.php
-      -shortcodes
-        Iframe.php
-        MailTo.php
-        Register.php
-  -languages
-    index.php
-    readme.txt
-  -src
-    -js
-      app.js
-      customizer.js
-      lexi.js
-      themename.js
-      -variables
-        index.js
-        theme.js
-        url.js
-      -functions
-        index.js
-        parallax.js
-        inlineScroll.js
-        isInView.js
-    -scss
-      -components
-        _animated-hamburger.scss
-        _components.scss
-        _footer.scss
-        _header.scss
-      -functions
-        _functions.scss
-        _str-replace.scss
-        _val.scss
-      -mixins
-        _animate.scss
-        _font-smoothing.scss
-        _gradient.scss
-        _keyframes.scss
-        _mixins.scss
-        _placeholder.scss
-        _vendor.scss
-      -variables
-        _bootstrap-overrides.scss
-        _colors.scss
-        _variables.scss
-      _global.scss
-      style.scss
-  -template-parts
-    index.php
-    post-list.php
-  -vendor
-  404.php
-  archive.php
-  comments.php
-  composer.json
-  footer.php
-  functions.php
-  header.php
-  index.php
-  package.json
-  page.php
-  README.md
-  readme.txt
-  rtl.css
-  screenshot.png
-  search.php
-  searchform.php
-  sidebar.php
-  single.php
-  style.css
-  webpack.mix.js
-```
 
 # Guide
 ## Theming
@@ -181,6 +82,9 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - `npm install` Installs the necessary node packages
   - `npm run watch` Will compile the assets and begin the BrowserSync module for development
 
+
+The BrowserSync module packaged with Lexi includes remote access to view your website on your mobile device. After starting BrowserSync, use the IP Address displayed in the terminal on your mobile device and you will see your local project update in real time as if it were on your computer.
+
 ### Styling
 
   All styles are located in the `/src/scss/` directory of the theme root. There are a few base SCSS files already in place, but you are encouraged to create your own and import them into the `_style.scss` stylesheet.
@@ -189,7 +93,7 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
   - Open your terminal and `cd` to your theme root.
   - Run `npm run watch`
 
-  That's it. Begin writing your SCSS and Javascript as instructed below and your browser will automatically refresh on changes. (JS changes take a couple of seconds due to their need to compile)
+  That's it. Begin writing your SCSS and Javascript as instructed below and your browser will automatically refresh on changes. **When you are complete and ready to go live, run the command `npm run prod` to minify and compile all of your assets for production.***
 
   **NOTE:** The compiled styles are located in the `/dist/styles/` directory. There is no need to upload the `/src/` directory in production. See the Deployment section for more information.
 
@@ -211,8 +115,6 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
       - `theme.js` - This file contains multiple variables regarding the theme being developed.
 
         - `lexi.ajaxurl (string)` - The wp-admin AJAX Url for the theme.<br/>`console.log(lexi.ajaxurl)`
-
-        - `lexi.isMobile (bool)` - Detects mobile agents on page load.<br/>`console.log(lexi.isMobile)`
 
         - `lexi.currentPage (string)` - The slug of the current page.<br/>`console.log(lexi.currentPage)`
 
@@ -438,6 +340,8 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
   Check out some of the great projects built on top of this base theme!
 
+  * [Amway Media Guide 2018](https://mediaguide.amwayglobal.com/)
+  * [Funny Business Agency](https://funny-business.com)
   * [Elexicon](https://elexicon.com)
   * [Spectrum Health | Health Beat](https://healthbeat.spectrumhealth.org)
   * [Terryberry](https://terryberry.com)
