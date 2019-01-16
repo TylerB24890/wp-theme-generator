@@ -130,6 +130,13 @@ class ThemeInit {
 		remove_action('wp_print_styles', 'print_emoji_styles');
 		remove_action('admin_print_scripts', 'print_emoji_detection_script');
 		remove_action('admin_print_styles', 'print_emoji_styles');
+
+		if( $this->is_gutenberg() ) {
+			// disable for posts
+			add_filter( 'use_block_editor_for_post', '__return_false', 10 );
+			// disable for post types
+			add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
+		}
 	}
 
 	/**
@@ -208,5 +215,14 @@ class ThemeInit {
 				$menu_id = wp_create_nav_menu($menu);
 			}
 		}
+	}
+
+	/**
+	 * Check if WP is using Gutenberg
+	 * @return boolean True||False if Gutenberg is active
+	 */
+	private function is_gutenberg() {
+		global $wp_version;
+		return ( function_exists( 'the_gutenberg_project' ) || version_compare( $wp_version, '5', '>=' ) );
 	}
 }
