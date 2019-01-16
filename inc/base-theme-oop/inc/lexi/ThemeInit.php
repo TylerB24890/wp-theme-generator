@@ -198,7 +198,7 @@ class ThemeInit {
 	 */
 	public function register_theme_menus() {
 		$menus = array(
-			__('Primary Menu', Helper::$theme_slug)
+			__('Primary Menu', 'lexi')
 		);
 
 		foreach($menus as $menu) {
