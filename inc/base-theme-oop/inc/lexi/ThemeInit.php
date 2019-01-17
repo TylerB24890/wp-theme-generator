@@ -176,12 +176,14 @@ class ThemeInit {
 	 * @return null
 	 */
 	private function localize_theme_scripts() {
-		global $post;
 
-		$cur_page = $post->post_name;
+		$cur_page = '';
 
 		if(is_archive()) {
 			$cur_page = get_post_type();
+		} else {
+			global $post;
+			$cur_page = $post->post_name;
 		}
 		// Localize the global admin-ajax URL
 		// usage: autoloader.ajaxurl;
