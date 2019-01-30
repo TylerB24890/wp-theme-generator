@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 function isInView(elem, offset = 0) {
 	var docViewTop = $(window).scrollTop();
 	var docViewBottom = docViewTop + ($(window).height() + offset);

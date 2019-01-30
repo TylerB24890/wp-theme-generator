@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 const parallax = (el, xpos, speedFactor, outerHeight) => {
 	var $this = el
 	var getHeight

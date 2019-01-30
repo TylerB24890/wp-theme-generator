@@ -3,8 +3,7 @@
 *
 */
 
-import $ from 'jquery'
-import { lexi } from './variables'
+import { urlVars } from './variables'
 import { inlineScroll } from './functions'
 
 $(document).ready(function() {
@@ -15,7 +14,7 @@ $(document).ready(function() {
 	* @return string target=_blank attribute
 	*/
 	$('a').each(function() {
-		$(this).attr('target', (this.href.match( lexi.url.fullUrl )) ? '_self' :'_blank')
+		$(this).attr('target', (this.href.match( urlVars.fullUrl )) ? '_self' :'_blank')
 	})
 
 	/**
