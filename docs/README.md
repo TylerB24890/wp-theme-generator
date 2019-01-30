@@ -6,6 +6,9 @@ Want to see the generated theme code? [View the repo](https://github.com/TylerB2
 
 ## Changelog
 
+### V2.3.5 - 1.30.2019
+* Fixed conflicting JS variables -- All localized variables are under the `lexi` namespace.
+
 ### V2.3.2 - 1.15.2019
 * Fixed bug where some helper functions were being called statically
 * Fixed misc. i18n bugs
@@ -112,35 +115,33 @@ The BrowserSync module packaged with Lexi includes remote access to view your we
 
   **All default variables are located under the `lexi` object. You must `import { lexi } from './variables'` to use them.**
 
-      - `theme.js` - This file contains multiple variables regarding the theme being developed.
+    - `lexi.ajaxurl (string)` - The wp-admin AJAX Url for the theme.<br/>`console.log(lexi.ajaxurl)`
 
-        - `lexi.ajaxurl (string)` - The wp-admin AJAX Url for the theme.<br/>`console.log(lexi.ajaxurl)`
+    - `lexi.currentPage (string)` - The slug of the current page.<br/>`console.log(lexi.currentPage)`
 
-        - `lexi.currentPage (string)` - The slug of the current page.<br/>`console.log(lexi.currentPage)`
+    - `lexi.isSinglePost (bool)` - True/False if you are on a single post page.<br/>`console.log(lexi.isSinglePost)`
 
-        - `lexi.isSinglePost (bool)` - True/False if you are on a single post page.<br/>`console.log(lexi.isSinglePost)`
+    - `lexi.ajaxnonce (string)` - WP Nonce for AJAX Security.<br/>`console.log(lexi.ajaxnonce)` (see the [codex](https://codex.wordpress.org/WordPress_Nonces))
 
-        - `lexi.ajaxnonce (string)` - WP Nonce for AJAX Security.<br/>`console.log(lexi.ajaxnonce)` (see the [codex](https://codex.wordpress.org/WordPress_Nonces))
+    - `lexi.isUser (bool)` - Determines if the current user is logged into WordPress
 
-        - `lexi.isUser (bool)` - Determines if the current user is logged into WordPress
-
-        - `lexi.isDev (bool)` - Determines if we are working on a local development environment
+    - `lexi.isDev (bool)` - Determines if we are working on a local development environment
 
       - `url.js` - This file contains a couple helpful variables dealing with the URL.
 
-      **The Lexi URL variables live under the `lexi.url` object.**
+      **The Lexi URL variables live under the `urlVars` object.**
 
-        - `lexi.url.protocol (string)` - The URL protocol (http/https)<br/>`console.log(lexi.url.protocol)`
+        - `urlVars.protocol (string)` - The URL protocol (http/https)<br/>`console.log(urlVars.protocol)`
 
-    		- `lexi.url.host (string)` - The site URL without the protocol<br/>`console.log(lexi.url.host)`
+    		- `urlVars.host (string)` - The site URL without the protocol<br/>`console.log(urlVars.host)`
 
-    		- `lexi.url.domain (string)` - The site domain (i.e. elexicon from "elexicon.com")<br/>`console.log(lexi.url.domain)`
+    		- `urlVars.domain (string)` - The site domain (i.e. elexicon from "elexicon.com")<br/>`console.log(urlVars.domain)`
 
-    		- `lexi.url.extension (string)` - .com, .org, .net, etc...<br/>`console.log(lexi.url.extension)`
+    		- `urlVars.extension (string)` - .com, .org, .net, etc...<br/>`console.log(urlVars.extension)`
 
-    		- `lexi.url.directory (string)` - The directory in the URL (i.e. elexicon.com/our-work/ would be "our-work")<br/>`console.log(lexi.url.directory)`
+    		- `urlVars.directory (string)` - The directory in the URL (i.e. elexicon.com/our-work/ would be "our-work")<br/>`console.log(urlVars.directory)`
 
-    		-  `lexi.url.fullUrl (string)` - The full site URL. Used in `lexi.js` to add `target="_blank"` to all external URL links.<br/>`console.log(lexi.url.fullUrl)`
+    		-  `urlVars.fullUrl (string)` - The full site URL. Used in `lexi.js` to add `target="_blank"` to all external URL links.<br/>`console.log(urlVars.fullUrl)`
 
   - `/functions/` Place all _shared_ JS functions here. Remember to export them from the `/src/js/functions/index.js` file.
 
