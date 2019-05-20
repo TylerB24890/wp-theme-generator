@@ -39,6 +39,7 @@ class ThemeInit {
 	 * @return null
 	 */
 	private function load_dependencies() {
+		require_once(LEXI_DIR . 'Api.php');
 		require_once(LEXI_DIR . 'theme-functions.php');
 
 		new \Lexi\Shortcodes\Register();
