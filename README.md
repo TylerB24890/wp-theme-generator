@@ -1,3 +1,6 @@
+## NOTE:
+This project is not longer maintained. It is left active for historical reference and legacy use but is no longer updated.
+
 # [Lexi Theme Generator](http://theme-generator.elexicon.com)
 
 Building custom WordPress themes can be redundant and annoyingly repetitive. The [Lexi](http://elexicon.com) Theme Generator aims to eliminate the annoying stuff we repeat every time we develop a new theme. Follow the installation instructions to get started. For full documentation visit http://theme-generator.elexicon.com/docs/
